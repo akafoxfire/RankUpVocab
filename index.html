@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RankUp Vocab | Pro Learner Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo">RankUp <span>Vocab</span></div>
+            <nav class="main-nav">
+                <button onclick="showSection('study')" id="nav-study" class="nav-link active">Study</button>
+                <button onclick="showSection('quiz')" id="nav-quiz" class="nav-link">Quiz</button>
+            </nav>
+            <button onclick="toggleDarkMode()" id="theme-toggle" class="icon-btn">🌙</button>
+        </div>
+        <div class="goal-wrapper"><div id="goal-fill"></div></div>
+    </header>
+
+    <main class="container">
+        <section id="study-view">
+            <div class="toolbar">
+                <input type="text" id="searchInput" placeholder="Search word..." onkeyup="renderStudy()">
+                <select id="filterType" onchange="renderStudy()">
+                    <option value="ALL">All Categories</option>
+                    <option value="OWS">One Word (OWS)</option>
+                    <option value="Idiom">Idioms</option>
+                </select>
+                <button onclick="toggleHardOnly()" id="hard-filter-btn" class="filter-btn-hard">🔴 Hard List</button>
+            </div>
+            <div id="study-grid" class="vocab-grid"></div>
+        </section>
+
+        <section id="quiz-view" class="hidden">
+            <div id="quiz-setup" class="quiz-card">
+                <h3 style="margin-top:0">🎯 Quiz Settings</h3>
+                <div class="setup-grid">
+                    <div class="setup-group">
+                        <label>Questions Count</label>
+                        <input type="number" id="quizLimit" value="10">
+                    </div>
+                    <div class="setup-group">
+                        <label>Range (Start SN)</label>
+                        <input type="number" id="rangeFrom" placeholder="e.g. 50">
+                    </div>
+                    <div class="setup-group">
+                        <label>Range (End SN)</label>
+                        <input type="number" id="rangeTo" placeholder="e.g. 100">
+                    </div>
+                </div>
+                <button onclick="prepareQuiz()" class="primary-btn" style="width:100%; margin-top:20px;">Start Quiz 🚀</button>
+            </div>
+
+            <div id="quiz-container" class="quiz-wrapper hidden">
+                <div class="quiz-status">
+                    <span id="timer">⏱️ 10s</span>
+                    <button onclick="togglePause()" id="pause-btn" class="mini-btn">Pause</button>
+                </div>
+                <div id="quiz-body"></div>
+            </div>
+
+            <div id="result-view" class="hidden result-panel">
+                <div class="result-header">
+                    <h2>Quiz Analysis</h2>
+                    <div id="score-summary"></div>
+                </div>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr><th>Definition</th><th>Your Ans</th><th>Correct</th><th>Status</th></tr>
+                        </thead>
+                        <tbody id="analysis-body"></tbody>
+                    </table>
+                </div>
+                <button onclick="showSection('study')" class="primary-btn" style="margin-top:20px">Back to Study</button>
+            </div>
+        </section>
+    </main>
+    <footer class="app-footer">
+    <div class="footer-main">
+        <p>Developed with ❤️ by <strong>Rakesh Kumar Dudhawal</strong></p>
+        <p class="copyright-text">Copyright © 2026 RankUpVocab. All Rights Reserved.</p>
+    </div>
+    <div class="footer-links">
+        <span>Premium SSC Preparation Tool</span>
+        <span class="separator">|</span>
+        <span>Version 1.2</span>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
