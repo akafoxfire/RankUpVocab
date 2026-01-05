@@ -3,11 +3,59 @@
 }
 
 /* SOFT NIGHT MODE - Premium Navy/Charcoal Tone */
+/* Makhan Jaisi Switching ke liye speed 0.2s */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out; 
+}
+
 body.dark { 
-    --bg: #111827; 
-    --card: #1f2937; 
-    --txt: #f3f4f6; 
-    --brd: #374151; 
+    /* 1. Background: Pure Black ki jagah ek Deep Navy-Grey base (Zyaada premium dikhta hai) */
+    --bg: #0b0f1a; 
+    
+    /* 2. Cards: Isme thoda sa blue tint hai jo iOS settings jaisa boring nahi lagega */
+    --card: #161b29; 
+    
+    /* 3. Text: Off-white taaki brightness aankhon ko na lage */
+    --txt: #f1f5f9; 
+    
+    /* 4. Borders: Ekdum subtle glow waali border */
+    --brd: #1e293b; 
+    
+    /* 5. Accent: Bright Purple ki jagah ek Soft Indigo jo dark mode mein chamke */
+    --p: #818cf8; 
+}
+
+/* Glassy Effect Updates */
+body.dark .vocab-card, 
+body.dark .glass-card, 
+body.dark .q-card, 
+body.dark .d-card {
+    background: var(--card);
+    border: 1px solid var(--brd);
+    /* Subtle Shadow: Dark mode mein depth dene ke liye */
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); 
+}
+
+/* Buttons Fix */
+body.dark .opt-btn {
+    background: #1e293b; /* Background se thoda light */
+    border: 1px solid #334155;
+    color: #f1f5f9;
+}
+
+body.dark .opt-btn:hover {
+    background: var(--p);
+    color: white;
+    border-color: var(--p);
+}
+
+/* Tabs Fix */
+body.dark .t-btn.active {
+    background: #1e293b;
+    color: var(--p); /* Active tab par tera main purple color dikhna chahiye */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease; }
