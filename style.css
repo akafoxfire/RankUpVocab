@@ -193,3 +193,27 @@ select, .fav-pill { padding: 12px 20px; border-radius: 12px; border: 1px solid v
 @media (max-width: 600px) {
     .app-footer { padding: 30px 0; }
 }
+/* Navbar Image Logo Styling */
+.nav-logo-img {
+    width: 32px; /* Perfect size for navbar */
+    height: 32px;
+    border-radius: 8px; /* Smooth corners */
+    object-fit: cover;
+    margin-right: 8px; /* Text se thodi doori */
+}
+
+/* Navbar Logo Container */
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+}
+
+/* Responsive Fix: Mobile par agar space kam ho */
+@media (max-width: 480px) {
+    .logo span {
+        display: none; /* Mobile par sirf 'RankUp' dikhega */
+    }
+}
