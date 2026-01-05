@@ -21,6 +21,13 @@
     </header>
 
     <main class="container">
+        <div class="stats-dashboard">
+    <div class="stat-card"><h5>OWS</h5><span id="stat-ows">0</span></div>
+    <div class="stat-card"><h5>Idioms</h5><span id="stat-idioms">0</span></div>
+    <div class="stat-card" onclick="prepareQuiz('HARD')" style="cursor:pointer; background:rgba(239,68,68,0.1)">
+        <h5>Hard List</h5><span id="stat-hard">0</span>
+    </div>
+</div>
         <section id="study-view">
             <div class="toolbar">
                 <input type="text" id="searchInput" placeholder="Search word..." onkeyup="renderStudy()">
@@ -38,17 +45,25 @@
             <div id="quiz-setup" class="quiz-card">
                 <h3 style="margin-top:0">🎯 Quiz Settings</h3>
                 <div class="setup-grid">
+                    <div class="setup-group" style="grid-column: span 2;">
+                        <label>Select Quiz Category</label>
+                        <select id="quizType" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-main);">
+                            <option value="ALL">Mix (OWS + Idioms)</option>
+                            <option value="OWS">Only One Word Substitutions</option>
+                            <option value="Idiom">Only Idioms</option>
+                        </select>
+                    </div>
                     <div class="setup-group">
                         <label>Questions Count</label>
                         <input type="number" id="quizLimit" value="10">
                     </div>
                     <div class="setup-group">
                         <label>Range (Start SN)</label>
-                        <input type="number" id="rangeFrom" placeholder="e.g. 50">
+                        <input type="number" id="rangeFrom" value="1">
                     </div>
                     <div class="setup-group">
                         <label>Range (End SN)</label>
-                        <input type="number" id="rangeTo" placeholder="e.g. 100">
+                        <input type="number" id="rangeTo" value="50">
                     </div>
                 </div>
                 <button onclick="prepareQuiz()" class="primary-btn" style="width:100%; margin-top:20px;">Start Quiz 🚀</button>
@@ -80,16 +95,16 @@
         </section>
     </main>
     <footer class="app-footer">
-    <div class="footer-main">
-        <p>Developed with ❤️ by <strong>Rakesh Kumar Dudhawal</strong></p>
-        <p class="copyright-text">Copyright © 2026 RankUpVocab. All Rights Reserved.</p>
-    </div>
-    <div class="footer-links">
-        <span>Premium SSC Preparation Tool</span>
-        <span class="separator">|</span>
-        <span>Version 1.2</span>
-    </div>
-</footer>
+        <div class="footer-main">
+            <p>Developed with ❤️ by <strong>Rakesh Kumar Dudhawal</strong></p>
+            <p class="copyright-text">Copyright © 2026 RankUpVocab. All Rights Reserved.</p>
+        </div>
+        <div class="footer-links">
+            <span>Premium SSC Preparation Tool</span>
+            <span class="separator">|</span>
+            <span>Version 1.2</span>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
