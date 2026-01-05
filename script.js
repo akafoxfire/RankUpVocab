@@ -127,3 +127,4 @@ document.getElementById('theme-btn').onclick = () => {
     document.getElementById('theme-btn').innerText = isDark ? '☀️' : '🌙';
 };
 init();
+
