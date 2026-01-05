@@ -1,111 +1,105 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RankUp Vocab | Pro Learner Edition</title>
+    <title>RankUp Vocab</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="light-theme">
-    <header class="app-header">
-        <div class="header-content">
-            <div class="logo">RankUp <span>Vocab</span></div>
-            <nav class="main-nav">
-                <button onclick="showSection('study')" id="nav-study" class="nav-link active">Study</button>
-                <button onclick="showSection('quiz')" id="nav-quiz" class="nav-link">Quiz</button>
-            </nav>
-            <button onclick="toggleDarkMode()" id="theme-toggle" class="icon-btn">🌙</button>
+<body class="light">
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">RankUp<span>Vocab</span></div>
+            <div class="tabs">
+                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+            </div>
+            <button id="theme-btn" class="circ-btn">🌙</button>
         </div>
-        <div class="goal-wrapper"><div id="goal-fill"></div></div>
     </header>
 
     <main class="container">
-        <div class="stats-dashboard">
-    <div class="stat-card"><h5>OWS</h5><span id="stat-ows">0</span></div>
-    <div class="stat-card"><h5>Idioms</h5><span id="stat-idioms">0</span></div>
-    <div class="stat-card" onclick="prepareQuiz('HARD')" style="cursor:pointer; background:rgba(239,68,68,0.1)">
-        <h5>Hard List</h5><span id="stat-hard">0</span>
-    </div>
-</div>
-        <section id="study-view">
-            <div class="toolbar">
-                <input type="text" id="searchInput" placeholder="Search word..." onkeyup="renderStudy()">
-                <select id="filterType" onchange="renderStudy()">
+        <div class="dash-grid">
+            <div class="d-card p-clr"><h5>OWS COUNT</h5><p id="stat-ows">0</p></div>
+            <div class="d-card b-clr"><h5>IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
+            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
+        </div>
+
+        <section id="view-study" class="view">
+            <div class="tool-flex">
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
+                </div>
+                <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Categories</option>
-                    <option value="OWS">One Word (OWS)</option>
+                    <option value="OWS">OWS</option>
                     <option value="Idiom">Idioms</option>
                 </select>
-                <button onclick="toggleHardOnly()" id="hard-filter-btn" class="filter-btn-hard">🔴 Hard List</button>
+                <button onclick="app.toggleHardFilter()" id="hf-btn" class="fav-pill">Favorites ❤️</button>
             </div>
-            <div id="study-grid" class="vocab-grid"></div>
+            <div id="study-grid" class="cards-grid"></div>
         </section>
 
-        <section id="quiz-view" class="hidden">
-            <div id="quiz-setup" class="quiz-card">
-                <h3 style="margin-top:0">🎯 Quiz Settings</h3>
-                <div class="setup-grid">
-                    <div class="setup-group" style="grid-column: span 2;">
-                        <label>Select Quiz Category</label>
-                        <select id="quizType" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-main);">
-                            <option value="ALL">Mix (OWS + Idioms)</option>
-                            <option value="OWS">Only One Word Substitutions</option>
-                            <option value="Idiom">Only Idioms</option>
-                        </select>
+        <section id="view-setup" class="view hidden">
+            <div class="setup-wrap">
+                <div class="glass-card">
+                    <h2 class="title">Configure Quiz</h2>
+                    <div class="cat-select">
+                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
+                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
+                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
                     </div>
-                    <div class="setup-group">
-                        <label>Questions Count</label>
-                        <input type="number" id="quizLimit" value="10">
+                    <div class="num-grid">
+                        <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
+                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
+                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
                     </div>
-                    <div class="setup-group">
-                        <label>Range (Start SN)</label>
-                        <input type="number" id="rangeFrom" value="1">
-                    </div>
-                    <div class="setup-group">
-                        <label>Range (End SN)</label>
-                        <input type="number" id="rangeTo" value="50">
-                    </div>
+                    <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
                 </div>
-                <button onclick="prepareQuiz()" class="primary-btn" style="width:100%; margin-top:20px;">Start Quiz 🚀</button>
             </div>
+        </section>
 
-            <div id="quiz-container" class="quiz-wrapper hidden">
-                <div class="quiz-status">
-                    <span id="timer">⏱️ 10s</span>
-                    <button onclick="togglePause()" id="pause-btn" class="mini-btn">Pause</button>
+        <section id="view-play" class="view hidden">
+            <div class="quiz-container">
+                <div class="q-header">
+                    <span id="q-label">Question 1/10</span>
+                    <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
                 </div>
-                <div id="quiz-body"></div>
+                <div class="q-card">
+                    <h2 id="q-text">Meaning...</h2>
+                    <div id="q-opts" class="opts-grid"></div>
+                </div>
             </div>
+        </section>
 
-            <div id="result-view" class="hidden result-panel">
-                <div class="result-header">
-                    <h2>Quiz Analysis</h2>
-                    <div id="score-summary"></div>
+        <section id="view-results" class="view hidden">
+            <div class="res-card">
+                <div class="score-box">
+                    <small>Final Score</small>
+                    <h1 id="result-score">0/0</h1>
                 </div>
-                <div class="table-scroll">
-                    <table>
-                        <thead>
-                            <tr><th>Definition</th><th>Your Ans</th><th>Correct</th><th>Status</th></tr>
-                        </thead>
-                        <tbody id="analysis-body"></tbody>
-                    </table>
+                <div class="res-actions">
+                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
+                    <button onclick="router('study')" class="btn-home">Home</button>
                 </div>
-                <button onclick="showSection('study')" class="primary-btn" style="margin-top:20px">Back to Study</button>
             </div>
+            <div id="analysis-list" class="analysis-stack"></div>
         </section>
     </main>
     <footer class="app-footer">
-        <div class="footer-main">
-            <p>Developed with ❤️ by <strong>Rakesh Kumar Dudhawal</strong></p>
-            <p class="copyright-text">Copyright © 2026 RankUpVocab. All Rights Reserved.</p>
-        </div>
-        <div class="footer-links">
-            <span>Premium SSC Preparation Tool</span>
-            <span class="separator">|</span>
-            <span>Version 1.2</span>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo-small">R</div>
+                <span>RaKesh Kumar Dudhawal</span>
+            </div>
+            <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
+            <div class="footer-links">
+                <span>Hard Work Beats Talent</span>
+            </div>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
