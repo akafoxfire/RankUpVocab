@@ -117,25 +117,17 @@
     </footer>
     <script src="script.js"></script>
     <script type="module">
-  // 1. Saare Imports
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { 
     getAuth, 
     signInWithRedirect, 
-    getRedirectResult, 
+    signInWithPopup, // Backup ke liye add kiya
     GoogleAuthProvider, 
     onAuthStateChanged, 
     signOut 
   } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { 
-    getFirestore, 
-    doc, 
-    setDoc, 
-    getDocs, 
-    collection 
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { getFirestore, doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  // 2. Firebase Config
   const firebaseConfig = {
     apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
     authDomain: "rankupvocab.firebaseapp.com",
@@ -145,104 +137,54 @@
     appId: "1:1038821377168:web:39c201773384c4b8408415"
   };
 
-  // 3. Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
-  // --- YE NAAYA SECTION HAI: Redirect Result Handle karne ke liye ---
-  getRedirectResult(auth)
-    .then((result) => {
-      if (result) {
-        console.log("Login Successful after redirect!");
-      }
-    }).catch((error) => {
-      console.error("Redirect Login Error:", error);
-    });
-
-  // 4. LOGIN FUNCTION
+  // LOGIN FUNCTION - Dono tarike try karega
   window.login = async () => {
     try {
-        console.log("Starting Login Redirect...");
-        await signInWithRedirect(auth, provider);
+        console.log("Attempting Login...");
+        await signInWithPopup(auth, provider); // Pehle popup try karo, ye fast hai
     } catch (error) {
-        console.error("Login Button Error:", error);
-        alert("Login Error: " + error.message);
+        console.log("Popup blocked, trying redirect...");
+        await signInWithRedirect(auth, provider); // Agar popup block hai toh redirect
     }
   };
 
-  // 5. LOGOUT FUNCTION
   window.logout = async () => {
-    try {
-      await signOut(auth);
-      console.log("Logged out");
-      location.reload(); 
-    } catch (e) { console.error(e); }
+    await signOut(auth);
+    location.reload();
   };
 
-  // 6. TRICK SAVE FUNCTION
-  window.saveTrickToCloud = async (wordId, trickText) => {
-    const user = auth.currentUser;
-    if (!user) {
-      alert("Pehle Login karein!");
-      return;
-    }
-    try {
-      await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
-        trick: trickText,
-        timestamp: new Date()
-      });
-      alert("Trick Cloud par save ho gayi! ✅");
-    } catch (e) {
-      console.error("Error saving:", e);
-      alert("Save fail: " + e.message);
-    }
-  };
-
-  // 7. AUTH STATUS & DATA SYNC
   onAuthStateChanged(auth, async (user) => {
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
     const userName = document.getElementById('user-name');
 
-    // Button safety check
-    if (!loginBtn || !logoutBtn || !userName) {
-        console.error("HTML IDs (login-btn, logout-btn, user-name) nahi mili!");
-        return;
-    }
-
     if (user) {
-      console.log("User detected:", user.displayName);
+      console.log("Login Success:", user.displayName);
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
       userName.textContent = "Hi, " + user.displayName.split(' ')[0];
       userName.style.display = 'inline-block';
 
-      try {
-        const querySnapshot = await getDocs(collection(db, "users", user.uid, "tricks"));
-        let tricks = {};
-        querySnapshot.forEach((doc) => {
-            tricks[doc.id] = doc.data().trick;
-        });
-        if (window.updateLocalTricks) {
-            window.updateLocalTricks(tricks);
-        }
-      } catch (e) { console.error("Data Load Error:", e); }
-
+      const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
+      let tricks = {};
+      snap.forEach(d => tricks[d.id] = d.data().trick);
+      if (window.updateLocalTricks) window.updateLocalTricks(tricks);
     } else {
       console.log("No user logged in.");
       loginBtn.style.display = 'inline-block';
       logoutBtn.style.display = 'none';
       userName.style.display = 'none';
-      if (window.updateLocalTricks) {
-          window.updateLocalTricks({});
-      }
     }
   });
 </script>
 </body>
 </html>
+
 
 
 
