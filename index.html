@@ -31,23 +31,17 @@
 
     <main class="container">
         <div class="dash-grid">
-            <div class="d-card p-clr"><h5>OWS COUNT</h5><p id="stat-ows">0</p></div>
-            <div class="d-card b-clr"><h5>IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
+            <div class="d-card p-clr"><h5>OWS</h5><p id="stat-ows">0</p></div>
+            <div class="d-card b-clr"><h5>IDIOMS</h5><p id="stat-idioms">0</p></div>
+            <div class="d-card r-clr"><h5>SAVED</h5><p id="stat-hard">0</p></div>
         </div>
 
         <section id="view-study" class="view">
             <div class="tool-flex">
-                <div class="search-box">
-                    <span>🔍</span>
-                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
-                </div>
-                <div class="jump-box" style="display: flex; gap: 5px;">
-                    <input type="number" id="jump-id" placeholder="ID">
-                    <button onclick="jumpToCard()" class="go-btn">Go</button>
-                </div>
+                <div class="search-box"><span>🔍</span><input type="text" id="searchBar" placeholder="Search..." oninput="app.render()"></div>
+                <div class="jump-box"><input type="number" id="jump-id" placeholder="ID"><button onclick="jumpToCard()" class="go-btn">Go</button></div>
                 <select id="typeFilter" onchange="app.render()">
-                    <option value="ALL">All Categories</option>
+                    <option value="ALL">All</option>
                     <option value="OWS">OWS</option>
                     <option value="Idiom">Idioms</option>
                 </select>
@@ -56,59 +50,10 @@
             <div id="study-grid" class="cards-grid"></div>
         </section>
 
-        <section id="view-setup" class="view hidden">
-            <div class="setup-wrap">
-                <div class="glass-card">
-                    <h2 class="title">Configure Quiz</h2>
-                    <div class="cat-select">
-                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
-                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
-                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
-                    </div>
-                    <div class="num-grid">
-                        <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
-                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
-                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
-                    </div>
-                    <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="view-play" class="view hidden">
-            <div class="quiz-container">
-                <div class="q-header">
-                    <span id="q-label">Question 1/10</span>
-                    <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
-                </div>
-                <div class="q-card">
-                    <h2 id="q-text">Meaning...</h2>
-                    <div id="q-opts" class="opts-grid"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="view-results" class="view hidden">
-            <div class="res-card">
-                <div class="score-box">
-                    <small>Final Score</small>
-                    <h1 id="result-score">0/0</h1>
-                </div>
-                <div class="res-actions">
-                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home">Home</button>
-                </div>
-            </div>
-            <div id="analysis-list" class="analysis-stack"></div>
-        </section>
+        <section id="view-setup" class="view hidden">...</section>
+        <section id="view-play" class="view hidden">...</section>
+        <section id="view-results" class="view hidden">...</section>
     </main>
-
-    <footer class="app-footer">
-        <div class="container footer-content">
-            <div class="footer-brand"><div class="logo-small">R</div><span>Rakesh Kumar Dudhawal</span></div>
-            <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
-        </div>
-    </footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -124,49 +69,41 @@
             appId: "1:1038821377168:web:39c201773384c4b8408415"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+        const appFB = initializeApp(firebaseConfig);
+        const auth = getAuth(appFB);
+        const db = getFirestore(appFB);
         const provider = new GoogleAuthProvider();
 
-        window.login = async () => {
-            try { await signInWithPopup(auth, provider); } 
-            catch (error) { alert("Login Error: " + error.message); }
-        };
+        window.login = () => signInWithPopup(auth, provider);
+        window.logout = () => signOut(auth).then(() => location.reload());
 
-        window.logout = async () => {
-            await signOut(auth);
-            location.reload();
-        };
-
-        window.saveTrickToCloud = async (wordId, trickText) => {
+        window.saveTrickToCloud = async (id, text) => {
             const user = auth.currentUser;
-            if (!user) return alert("Pehle Login karein!");
-            try {
-                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), { trick: trickText, timestamp: new Date() });
-                alert("Saved! ✅");
-            } catch (e) { alert("Save fail: " + e.message); }
+            if (user) await setDoc(doc(db, "users", user.uid, "tricks", id), { trick: text });
         };
 
         onAuthStateChanged(auth, async (user) => {
             const lb = document.getElementById('login-btn');
             const lo = document.getElementById('logout-btn');
             const un = document.getElementById('user-name');
+            
             if (user) {
-                lb.style.setProperty('display', 'none', 'important');
+                lb.style.display = 'none';
                 lo.style.display = 'inline-block';
-                un.textContent = "Hi, " + user.displayName.split(' ')[0];
                 un.style.display = 'inline-block';
+                un.textContent = "Hi, " + user.displayName.split(' ')[0];
+                
                 const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
                 let tricks = {};
                 snap.forEach(d => tricks[d.id] = d.data().trick);
                 if (window.updateLocalTricks) window.updateLocalTricks(tricks);
             } else {
-                lb.style.setProperty('display', 'flex', 'important');
-                lo.style.display = 'none'; un.style.display = 'none';
+                lb.style.display = 'flex';
+                lo.style.display = 'none';
+                un.style.display = 'none';
             }
         });
     </script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
