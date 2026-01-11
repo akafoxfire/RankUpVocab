@@ -117,7 +117,7 @@
     </footer>
     <script src="script.js"></script>
     <script type="module">
-  // 1. Saare Imports ek saath
+  // 1. Saare Imports
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { 
     getAuth, 
@@ -145,19 +145,30 @@
     appId: "1:1038821377168:web:39c201773384c4b8408415"
   };
 
-  // 3. Initialize Firebase (Sirf ek baar)
+  // 3. Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
+  // --- YE NAAYA SECTION HAI: Redirect Result Handle karne ke liye ---
+  getRedirectResult(auth)
+    .then((result) => {
+      if (result) {
+        console.log("Login Successful after redirect!");
+      }
+    }).catch((error) => {
+      console.error("Redirect Login Error:", error);
+    });
+
   // 4. LOGIN FUNCTION
   window.login = async () => {
     try {
+        console.log("Starting Login Redirect...");
         await signInWithRedirect(auth, provider);
     } catch (error) {
-        console.error("Login Error:", error);
-        alert("Login nahi ho paya: " + error.message);
+        console.error("Login Button Error:", error);
+        alert("Login Error: " + error.message);
     }
   };
 
@@ -165,11 +176,12 @@
   window.logout = async () => {
     try {
       await signOut(auth);
-      location.reload(); // Logout ke baad page refresh
+      console.log("Logged out");
+      location.reload(); 
     } catch (e) { console.error(e); }
   };
 
-  // 6. TRICK SAVE FUNCTION (Database)
+  // 6. TRICK SAVE FUNCTION
   window.saveTrickToCloud = async (wordId, trickText) => {
     const user = auth.currentUser;
     if (!user) {
@@ -194,33 +206,35 @@
     const logoutBtn = document.getElementById('logout-btn');
     const userName = document.getElementById('user-name');
 
+    // Button safety check
+    if (!loginBtn || !logoutBtn || !userName) {
+        console.error("HTML IDs (login-btn, logout-btn, user-name) nahi mili!");
+        return;
+    }
+
     if (user) {
-      // UI Update
+      console.log("User detected:", user.displayName);
       loginBtn.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
       userName.textContent = "Hi, " + user.displayName.split(' ')[0];
       userName.style.display = 'inline-block';
 
-      // Cloud se saari tricks load karo
       try {
         const querySnapshot = await getDocs(collection(db, "users", user.uid, "tricks"));
         let tricks = {};
         querySnapshot.forEach((doc) => {
             tricks[doc.id] = doc.data().trick;
         });
-        
-        // script.js ko data bhejo
         if (window.updateLocalTricks) {
             window.updateLocalTricks(tricks);
         }
       } catch (e) { console.error("Data Load Error:", e); }
 
     } else {
-      // UI Reset
+      console.log("No user logged in.");
       loginBtn.style.display = 'inline-block';
       logoutBtn.style.display = 'none';
       userName.style.display = 'none';
-      
       if (window.updateLocalTricks) {
           window.updateLocalTricks({});
       }
@@ -229,5 +243,6 @@
 </script>
 </body>
 </html>
+
 
 
