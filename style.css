@@ -507,13 +507,7 @@ select,
     display: none !important;
 }
 
-@media (max-width: 600px) {
 
-    .opts-grid,
-    .dash-grid,
-    .num-grid {
-        grid-template-columns: 1fr;
-    }
 
     .q-card {
         padding: 30px 20px;
@@ -571,11 +565,7 @@ select,
     opacity: 0.8;
 }
 
-@media (max-width: 600px) {
-    .app-footer {
-        padding: 30px 0;
-    }
-}
+
 
 /* Navbar Image Logo Styling */
 .nav-logo-img {
@@ -615,13 +605,7 @@ body.dark .fav-pill:hover {
     background: #1e293b;
 }
 
-/* Responsive Fix: Mobile par agar space kam ho */
-@media (max-width: 480px) {
-    .logo span {
-        display: none;
-        /* Mobile par sirf 'RankUp' dikhega */
-    }
-}
+
 
 /* --- Login Section Styling --- */
 #auth-section {
@@ -708,19 +692,7 @@ body.dark .fav-pill:hover {
     transform: scale(1.05);
 }
 
-/* Mobile Responsive */
-@media (max-width: 480px) {
-    #auth-section {
-        justify-content: center;
-        flex-direction: column;
 
-        /* MOBILE HEADER FIX - Ise CSS ke end mein dalein */
-@media (max-width: 600px) {
-    .nav-content {
-        flex-direction: column; /* Sab kuch ek ke niche ek aa jayega */
-        gap: 12px;
-        padding: 10px 0;
-    }
 
     .tabs {
         width: 100%; /* Tabs poori width le lenge */
@@ -748,4 +720,70 @@ body.dark .fav-pill:hover {
         gap: 5px;
     }
 }
+
+/* --- SABHI MOBILE FIXES EK SAATH --- */
+@media (max-width: 600px) {
+    /* 1. Header Fix: Logo text hide karke sab ek line mein */
+    .logo {
+        font-size: 0 !important; /* RankUpVocab text hide */
+    }
+
+    .nav-logo-img {
+        width: 32px;
+        height: auto;
+        margin-right: 0;
+    }
+
+    .nav-content {
+        display: flex;
+        flex-direction: row !important; /* Sab kuch ek hi line mein rahega */
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .tabs {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        margin: 0 5px;
+    }
+
+    .t-btn {
+        padding: 8px 10px;
+        font-size: 0.7rem;
+    }
+
+    #auth-section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /* 2. Grid Fixes: Dashboard, Quiz aur Options ko 1 column karna */
+    .opts-grid,
+    .dash-grid,
+    .num-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 3. Spacing & UI Fixes */
+    .q-card {
+        padding: 30px 20px;
+    }
+
+    .app-footer {
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
 
