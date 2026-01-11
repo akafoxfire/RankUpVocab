@@ -7,7 +7,6 @@
 }
 
 /* SOFT NIGHT MODE - Premium Navy/Charcoal Tone */
-/* Makhan Jaisi Switching ke liye speed 0.2s */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,19 +15,10 @@
 }
 
 body.dark {
-    /* 1. Background: Pure Black ki jagah ek Deep Navy-Grey base (Zyaada premium dikhta hai) */
     --bg: #0b0f1a;
-
-    /* 2. Cards: Isme thoda sa blue tint hai jo iOS settings jaisa boring nahi lagega */
     --card: #161b29;
-
-    /* 3. Text: Off-white taaki brightness aankhon ko na lage */
     --txt: #f1f5f9;
-
-    /* 4. Borders: Ekdum subtle glow waali border */
     --brd: #1e293b;
-
-    /* 5. Accent: Bright Purple ki jagah ek Soft Indigo jo dark mode mein chamke */
     --p: #818cf8;
 }
 
@@ -39,14 +29,12 @@ body.dark .q-card,
 body.dark .d-card {
     background: var(--card);
     border: 1px solid var(--brd);
-    /* Subtle Shadow: Dark mode mein depth dene ke liye */
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 /* Buttons Fix */
 body.dark .opt-btn {
     background: #1e293b;
-    /* Background se thoda light */
     border: 1px solid #334155;
     color: #f1f5f9;
 }
@@ -61,16 +49,9 @@ body.dark .opt-btn:hover {
 body.dark .t-btn.active {
     background: #1e293b;
     color: var(--p);
-    /* Active tab par tera main purple color dikhna chahiye */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-}
-
+/* GENERAL */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--bg);
@@ -102,50 +83,21 @@ body {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
     font-weight: 800;
-    font-size: 1.4rem;
-    letter-spacing: -0.5px;
+    font-size: 1.3rem;
 }
 
 .logo span {
     color: var(--p);
 }
 
-.tabs {
-    background: var(--bg);
-    padding: 4px;
-    border-radius: 12px;
-    display: flex;
-    gap: 4px;
-    border: 1px solid var(--brd);
-}
-
-.t-btn {
-    border: none;
-    background: none;
-    padding: 8px 18px;
+.nav-logo-img {
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    color: #64748b;
-    font-size: 0.85rem;
-}
-
-.t-btn.active {
-    background: var(--card);
-    color: var(--p);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.circ-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--brd);
-    background: var(--card);
-    cursor: pointer;
-    color: var(--txt);
-    font-size: 1.1rem;
+    margin-right: 8px;
 }
 
 /* DASHBOARD */
@@ -162,73 +114,6 @@ body {
     border-radius: 20px;
     border: 1px solid var(--brd);
     text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.d-card h5 {
-    font-size: 0.65rem;
-    color: #64748b;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.d-card p {
-    font-size: 1.8rem;
-    font-weight: 800;
-}
-
-.p-clr p {
-    color: #8b5cf6;
-}
-
-.b-clr p {
-    color: #3b82f6;
-}
-
-.r-clr p {
-    color: #ef4444;
-}
-
-/* STUDY TOOLS */
-.tool-flex {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.search-box {
-    flex: 1;
-    background: var(--card);
-    border: 1px solid var(--brd);
-    padding: 10px 15px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    min-width: 250px;
-}
-
-.search-box input {
-    border: none;
-    background: none;
-    width: 100%;
-    color: var(--txt);
-    padding-left: 10px;
-    outline: none;
-    font-size: 0.95rem;
-}
-
-select,
-.fav-pill {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: 1px solid var(--brd);
-    background: var(--card);
-    font-weight: 700;
-    color: var(--txt);
-    cursor: pointer;
 }
 
 /* STUDY GRID */
@@ -243,284 +128,17 @@ select,
     border: 1px solid var(--brd);
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-.vocab-card:hover {
-    border-color: var(--p);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-.v-btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.v-btns button {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.v-btns button:hover {
-    background: var(--p);
-    color: white;
-    border-color: var(--p);
-}
-
-/* QUIZ SETUP VIEW (FIXED ALIGNMENT) */
-.setup-wrap {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-}
-
-.glass-card {
-    background: var(--card);
-    padding: 35px;
-    border-radius: 28px;
-    border: 1px solid var(--brd);
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-}
-
-.cat-select {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 25px 0;
-}
-
-.c-chip {
-    padding: 12px 5px;
-    border-radius: 12px;
-    border: 2px solid var(--brd);
-    background: var(--bg);
-    font-weight: 800;
-    cursor: pointer;
-    color: #64748b;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-.c-chip.active {
-    border-color: var(--p);
-    color: var(--p);
-    background: rgba(99, 102, 241, 0.05);
-}
-
-.num-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 30px;
-}
-
-.f-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: left;
-}
-
-.f-group label {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: #64748b;
-    text-transform: uppercase;
-    padding-left: 5px;
-}
-
-.f-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 700;
-    font-size: 1rem;
-    outline: none;
-}
-
-.f-group input:focus {
-    border-color: var(--p);
-}
-
-.launch-btn {
-    width: 100%;
-    padding: 18px;
-    border-radius: 18px;
-    border: none;
-    background: var(--p);
-    color: white;
-    font-weight: 800;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-}
-
-/* QUIZ PLAY SECTION */
-.quiz-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 10px;
-}
-
-.q-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    font-weight: 700;
-    color: #64748b;
-    font-size: 0.9rem;
-}
-
+/* QUIZ */
 .q-card {
     background: var(--card);
-    padding: 50px 40px;
+    padding: 40px;
     border-radius: 32px;
     border: 1px solid var(--brd);
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-    position: relative;
-    overflow: hidden;
 }
 
-.q-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--p), #ec4899);
-}
-
-.q-card h2 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    line-height: 1.4;
-    color: var(--txt);
-    margin-bottom: 40px;
-}
-
-.opts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.opt-btn {
-    padding: 22px 20px;
-    border-radius: 20px;
-    border: 2px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 700;
-    font-size: 1.05rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.opt-btn:hover {
-    border-color: var(--p);
-    background: var(--card);
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.1);
-}
-
-/* Progress Bar */
-.progress-bg {
-    background: var(--brd);
-    height: 10px;
-    border-radius: 20px;
-    width: 150px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    background: linear-gradient(90deg, var(--p), #a855f7);
-    height: 100%;
-    transition: width 0.5s ease;
-    width: 0%;
-}
-
-/* RESULTS & ANALYSIS */
-.res-card {
-    background: var(--card);
-    padding: 30px;
-    border-radius: 24px;
-    border: 1px solid var(--brd);
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.score-box h1 {
-    font-size: 3rem;
-    color: var(--p);
-    font-weight: 800;
-}
-
-.res-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.res-actions button {
-    padding: 12px 25px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.btn-retry {
-    background: var(--p);
-    color: white;
-}
-
-.btn-home {
-    background: var(--brd);
-    color: var(--txt);
-}
-
-.analysis-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-@media (max-width: 600px) {
-
-    .opts-grid,
-    .dash-grid,
-    .num-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .q-card {
-        padding: 30px 20px;
-    }
-}
-
-/* FOOTER STYLING */
+/* FOOTER */
 .app-footer {
     background: var(--card);
     border-top: 1px solid var(--brd);
@@ -529,144 +147,19 @@ select,
     text-align: center;
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--p);
-}
-
-.logo-small {
-    background: var(--p);
-    color: white;
-    width: 24px;
-    height: 24px;
+/* LOGIN BUTTON */
+#login-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
-    font-size: 0.7rem;
-}
-
-.footer-content p {
-    font-size: 0.85rem;
-    color: #64748b;
-}
-
-.footer-links {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--p);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-}
-
-@media (max-width: 600px) {
-    .app-footer {
-        padding: 30px 0;
-    }
-}
-
-/* Navbar Image Logo Styling */
-.nav-logo-img {
-    width: 32px;
-    /* Perfect size for navbar */
-    height: 32px;
-    border-radius: 8px;
-    /* Smooth corners */
-    object-fit: cover;
-    margin-right: 8px;
-    /* Text se thodi doori */
-}
-
-/* Navbar Logo Container */
-.logo {
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 1.3rem;
-    letter-spacing: -0.5px;
-}
-
-/* Favorites active hone par ye style apply hoga */
-.fav-pill.fav-active {
-    background: var(--p) !important;
-    color: white !important;
-    border-color: var(--p);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-
-/* Hover effect for better feel */
-.fav-pill:hover {
-    background: #f1f5f9;
-}
-
-body.dark .fav-pill:hover {
-    background: #1e293b;
-}
-
-/* Responsive Fix: Mobile par agar space kam ho */
-@media (max-width: 480px) {
-    .logo span {
-        display: none;
-        /* Mobile par sirf 'RankUp' dikhega */
-    }
-}
-
-/* --- Login Section Styling --- */
-#auth-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 5%;
-    background: var(--bg-card); /* Aapki purani card background variable */
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-#login-btn {
-    background: #4285F4;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
+    background: var(--card);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    transition: 0.3s;
 }
 
-#login-btn:hover {
-    background: #357ae8;
-    transform: translateY(-1px);
-}
-
-#logout-btn {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8rem;
-}
-
-#user-name {
-    font-size: 0.9rem;
-    color: var(--p); /* Aapka primary color variable */
-}
-
-/* --- Trick Box Styling inside Card --- */
+/* TRICK BOX */
 .trick-container {
     margin: 15px 0;
     display: flex;
@@ -677,42 +170,13 @@ body.dark .fav-pill:hover {
     border: 1px dashed var(--p);
 }
 
-.dark .trick-container {
-    background: rgba(255,255,255,0.05);
-}
+/* MOBILE */
+@media (max-width: 600px) {
+    .dash-grid {
+        grid-template-columns: 1fr;
+    }
 
-.trick-input {
-    flex: 1;
-    padding: 8px;
-    border: none;
-    background: transparent;
-    font-size: 0.85rem;
-    color: inherit;
-    outline: none;
-}
-
-.trick-save-btn {
-    background: var(--p);
-    color: white;
-    border: none;
-    padding: 5px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.75rem;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.trick-save-btn:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-}
-
-/* Mobile Responsive */
-@media (max-width: 480px) {
-    #auth-section {
-        justify-content: center;
-        flex-direction: column;
-        gap: 5px;
+    .logo span {
+        display: none;
     }
 }
