@@ -185,36 +185,57 @@
       alert("Save fail: " + e.message);
     }
   };
+window.saveFavToCloud = async (key, isAdd) => {
+  const user = auth.currentUser;
+  if (!user) return;
 
-  // --- AUTH STATUS ---
- onAuthStateChanged(auth, async (user) => {
-    const loginBtn = document.getElementById('login-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const userName = document.getElementById('user-name');
-
-    if (user) {
-      // Login hone par login button ko puri tarah gayab karein
-      loginBtn.setAttribute('style', 'display: none !important'); 
-      
-      logoutBtn.style.display = 'inline-block';
-      userName.textContent = "Hi, " + user.displayName.split(' ')[0];
-      userName.style.display = 'inline-block';
-
-      // Load existing tricks
-      const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
-      let tricks = {};
-      snap.forEach(d => tricks[d.id] = d.data().trick);
-      if (window.updateLocalTricks) window.updateLocalTricks(tricks);
+  const favDoc = doc(db, "users", user.uid, "favorites", key);
+  try {
+    if (isAdd) {
+      await setDoc(favDoc, { savedAt: new Date() });
     } else {
-      // Logout hone par login button dikhayein
-      loginBtn.setAttribute('style', 'display: flex !important');
-      logoutBtn.style.display = 'none';
-      userName.style.display = 'none';
+      // Agar favorite hataya to cloud se delete karein
+      const { deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+      await deleteDoc(favDoc);
     }
-  });
+  } catch (e) {
+    console.error("Fav Sync Error:", e);
+  }
+};
+  // --- AUTH STATUS ---
+onAuthStateChanged(auth, async (user) => {
+  const loginBtn = document.getElementById('login-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+  const userName = document.getElementById('user-name');
+
+  if (user) {
+    loginBtn.setAttribute('style', 'display: none !important');
+    logoutBtn.style.display = 'inline-block';
+    userName.textContent = "Hi, " + user.displayName.split(' ')[0];
+    userName.style.display = 'inline-block';
+
+    // 1. Load Tricks
+    const trickSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
+    let tricks = {};
+    trickSnap.forEach(d => tricks[d.id] = d.data().trick);
+    if (window.updateLocalTricks) window.updateLocalTricks(tricks);
+
+    // 2. Load Favorites from Cloud (Naya Logic)
+    const favSnap = await getDocs(collection(db, "users", user.uid, "favorites"));
+    let cloudFavs = [];
+    favSnap.forEach(d => cloudFavs.push(d.id)); // document ID hi word key hai (e.g., "OWS-1")
+    if (window.updateLocalFavs) window.updateLocalFavs(cloudFavs);
+
+  } else {
+    loginBtn.setAttribute('style', 'display: flex !important');
+    logoutBtn.style.display = 'none';
+    userName.style.display = 'none';
+  }
+});
 </script>
 </body>
 </html>
+
 
 
 
