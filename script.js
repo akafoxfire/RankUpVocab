@@ -58,13 +58,17 @@ function jumpToCard() {
 window.handleSaveTrick = function(k) {
     const trickInput = document.getElementById(`trick-input-${k}`);
     const trickText = trickInput.value.trim();
+    
     if (!trickText) return alert("Pehle kuch likhiye!");
 
+    // Check karo ki kya index.html wala firebase function mil raha hai
     if (window.saveTrickToCloud) {
+        // Agar mil raha hai toh ise call karo
         window.saveTrickToCloud(k, trickText);
-        state.userTricks[k] = trickText; // Local state update
+        state.userTricks[k] = trickText; 
     } else {
-        alert("Pehle Google se Login karein!");
+        // Agar ye alert aa raha hai, matlab index.html ka script load nahi hua
+        alert("Firebase function load nahi ho paya. Ek baar page refresh karein.");
     }
 };
 
@@ -186,3 +190,4 @@ document.getElementById('theme-btn').onclick = () => {
 };
 
 init();
+
