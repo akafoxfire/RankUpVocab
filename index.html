@@ -118,7 +118,14 @@
     <script src="script.js"></script>
     <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { 
+    getAuth, 
+    signInWithRedirect, // Ye add karna zaroori hai
+    getRedirectResult, 
+    GoogleAuthProvider, 
+    onAuthStateChanged, 
+    signOut 
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
   import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
   // Tumhari Config
@@ -138,14 +145,17 @@
   const provider = new GoogleAuthProvider();
 
   // 1. LOGIN FUNCTION
-  window.login = async () => {
+ window.login = async () => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
     try {
-     await signInWithRedirect(auth, provider);
+        // Ab ye error nahi dega kyunki humne upar import kar liya hai
+        await signInWithRedirect(auth, provider);
     } catch (error) {
-      console.error("Login Error:", error);
-      alert("Login nahi ho paya!");
+        console.error("Login Error:", error);
+        alert("Login nahi ho paya: " + error.message);
     }
-  };
+};
 
   // 2. LOGOUT FUNCTION
   window.logout = () => signOut(auth);
@@ -189,3 +199,4 @@
 </script>
 </body>
 </html>
+
