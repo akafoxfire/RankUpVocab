@@ -639,24 +639,25 @@ body.dark .fav-pill:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent !important; /* Blue color hatane ke liye */
-    border: 1px solid var(--brd); /* Sirf halki boundary dikhegi */
+    background: var(--card); /* Teri site ki theme ka color */
+    border: none !important; /* Black border khatam */
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    padding: 0;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    box-shadow: none !important; /* Agar koi shadow hai toh wo bhi hat jayegi */
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Halka sa shadow jo professional lage */
 }
 
 #login-btn:hover {
-    background: rgba(0, 0, 0, 0.05) !important; /* Hover par halka grey shade */
-    border-color: var(--accent);
+    /* Hover par black border ki jagah halka sa glow aur lift */
+    transform: translateY(-2px); /* Button thoda upar uthega */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Shadow thodi gehri ho jayegi */
+    background: #f8f9fa; /* Halka sa off-white background */
 }
 
 #login-btn img {
-    width: 22px; /* Icon ka size thoda adjust kiya */
+    width: 20px;
     height: auto;
 }
 
@@ -788,5 +789,6 @@ body.dark .fav-pill:hover {
         padding: 8px 10px !important;
     }
 }
+
 
 
