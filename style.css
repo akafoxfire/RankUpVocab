@@ -652,7 +652,7 @@ body.dark .fav-pill:hover {
 #login-btn:hover {
     /* Hover par black border ki jagah halka sa glow aur lift */
     transform: translateY(-2px); /* Button thoda upar uthega */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Shadow thodi gehri ho jayegi */
+    box-shadow: 0 0 15px rgba(66, 133, 244, 0.3);
     background: #f8f9fa; /* Halka sa off-white background */
 }
 
@@ -789,6 +789,7 @@ body.dark .fav-pill:hover {
         padding: 8px 10px !important;
     }
 }
+
 
 
 
