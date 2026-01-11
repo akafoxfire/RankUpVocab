@@ -20,13 +20,20 @@ async function init() {
         state.all = [...o.vocabulary.map(v => ({ ...v, type: 'OWS' })), ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))];
         sync(); 
         app.render();
-    } catch (e) { console.error("Data Load Error"); }
+    } catch (e) { 
+        console.error("Data Load Error:", e); 
+    }
 }
 
 function sync() {
-    document.getElementById('stat-ows').innerText = state.all.filter(v => v.type === 'OWS').length;
-    document.getElementById('stat-idioms').innerText = state.all.filter(v => v.type === 'Idiom').length;
-    document.getElementById('stat-hard').innerText = state.favs.size;
+    const sO = document.getElementById('stat-ows');
+    const sI = document.getElementById('stat-idioms');
+    const sH = document.getElementById('stat-hard');
+    
+    if(sO) sO.innerText = state.all.filter(v => v.type === 'OWS').length;
+    if(sI) sI.innerText = state.all.filter(v => v.type === 'Idiom').length;
+    if(sH) sH.innerText = state.favs.size;
+    
     localStorage.setItem('ru_favs', JSON.stringify([...state.favs]));
 }
 
@@ -49,14 +56,13 @@ function jumpToCard() {
         targetCard.style.outlineOffset = "5px";
         setTimeout(() => targetCard.style.outline = "none", 2500);
     } else {
-        alert(`${type} mein ID #${id} nahi mili. Filter check karein!`);
+        alert(`${type} mein ID #${id} nahi mili.`);
     }
 }
 
 window.handleSaveTrick = function(k) {
     const trickInput = document.getElementById(`trick-input-${k}`);
     const trickText = trickInput.value.trim();
-    
     if (!trickText) return alert("Pehle kuch likhiye!");
 
     if (window.saveTrickToCloud) {
@@ -70,6 +76,7 @@ window.handleSaveTrick = function(k) {
 const app = {
     render() {
         const g = document.getElementById('study-grid');
+        if(!g) return;
         const s = document.getElementById('searchBar').value.toLowerCase();
         const t = document.getElementById('typeFilter').value;
         let filtered = state.all.filter(v => (t === 'ALL' || v.type === t) && (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s)));
@@ -89,25 +96,16 @@ const app = {
             <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem">${state.favs.has(k) ? '❤️' : '🤍'}</button>
         </div>
     </div>
-    
     <h3 style="margin:10px 0">${v.word}</h3>
     <p style="margin-bottom:15px">${v.meaning}</p>
-    
     <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:100; flex-direction:column; padding:15px; box-sizing:border-box; border-radius:20px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
             <h4 style="margin:0; font-size:0.9rem; color:var(--p);">💡 Edit Mnemonic</h4>
             <span class="close-overlay" onclick="toggleTrick('${k}')" style="cursor:pointer; font-size:1.2rem; color:#ef4444; font-weight:bold;">✖</span>
         </div>
-
-        <textarea class="trick-textarea" id="trick-input-${k}" 
-            style="flex: 1; width: 100%; background: rgba(129, 140, 248, 0.08); border: 1px dashed var(--p); padding: 12px; border-radius: 12px; resize: none; font-family: inherit; font-size: 1rem; line-height: 1.4; color: var(--txt); outline: none; margin-bottom: 10px;"
-            placeholder="Apni trick yahan likhein...">${savedTrick}</textarea>
-        
-        <button class="trick-save-btn" 
-            style="width:100%; padding:12px; background:var(--p); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;" 
-            onclick="handleSaveTrick('${k}')">Save to Cloud</button>
+        <textarea class="trick-textarea" id="trick-input-${k}" style="flex: 1; width: 100%; background: rgba(129, 140, 248, 0.08); border: 1px dashed var(--p); padding: 12px; border-radius: 12px; resize: none; font-family: inherit; font-size: 1rem; line-height: 1.4; color: var(--txt); outline: none; margin-bottom: 10px;">${savedTrick}</textarea>
+        <button class="trick-save-btn" style="width:100%; padding:12px; background:var(--p); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;" onclick="handleSaveTrick('${k}')">Save to Cloud</button>
     </div>
-
     <div class="v-btns">
         <button onclick="this.innerText='${v.hi}'">Hindi</button>
         <button onclick="speak('${v.word}')">🔊 Listen</button>
@@ -200,68 +198,46 @@ document.getElementById('theme-btn').onclick = () => {
 
 window.toggleTrick = function(k) {
     const overlay = document.getElementById(`overlay-${k}`);
-    if (overlay.style.display === "none" || overlay.style.display === "") {
-        overlay.style.display = "flex";
-    } else {
-        overlay.style.display = "none";
+    if (overlay) {
+        overlay.style.display = (overlay.style.display === "none" || overlay.style.display === "") ? "flex" : "none";
     }
 };
 
-// Firebase Auth Listener (Ye check karega ki user login hai ya nahi)
-// Firebase Listener jo data ko nahi rokega
-firebase.auth().onAuthStateChanged(async (user) => {
+// --- AUTH LOGIC (ISME FIX HAI) ---
+firebase.auth().onAuthStateChanged((user) => {
     const loginBtn = document.getElementById('login-btn');
     const userName = document.getElementById('user-name');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // Pehle normal data load kar lo (Logout ho tab bhi)
-    if (state.all.length === 0) {
-        await init(); 
-    }
-
     if (user) {
-        // Login State
-        if(loginBtn) loginBtn.style.display = 'none';
+        if(loginBtn) loginBtn.style.display = 'none'; // Login hote hi hide
         if(userName) {
             userName.style.display = 'inline-block';
             userName.innerText = 'Hi, ' + user.displayName.split(' ')[0];
         }
         if(logoutBtn) logoutBtn.style.display = 'inline-block';
-        
-        // Cloud se Hard words/Tricks lao
         if (window.loadUserCloudData) window.loadUserCloudData(user.uid);
     } else {
-        // Logout State
-        if(loginBtn) loginBtn.style.display = 'flex';
+        if(loginBtn) loginBtn.style.display = 'flex'; // Logout pe show
         if(userName) userName.style.display = 'none';
         if(logoutBtn) logoutBtn.style.display = 'none';
-        
-        // Logout hone par cloud data reset kar do par main data (OWS) rehne do
         state.userTricks = {};
         app.render();
     }
 });
 
-// Login Function
 window.login = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    try {
-        await firebase.auth().signInWithPopup(provider);
-    } catch (error) {
-        console.error("Login Failed", error);
-    }
+    try { await firebase.auth().signInWithPopup(provider); } 
+    catch (e) { console.error("Login Failed", e); }
 };
 
-// Logout Function
 window.logout = async () => {
-    try {
-        await firebase.auth().signOut();
-        location.reload(); // Page refresh taaki data clear ho jaye
-    } catch (error) {
-        console.error("Logout Failed", error);
-    }
+    try { 
+        await firebase.auth().signOut(); 
+        location.reload(); 
+    } catch (e) { console.error("Logout Failed", e); }
 };
 
+// Data load sirf ek baar yahan se hoga
 init();
-
-
