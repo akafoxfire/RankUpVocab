@@ -721,55 +721,45 @@ body.dark .fav-pill:hover {
     }
 }
 
-/* --- LAPTOP PE DESIGN RESTORE KARNE KE LIYE --- */
-.nav-content {
-    display: flex !important;
-    flex-direction: row !important; /* Laptop par sab ek line mein rahenge */
-    justify-content: space-between !important;
-    align-items: center;
-    width: 100%;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.3rem; /* Laptop par poora naam dikhega */
-}
-
-/* --- SIRF MOBILE (PHONE) KE LIYE --- */
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
+    /* Logo ka text hide (Sirf 'R' icon bachega) */
     .logo {
-        font-size: 0 !important; /* Phone par RankUpVocab text hide */
+        font-size: 0 !important;
     }
-
-    .nav-logo-img {
-        width: 32px;
-        margin-right: 0;
-    }
-
-    .nav-content {
-        gap: 5px;
-        padding: 10px 0;
-    }
-
-    /* Mobile par "Hi, Rakesh" ko hide kar do jagah bachane ke liye */
-    #user-name {
+    .logo span {
         display: none !important;
     }
+    .nav-logo-img {
+        width: 32px !important;
+        margin-right: 0 !important;
+    }
 
+    /* Tabs ko beech se hata kar line mein laane ke liye */
     .tabs {
-        margin: 0 5px;
+        position: static !important;
+        transform: none !important;
+        margin: 0 5px !important;
         flex: 1;
+        justify-content: center;
     }
 
     .t-btn {
-        padding: 8px 5px;
-        font-size: 0.7rem;
+        padding: 6px 5px !important;
+        font-size: 0.7rem !important;
     }
 
-    #auth-section button, .circ-btn {
-        padding: 5px 8px;
-        font-size: 0.7rem;
+    /* Hi Name aur Logout ko ek line mein fit karne ke liye */
+    #user-name {
+        display: inline-block !important;
+        font-size: 0.75rem !important;
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    #auth-section {
+        gap: 5px !important;
     }
 }
 
