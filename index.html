@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RankUp Vocab</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body class="light">
-    <header class="navbar">
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
     <div class="container nav-content">
+
         <div class="logo">
             <img src="logo.png" alt="RankUp" class="nav-logo-img">
             RankUp<span>Vocab</span>
@@ -20,169 +28,225 @@
             <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
         </div>
 
-        <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
-            <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px; border: 1px solid var(--brd); background: white; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
+        <!-- AUTH SECTION -->
+        <div id="auth-section" style="display:flex; align-items:center; gap:8px;">
+            <button id="login-btn" onclick="login()" title="Login with Google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G">
             </button>
 
             <span id="user-name" style="display:none; font-weight:bold;"></span>
-            <button id="logout-btn" style="display:none; background: #f44336; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="logout()">Logout</button>
+            <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
         </div>
 
         <button id="theme-btn" class="circ-btn">🌙</button>
     </div>
 </header>
 
-    <main class="container">
-        <div class="dash-grid">
-            <div class="d-card p-clr"><h5>OWS COUNT</h5><p id="stat-ows">0</p></div>
-            <div class="d-card b-clr"><h5>IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
+<!-- ================= MAIN ================= -->
+<main class="container">
+
+    <!-- DASHBOARD -->
+    <div class="dash-grid">
+        <div class="d-card p-clr">
+            <h5>OWS COUNT</h5>
+            <p id="stat-ows">0</p>
+        </div>
+        <div class="d-card b-clr">
+            <h5>IDIOMS COUNT</h5>
+            <p id="stat-idioms">0</p>
+        </div>
+        <div class="d-card r-clr">
+            <h5>SAVED (HARD)</h5>
+            <p id="stat-hard">0</p>
+        </div>
+    </div>
+
+    <!-- ============ STUDY VIEW ============ -->
+    <section id="view-study" class="view">
+        <div class="tool-flex">
+
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
+            </div>
+
+            <div class="jump-box" style="display:flex; gap:5px;">
+                <input type="number" id="jump-id" placeholder="ID">
+                <button onclick="jumpToCard()">Go</button>
+            </div>
+
+            <select id="typeFilter" onchange="app.render()">
+                <option value="ALL">All Categories</option>
+                <option value="OWS">OWS</option>
+                <option value="Idiom">Idioms</option>
+            </select>
+
+            <button onclick="app.toggleHardFilter()" id="hf-btn" class="fav-pill">
+                Favorites ❤️
+            </button>
         </div>
 
-        <section id="view-study" class="view">
-            <div class="tool-flex">
-                <div class="search-box">
-                    <span>🔍</span>
-                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
-                </div>
-                <div class="jump-box" style="display: flex; gap: 5px;">
-                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
-                    <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
-                </div>
-                <select id="typeFilter" onchange="app.render()">
-                    <option value="ALL">All Categories</option>
-                    <option value="OWS">OWS</option>
-                    <option value="Idiom">Idioms</option>
-                </select>
-                <button onclick="app.toggleHardFilter()" id="hf-btn" class="fav-pill">Favorites ❤️</button>
-            </div>
-            <div id="study-grid" class="cards-grid"></div>
-        </section>
+        <div id="study-grid" class="cards-grid"></div>
+    </section>
 
-        <section id="view-setup" class="view hidden">
-            <div class="setup-wrap">
-                <div class="glass-card">
-                    <h2 class="title">Configure Quiz</h2>
-                    <div class="cat-select">
-                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
-                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
-                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
+    <!-- ============ QUIZ SETUP ============ -->
+    <section id="view-setup" class="view hidden">
+        <div class="setup-wrap">
+            <div class="glass-card">
+                <h2>Configure Quiz</h2>
+
+                <div class="cat-select">
+                    <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
+                    <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
+                    <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
+                </div>
+
+                <div class="num-grid">
+                    <div class="f-group">
+                        <label>Limit</label>
+                        <input type="number" id="qLimit" value="10">
                     </div>
-                    <div class="num-grid">
-                        <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
-                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
-                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
+                    <div class="f-group">
+                        <label>From</label>
+                        <input type="number" id="qFrom" value="1">
                     </div>
-                    <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
+                    <div class="f-group">
+                        <label>To</label>
+                        <input type="number" id="qTo" value="1000">
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="view-play" class="view hidden">
-            <div class="quiz-container">
-                <div class="q-header">
-                    <span id="q-label">Question 1/10</span>
-                    <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
-                </div>
-                <div class="q-card">
-                    <h2 id="q-text">Meaning...</h2>
-                    <div id="q-opts" class="opts-grid"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="view-results" class="view hidden">
-            <div class="res-card">
-                <div class="score-box">
-                    <small>Final Score</small>
-                    <h1 id="result-score">0/0</h1>
-                </div>
-                <div class="res-actions">
-                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home">Home</button>
-                </div>
-            </div>
-            <div id="analysis-list" class="analysis-stack"></div>
-        </section>
-    </main>
-
-    <footer class="app-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <div class="logo-small">R</div>
-                <span>Rakesh Kumar Dudhawal</span>
-            </div>
-            <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
-            <div class="footer-links">
-                <span>Hard Work Beats Talent</span>
+                <button onclick="quiz.init()" class="launch-btn">
+                    Launch Session ⚡
+                </button>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    <!-- ============ QUIZ PLAY ============ -->
+    <section id="view-play" class="view hidden">
+        <div class="quiz-container">
+            <div class="q-header">
+                <span id="q-label">Question 1/10</span>
+                <div class="progress-bg">
+                    <div id="q-bar" class="progress-fill"></div>
+                </div>
+            </div>
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
-            authDomain: "rankupvocab.firebaseapp.com",
-            projectId: "rankupvocab",
-            storageBucket: "rankupvocab.firebasestorage.app",
-            messagingSenderId: "1038821377168",
-            appId: "1:1038821377168:web:39c201773384c4b8408415"
-        };
+            <div class="q-card">
+                <h2 id="q-text">Meaning...</h2>
+                <div id="q-opts" class="opts-grid"></div>
+            </div>
+        </div>
+    </section>
 
-        const appFB = initializeApp(firebaseConfig);
-        const auth = getAuth(appFB);
-        const db = getFirestore(appFB);
-        const provider = new GoogleAuthProvider();
+    <!-- ============ RESULTS ============ -->
+    <section id="view-results" class="view hidden">
+        <div class="res-card">
+            <div class="score-box">
+                <small>Final Score</small>
+                <h1 id="result-score">0/0</h1>
+            </div>
 
-        window.login = async () => {
-            try { await signInWithPopup(auth, provider); } catch (e) { console.error(e); }
-        };
+            <div class="res-actions">
+                <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
+                <button onclick="router('study')" class="btn-home">Home</button>
+            </div>
+        </div>
 
-        window.logout = async () => {
-            await signOut(auth);
-            location.reload();
-        };
+        <div id="analysis-list" class="analysis-stack"></div>
+    </section>
 
-        window.saveTrickToCloud = async (wordId, trickText) => {
-            const user = auth.currentUser;
-            if (!user) return alert("Pehle Login karein!");
-            try {
-                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
-                    trick: trickText,
-                    timestamp: new Date()
-                });
-                alert("Saved! ✅");
-            } catch (e) { console.error(e); }
-        };
+</main>
 
-        onAuthStateChanged(auth, async (user) => {
-            const lb = document.getElementById('login-btn');
-            const lo = document.getElementById('logout-btn');
-            const un = document.getElementById('user-name');
+<!-- ================= FOOTER ================= -->
+<footer class="app-footer">
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <div class="logo-small">R</div>
+            <span>Rakesh Kumar Dudhawal</span>
+        </div>
+        <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
+        <div class="footer-links">
+            <span>Hard Work Beats Talent</span>
+        </div>
+    </div>
+</footer>
 
-            if (user) {
-                // FIXED: Direct style control for Google Icon
-                lb.style.display = 'none';
-                lo.style.display = 'inline-block';
-                un.textContent = "Hi, " + user.displayName.split(' ')[0];
-                un.style.display = 'inline-block';
+<!-- ================= JS ================= -->
+<script src="script.js"></script>
 
-                const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
-                let tricks = {};
-                snap.forEach(d => tricks[d.id] = d.data().trick);
-                if (window.updateLocalTricks) window.updateLocalTricks(tricks);
-            } else {
-                lb.style.display = 'flex';
-                lo.style.display = 'none';
-                un.style.display = 'none';
-            }
-        });
-    </script>
+<!-- ================= FIREBASE ================= -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDocs,
+  collection
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
+  authDomain: "rankupvocab.firebaseapp.com",
+  projectId: "rankupvocab",
+  storageBucket: "rankupvocab.firebasestorage.app",
+  messagingSenderId: "1038821377168",
+  appId: "1:1038821377168:web:39c201773384c4b8408415"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+
+window.login = async () => {
+  await signInWithPopup(auth, provider);
+};
+
+window.logout = async () => {
+  await signOut(auth);
+  location.reload();
+};
+
+window.saveTrickToCloud = async (wordId, trickText) => {
+  const user = auth.currentUser;
+  if (!user) return alert("Please login first");
+
+  await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
+    trick: trickText,
+    timestamp: new Date()
+  });
+
+  alert("Trick saved to cloud ✅");
+};
+
+onAuthStateChanged(auth, async (user) => {
+  const loginBtn = document.getElementById("login-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const userName = document.getElementById("user-name");
+
+  if (user) {
+    loginBtn.style.display = "none";
+    logoutBtn.style.display = "inline-block";
+    userName.textContent = "Hi, " + user.displayName.split(" ")[0];
+    userName.style.display = "inline-block";
+
+    const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
+    let tricks = {};
+    snap.forEach(d => tricks[d.id] = d.data().trick);
+    if (window.updateLocalTricks) window.updateLocalTricks(tricks);
+  }
+});
+</script>
+
 </body>
 </html>
