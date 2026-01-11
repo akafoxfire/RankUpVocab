@@ -9,29 +9,25 @@
 </head>
 <body class="light">
     <header class="navbar">
-    <div class="container nav-content">
-        <div class="logo">
-            <img src="logo.png" alt="RankUp" class="nav-logo-img">
-            RankUp<span>Vocab</span>
+        <div class="container nav-content">
+            <div class="logo">
+                <img src="logo.png" alt="RankUp" class="nav-logo-img">
+                RankUp<span>Vocab</span>
+            </div>
+            <div class="tabs">
+                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+            </div>
+            <div id="auth-section">
+                <button id="login-btn" onclick="login()" title="Login with Google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G">
+                </button>
+                <span id="user-name" style="display:none; font-weight:bold;"></span>
+                <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
+            </div>
+            <button id="theme-btn" class="circ-btn">🌙</button>
         </div>
-
-        <div class="tabs">
-            <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
-            <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
-        </div>
-
-        <div id="auth-section">
-    <button id="login-btn" onclick="login()" title="Login with Google">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G">
-    </button>
-
-    <span id="user-name"></span>
-    <button id="logout-btn" onclick="logout()">Logout</button>
-</div>
-
-        <button id="theme-btn" class="circ-btn">🌙</button>
-    </div>
-</header>
+    </header>
 
     <main class="container">
         <div class="dash-grid">
@@ -47,9 +43,9 @@
                     <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
                 </div>
                 <div class="jump-box" style="display: flex; gap: 5px;">
-    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
-    <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
-</div>
+                    <input type="number" id="jump-id" placeholder="ID">
+                    <button onclick="jumpToCard()" class="go-btn">Go</button>
+                </div>
                 <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Categories</option>
                     <option value="OWS">OWS</option>
@@ -106,116 +102,71 @@
             <div id="analysis-list" class="analysis-stack"></div>
         </section>
     </main>
+
     <footer class="app-footer">
         <div class="container footer-content">
-            <div class="footer-brand">
-                <div class="logo-small">R</div>
-                <span>Rakesh Kumar Dudhawal</span>
-            </div>
+            <div class="footer-brand"><div class="logo-small">R</div><span>Rakesh Kumar Dudhawal</span></div>
             <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
-            <div class="footer-links">
-                <span>Hard Work Beats Talent</span>
-            </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+
     <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { 
-    getAuth, 
-    signInWithPopup, 
-    GoogleAuthProvider, 
-    onAuthStateChanged, 
-    signOut 
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { 
-    getFirestore, 
-    doc, 
-    setDoc, 
-    getDocs, 
-    collection 
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
-    authDomain: "rankupvocab.firebaseapp.com",
-    projectId: "rankupvocab",
-    storageBucket: "rankupvocab.firebasestorage.app",
-    messagingSenderId: "1038821377168",
-    appId: "1:1038821377168:web:39c201773384c4b8408415"
-  };
+        const firebaseConfig = {
+            apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
+            authDomain: "rankupvocab.firebaseapp.com",
+            projectId: "rankupvocab",
+            storageBucket: "rankupvocab.firebasestorage.app",
+            messagingSenderId: "1038821377168",
+            appId: "1:1038821377168:web:39c201773384c4b8408415"
+        };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const provider = new GoogleAuthProvider();
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
 
-  // --- LOGIN ---
-  window.login = async () => {
-    try {
-        await signInWithPopup(auth, provider);
-    } catch (error) {
-        alert("Login Error: " + error.message);
-    }
-  };
+        window.login = async () => {
+            try { await signInWithPopup(auth, provider); } 
+            catch (error) { alert("Login Error: " + error.message); }
+        };
 
-  // --- LOGOUT ---
-  window.logout = async () => {
-    await signOut(auth);
-    location.reload();
-  };
+        window.logout = async () => {
+            await signOut(auth);
+            location.reload();
+        };
 
-  // --- SAVE TRICK (Ise check karo, ye ab window par hai) ---
-  window.saveTrickToCloud = async (wordId, trickText) => {
-    const user = auth.currentUser; // Ye auth upar wala hi use karega
-    
-    if (!user) {
-      alert("Pehle Google se login karein!");
-      return;
-    }
+        window.saveTrickToCloud = async (wordId, trickText) => {
+            const user = auth.currentUser;
+            if (!user) return alert("Pehle Login karein!");
+            try {
+                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), { trick: trickText, timestamp: new Date() });
+                alert("Saved! ✅");
+            } catch (e) { alert("Save fail: " + e.message); }
+        };
 
-    try {
-      await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
-        trick: trickText,
-        timestamp: new Date()
-      });
-      alert("Trick Cloud par save ho gayi! ✅");
-    } catch (e) {
-      console.error("Save Error:", e);
-      alert("Save fail: " + e.message);
-    }
-  };
-
-  // --- AUTH STATUS ---
-  onAuthStateChanged(auth, async (user) => {
-    const loginBtn = document.getElementById('login-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const userName = document.getElementById('user-name');
-
-    if (user) {
-      loginBtn.style.display = 'none';
-      logoutBtn.style.display = 'inline-block';
-      userName.textContent = "Hi, " + user.displayName.split(' ')[0];
-      userName.style.display = 'inline-block';
-
-      // Load existing tricks
-      const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
-      let tricks = {};
-      snap.forEach(d => tricks[d.id] = d.data().trick);
-      if (window.updateLocalTricks) window.updateLocalTricks(tricks);
-    } else {
-      loginBtn.style.display = 'inline-block';
-      logoutBtn.style.display = 'none';
-      userName.style.display = 'none';
-    }
-  });
-</script>
+        onAuthStateChanged(auth, async (user) => {
+            const lb = document.getElementById('login-btn');
+            const lo = document.getElementById('logout-btn');
+            const un = document.getElementById('user-name');
+            if (user) {
+                lb.style.setProperty('display', 'none', 'important');
+                lo.style.display = 'inline-block';
+                un.textContent = "Hi, " + user.displayName.split(' ')[0];
+                un.style.display = 'inline-block';
+                const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
+                let tricks = {};
+                snap.forEach(d => tricks[d.id] = d.data().trick);
+                if (window.updateLocalTricks) window.updateLocalTricks(tricks);
+            } else {
+                lb.style.setProperty('display', 'flex', 'important');
+                lo.style.display = 'none'; un.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
