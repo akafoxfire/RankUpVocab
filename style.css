@@ -713,6 +713,39 @@ body.dark .fav-pill:hover {
     #auth-section {
         justify-content: center;
         flex-direction: column;
+
+        /* MOBILE HEADER FIX - Ise CSS ke end mein dalein */
+@media (max-width: 600px) {
+    .nav-content {
+        flex-direction: column; /* Sab kuch ek ke niche ek aa jayega */
+        gap: 12px;
+        padding: 10px 0;
+    }
+
+    .tabs {
+        width: 100%; /* Tabs poori width le lenge */
+        justify-content: center;
+    }
+
+    .t-btn {
+        flex: 1; /* Dono buttons barabar space lenge */
+        padding: 8px 5px;
+        font-size: 0.75rem;
+    }
+
+    #auth-section {
+        width: 100%;
+        display: flex;
+        justify-content: space-between; /* Login aur Theme button ko corners par kar dega */
+        align-items: center;
+        padding: 5px 10px;
+    }
+
+    .logo {
+        font-size: 1.1rem; /* Logo thoda chota mobile ke liye */
+    }
+}
         gap: 5px;
     }
 }
+
