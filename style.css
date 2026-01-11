@@ -636,17 +636,19 @@ body.dark .fav-pill:hover {
 
 /* --- GOOGLE ICON BUTTON CLEAN LOOK --- */
 #login-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--card); /* Teri site ki theme ka color */
-    border: none !important; /* Black border khatam */
+    display: flex !important;
+    align-items: center !important;      /* Vertical center */
+    justify-content: center !important;   /* Horizontal center */
+    background: var(--card);
+    border: none !important;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     cursor: pointer;
+    padding: 0 !important;               /* Padding zero rakho warna center bigdega */
+    overflow: hidden;                    /* Taaki image bahar na nikle */
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Halka sa shadow jo professional lage */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #login-btn:hover {
@@ -657,8 +659,10 @@ body.dark .fav-pill:hover {
 }
 
 #login-btn img {
-    width: 20px;
-    height: auto;
+    width: 20px;                         /* Icon size */
+    height: 20px;                        /* Height bhi fix kar do */
+    display: block;                      /* Extra space hatane ke liye */
+    margin: 0 auto;                      /* Center align fallback */
 }
 
 #logout-btn {
@@ -789,6 +793,7 @@ body.dark .fav-pill:hover {
         padding: 8px 10px !important;
     }
 }
+
 
 
 
