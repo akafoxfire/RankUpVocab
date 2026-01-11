@@ -721,11 +721,25 @@ body.dark .fav-pill:hover {
     }
 }
 
-/* --- SABHI MOBILE FIXES EK SAATH --- */
+/* --- LAPTOP & DESKTOP FIX (Design Restore) --- */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem; /* Laptop par naam wapas aa jayega */
+    font-weight: 800;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* --- MOBILE & TABLET FIX (Phone par Space Management) --- */
 @media (max-width: 600px) {
-    /* 1. Header Fix: Logo text hide karke sab ek line mein */
     .logo {
-        font-size: 0 !important; /* RankUpVocab text hide */
+        font-size: 0 !important; /* Phone par RankUpVocab hide ho jayega */
     }
 
     .nav-logo-img {
@@ -735,55 +749,43 @@ body.dark .fav-pill:hover {
     }
 
     .nav-content {
-        display: flex;
-        flex-direction: row !important; /* Sab kuch ek hi line mein rahega */
+        flex-direction: row !important; /* Ek hi line mein rakhega */
         justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 0;
+        gap: 5px;
     }
 
     .tabs {
-        display: flex;
-        flex: 1;
-        justify-content: center;
         margin: 0 5px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
     }
 
     .t-btn {
-        padding: 8px 10px;
+        padding: 6px 8px;
         font-size: 0.7rem;
     }
 
     #auth-section {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
+        font-size: 0.75rem;
+        white-space: nowrap;
     }
 
-    /* 2. Grid Fixes: Dashboard, Quiz aur Options ko 1 column karna */
-    .opts-grid,
-    .dash-grid,
-    .num-grid {
+    #user-name {
+        display: none !important; /* Mobile par "Hi, Rakesh" hide kar do taaki jagah bache */
+    }
+
+    #logout-btn, #login-btn {
+        padding: 5px 8px;
+        font-size: 0.7rem;
+    }
+
+    /* Grids ko mobile par 1 column rakho */
+    .opts-grid, .dash-grid, .num-grid {
         grid-template-columns: 1fr !important;
     }
-
-    /* 3. Spacing & UI Fixes */
-    .q-card {
-        padding: 30px 20px;
-    }
-
-    .app-footer {
-        padding: 20px 0;
-        text-align: center;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        gap: 10px;
-    }
 }
+
 
 
 
