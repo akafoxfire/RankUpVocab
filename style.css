@@ -721,6 +721,39 @@ body.dark .fav-pill:hover {
     }
 }
 
+/* --- LAPTOP/DESKTOP: PHOTO JAISA LOOK --- */
+.nav-content {
+    display: flex !important;
+    justify-content: space-between !important; /* Elements ko dono konon mein phenk dega */
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 1300px !important; /* Page ki chaurai ke hisaab se */
+    margin: 0 auto !important;
+    padding: 10px 20px !important;
+}
+
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.4rem !important; /* Laptop pe RankUpVocab dikhega */
+    font-weight: 800;
+}
+
+.tabs {
+    display: flex !important;
+    gap: 10px !important;
+    /* Agar Study/Quiz beech mein chahiye toh ye line rehne de, warna hata dena */
+    position: absolute !important; 
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+#auth-section {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+}
+
 @media screen and (max-width: 600px) {
     /* Logo ka text hide (Sirf 'R' icon bachega) */
     .logo {
@@ -762,6 +795,7 @@ body.dark .fav-pill:hover {
         gap: 5px !important;
     }
 }
+
 
 
 
