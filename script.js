@@ -210,17 +210,22 @@ firebase.auth().onAuthStateChanged((user) => {
     const logoutBtn = document.getElementById('logout-btn');
 
     if (user) {
-        if(loginBtn) loginBtn.style.display = 'none'; // Login hote hi hide
-        if(userName) {
+        // Login hone par Google Icon ko JAD SE KHATAM karo
+        if (loginBtn) loginBtn.style.setProperty('display', 'none', 'important');
+        
+        if (userName) {
             userName.style.display = 'inline-block';
             userName.innerText = 'Hi, ' + user.displayName.split(' ')[0];
         }
-        if(logoutBtn) logoutBtn.style.display = 'inline-block';
+        if (logoutBtn) logoutBtn.style.display = 'inline-block';
+        
         if (window.loadUserCloudData) window.loadUserCloudData(user.uid);
     } else {
-        if(loginBtn) loginBtn.style.display = 'flex'; // Logout pe show
-        if(userName) userName.style.display = 'none';
-        if(logoutBtn) logoutBtn.style.display = 'none';
+        // Logout hone par wapas dikhao
+        if (loginBtn) loginBtn.style.setProperty('display', 'flex', 'important');
+        if (userName) userName.style.display = 'none';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        
         state.userTricks = {};
         app.render();
     }
@@ -241,3 +246,4 @@ window.logout = async () => {
 
 // Data load sirf ek baar yahan se hoga
 init();
+
