@@ -208,27 +208,37 @@ window.toggleTrick = function(k) {
 };
 
 // Firebase Auth Listener (Ye check karega ki user login hai ya nahi)
-firebase.auth().onAuthStateChanged((user) => {
+// Firebase Listener jo data ko nahi rokega
+firebase.auth().onAuthStateChanged(async (user) => {
     const loginBtn = document.getElementById('login-btn');
     const userName = document.getElementById('user-name');
     const logoutBtn = document.getElementById('logout-btn');
 
+    // Pehle normal data load kar lo (Logout ho tab bhi)
+    if (state.all.length === 0) {
+        await init(); 
+    }
+
     if (user) {
-        // LOGIN HONE PAR:
-        if(loginBtn) loginBtn.style.display = 'none'; // Google Icon hide
+        // Login State
+        if(loginBtn) loginBtn.style.display = 'none';
         if(userName) {
             userName.style.display = 'inline-block';
-            userName.innerText = 'Hi, ' + user.displayName.split(' ')[0]; // Sirf First Name
+            userName.innerText = 'Hi, ' + user.displayName.split(' ')[0];
         }
-        if(logoutBtn) logoutBtn.style.display = 'inline-block'; // Logout button show
+        if(logoutBtn) logoutBtn.style.display = 'inline-block';
         
-        // Data sync karne ke liye (tricks etc)
-        if (window.loadUserTricks) window.loadUserTricks(user.uid);
+        // Cloud se Hard words/Tricks lao
+        if (window.loadUserCloudData) window.loadUserCloudData(user.uid);
     } else {
-        // LOGOUT HONE PAR:
-        if(loginBtn) loginBtn.style.display = 'flex'; // Google Icon wapas dikhao
+        // Logout State
+        if(loginBtn) loginBtn.style.display = 'flex';
         if(userName) userName.style.display = 'none';
         if(logoutBtn) logoutBtn.style.display = 'none';
+        
+        // Logout hone par cloud data reset kar do par main data (OWS) rehne do
+        state.userTricks = {};
+        app.render();
     }
 });
 
@@ -253,4 +263,5 @@ window.logout = async () => {
 };
 
 init();
+
 
