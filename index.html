@@ -22,7 +22,7 @@
                 <button id="login-btn" onclick="login()" title="Login with Google">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G">
                 </button>
-                <span id="user-name" style="display:none; font-weight:bold;"></span>
+                <span id="user-name" style="display:none;"></span>
                 <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
             </div>
             <button id="theme-btn" class="circ-btn">🌙</button>
@@ -33,15 +33,14 @@
         <div class="dash-grid">
             <div class="d-card p-clr"><h5>OWS</h5><p id="stat-ows">0</p></div>
             <div class="d-card b-clr"><h5>IDIOMS</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card r-clr"><h5>SAVED</h5><p id="stat-hard">0</p></div>
+            <div class="d-card r-clr"><h5>FAVORITES</h5><p id="stat-hard">0</p></div>
         </div>
 
         <section id="view-study" class="view">
             <div class="tool-flex">
                 <div class="search-box"><span>🔍</span><input type="text" id="searchBar" placeholder="Search..." oninput="app.render()"></div>
-                <div class="jump-box"><input type="number" id="jump-id" placeholder="ID"><button onclick="jumpToCard()" class="go-btn">Go</button></div>
                 <select id="typeFilter" onchange="app.render()">
-                    <option value="ALL">All</option>
+                    <option value="ALL">All Categories</option>
                     <option value="OWS">OWS</option>
                     <option value="Idiom">Idioms</option>
                 </select>
@@ -50,9 +49,37 @@
             <div id="study-grid" class="cards-grid"></div>
         </section>
 
-        <section id="view-setup" class="view hidden">...</section>
-        <section id="view-play" class="view hidden">...</section>
-        <section id="view-results" class="view hidden">...</section>
+        <section id="view-setup" class="view hidden">
+            <div class="setup-wrap">
+                <div class="glass-card">
+                    <h2 class="title">Quiz Setup</h2>
+                    <div class="cat-select" style="display:flex; gap:10px; margin:20px 0;">
+                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix</button>
+                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS</button>
+                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
+                    </div>
+                    <input type="number" id="qLimit" value="10" style="padding:10px; border-radius:10px; border:1px solid var(--brd);">
+                    <button onclick="quiz.init()" class="launch-btn" style="margin-top:20px; background:var(--p); color:white; padding:15px; border:none; border-radius:12px; width:100%; cursor:pointer;">Start Quiz ⚡</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-play" class="view hidden">
+            <div class="quiz-container">
+                <h4 id="q-label">Question 1/10</h4>
+                <div class="progress-bg"><div id="q-bar" class="progress-fill" style="height:8px; background:var(--p); width:0%;"></div></div>
+                <h2 id="q-text" style="margin:30px 0;">Meaning...</h2>
+                <div id="q-opts" class="opts-grid"></div>
+            </div>
+        </section>
+
+        <section id="view-results" class="view hidden">
+            <div class="res-card">
+                <h1>Score: <span id="result-score">0/0</span></h1>
+                <div id="analysis-list" style="margin-top:20px;"></div>
+                <button onclick="router('study')" class="t-btn p-clr" style="color:white; background:var(--p); padding:10px 20px; border-radius:10px; margin-top:20px;">Home</button>
+            </div>
+        </section>
     </main>
 
     <script type="module">
@@ -79,28 +106,29 @@
 
         window.saveTrickToCloud = async (id, text) => {
             const user = auth.currentUser;
-            if (user) await setDoc(doc(db, "users", user.uid, "tricks", id), { trick: text });
+            if (user) {
+                await setDoc(doc(db, "users", user.uid, "tricks", id), { trick: text });
+                alert("Saved! ✅");
+            }
         };
 
         onAuthStateChanged(auth, async (user) => {
             const lb = document.getElementById('login-btn');
             const lo = document.getElementById('logout-btn');
             const un = document.getElementById('user-name');
-            
             if (user) {
                 lb.style.display = 'none';
                 lo.style.display = 'inline-block';
                 un.style.display = 'inline-block';
                 un.textContent = "Hi, " + user.displayName.split(' ')[0];
-                
                 const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
                 let tricks = {};
                 snap.forEach(d => tricks[d.id] = d.data().trick);
-                if (window.updateLocalTricks) window.updateLocalTricks(tricks);
+                state.userTricks = tricks;
+                app.render();
             } else {
                 lb.style.display = 'flex';
-                lo.style.display = 'none';
-                un.style.display = 'none';
+                lo.style.display = 'none'; un.style.display = 'none';
             }
         });
     </script>
