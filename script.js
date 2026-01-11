@@ -1,8 +1,15 @@
 const state = {
     all: [],
     favs: new Set(JSON.parse(localStorage.getItem('ru_favs')) || []),
+    userTricks: {}, // Firebase se aane wali tricks yahan save hongi
     quiz: { pool: [], idx: 0, ans: [], cat: 'ALL' },
     filterFav: false
+};
+
+// --- Firebase Bridge (index.html se connectivity ke liye) ---
+window.updateLocalTricks = (data) => {
+    state.userTricks = data;
+    app.render(); 
 };
 
 async function init() {
@@ -12,7 +19,8 @@ async function init() {
             fetch('idioms.json').then(r => r.json())
         ]);
         state.all = [...o.vocabulary.map(v => ({ ...v, type: 'OWS' })), ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))];
-        sync(); app.render();
+        sync(); 
+        app.render();
     } catch (e) { console.error("Data Load Error"); }
 }
 
@@ -33,14 +41,9 @@ function speak(t) {
 function jumpToCard() {
     const id = document.getElementById('jump-id').value;
     let type = document.getElementById('typeFilter').value;
-
-    // Agar "ALL" selected hai, toh hum default OWS maan rahe hain 
-    // ya fir tum filter change karke search kar sakte ho
     if (type === 'ALL') type = 'OWS';
-
     const targetId = `card-${type}-${id}`;
     const targetCard = document.getElementById(targetId);
-
     if (targetCard) {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         targetCard.style.outline = "3px solid var(--p)";
@@ -51,7 +54,20 @@ function jumpToCard() {
     }
 }
 
-// 2. Updated app.render (Sirf loop ke andar ka part update kiya hai)
+// Trick Save Function
+window.handleSaveTrick = function(k) {
+    const trickInput = document.getElementById(`trick-input-${k}`);
+    const trickText = trickInput.value.trim();
+    if (!trickText) return alert("Pehle kuch likhiye!");
+
+    if (window.saveTrickToCloud) {
+        window.saveTrickToCloud(k, trickText);
+        state.userTricks[k] = trickText; // Local state update
+    } else {
+        alert("Pehle Google se Login karein!");
+    }
+};
+
 const app = {
     render() {
         const g = document.getElementById('study-grid');
@@ -62,7 +78,9 @@ const app = {
 
         g.innerHTML = filtered.map(v => {
             const k = `${v.type}-${v.id}`;
-            const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0'; // Fire Tag Logic
+            const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
+            const savedTrick = state.userTricks[k] || ""; // Agar cloud se trick aayi hai toh yahan dikhegi
+            
             return `
 <div class="vocab-card" id="card-${v.type}-${v.id}"> 
     <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
@@ -71,6 +89,12 @@ const app = {
     </div>
     <h3 style="margin:10px 0">${v.word}</h3>
     <p style="margin-bottom:15px">${v.meaning}</p>
+    
+    <div class="trick-container">
+        <input type="text" class="trick-input" id="trick-input-${k}" value="${savedTrick}" placeholder="Apni trick likhein...">
+        <button class="trick-save-btn" onclick="handleSaveTrick('${k}')">Save</button>
+    </div>
+
     <div class="v-btns">
         <button onclick="this.innerText='${v.hi}'">Hindi</button>
         <button onclick="speak('${v.word}')">🔊 Listen</button>
@@ -82,8 +106,6 @@ const app = {
     toggleHardFilter() {
         state.filterFav = !state.filterFav;
         const btn = document.getElementById('hf-btn');
-
-        // Button highlight logic
         if (state.filterFav) {
             btn.classList.add('fav-active');
             btn.innerText = "Showing Favorites ❤️";
@@ -91,12 +113,9 @@ const app = {
             btn.classList.remove('fav-active');
             btn.innerText = "Favorites ❤️";
         }
-
         this.render();
     }
 };
-
-// BAAKI PURE FUNCTIONS (quiz.init, quiz.render, quiz.select, router) TERE HI RAHENGE.
 
 const quiz = {
     setCat(c, el) {
@@ -165,4 +184,5 @@ document.getElementById('theme-btn').onclick = () => {
     const isDark = document.body.classList.toggle('dark');
     document.getElementById('theme-btn').innerText = isDark ? '☀️' : '🌙';
 };
+
 init();
