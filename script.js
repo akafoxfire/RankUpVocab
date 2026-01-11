@@ -1,12 +1,11 @@
 const state = {
     all: [],
     favs: new Set(JSON.parse(localStorage.getItem('ru_favs')) || []),
-    userTricks: {}, // Firebase se aane wali tricks yahan save hongi
+    userTricks: {}, 
     quiz: { pool: [], idx: 0, ans: [], cat: 'ALL' },
     filterFav: false
 };
 
-// --- Firebase Bridge (index.html se connectivity ke liye) ---
 window.updateLocalTricks = (data) => {
     state.userTricks = data;
     app.render(); 
@@ -54,21 +53,17 @@ function jumpToCard() {
     }
 }
 
-// Trick Save Function
 window.handleSaveTrick = function(k) {
     const trickInput = document.getElementById(`trick-input-${k}`);
     const trickText = trickInput.value.trim();
     
     if (!trickText) return alert("Pehle kuch likhiye!");
 
-    // Check karo ki kya index.html wala firebase function mil raha hai
     if (window.saveTrickToCloud) {
-        // Agar mil raha hai toh ise call karo
         window.saveTrickToCloud(k, trickText);
         state.userTricks[k] = trickText; 
     } else {
-        // Agar ye alert aa raha hai, matlab index.html ka script load nahi hua
-        alert("Firebase function load nahi ho paya. Ek baar page refresh karein.");
+        alert("Pehle Google se Login karein!");
     }
 };
 
@@ -80,13 +75,12 @@ const app = {
         let filtered = state.all.filter(v => (t === 'ALL' || v.type === t) && (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s)));
         if (state.filterFav) filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
 
-        // app.render() ke andar ka map function replace karein:
-g.innerHTML = filtered.map(v => {
-    const k = `${v.type}-${v.id}`;
-    const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
-    const savedTrick = state.userTricks[k] || ""; 
-    
-    return `
+        g.innerHTML = filtered.map(v => {
+            const k = `${v.type}-${v.id}`;
+            const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
+            const savedTrick = state.userTricks[k] || ""; 
+            
+            return `
 <div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
     <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
         <span>${v.type} #${v.id}${repeatTag}</span> 
@@ -99,28 +93,27 @@ g.innerHTML = filtered.map(v => {
     <h3 style="margin:10px 0">${v.word}</h3>
     <p style="margin-bottom:15px">${v.meaning}</p>
     
-    <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:100; flex-direction:column; padding:10px; box-sizing:border-box; border-radius:12px;">
-    
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <h4 style="margin:0; font-size:0.9rem; color:var(--p);">💡 Edit Mnemonic</h4>
-        <span class="close-overlay" onclick="toggleTrick('${k}')" style="cursor:pointer; font-size:1.2rem; color:#ef4444; font-weight:bold;">✖</span>
-    </div>
+    <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:100; flex-direction:column; padding:15px; box-sizing:border-box; border-radius:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <h4 style="margin:0; font-size:0.9rem; color:var(--p);">💡 Edit Mnemonic</h4>
+            <span class="close-overlay" onclick="toggleTrick('${k}')" style="cursor:pointer; font-size:1.2rem; color:#ef4444; font-weight:bold;">✖</span>
+        </div>
 
-    <textarea class="trick-textarea" id="trick-input-${k}" 
-        style="flex-grow: 1; width: 100%; background: rgba(var(--p-rgb), 0.05); border: 1px solid var(--p); padding: 10px; border-radius: 8px; resize: none; font-family: inherit; font-size: 0.95rem; line-height: 1.4;"
-        placeholder="Apni trick yahan likhein... Isme ab kafi space hai!">${savedTrick}</textarea>
-    
-    <button class="trick-save-btn" 
-        style="width:100%; margin-top:8px; padding:10px; background:var(--p); color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;" 
-        onclick="handleSaveTrick('${k}')">Save to Cloud</button>
-</div>
+        <textarea class="trick-textarea" id="trick-input-${k}" 
+            style="flex: 1; width: 100%; background: rgba(129, 140, 248, 0.08); border: 1px dashed var(--p); padding: 12px; border-radius: 12px; resize: none; font-family: inherit; font-size: 1rem; line-height: 1.4; color: var(--txt); outline: none; margin-bottom: 10px;"
+            placeholder="Apni trick yahan likhein...">${savedTrick}</textarea>
+        
+        <button class="trick-save-btn" 
+            style="width:100%; padding:12px; background:var(--p); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;" 
+            onclick="handleSaveTrick('${k}')">Save to Cloud</button>
+    </div>
 
     <div class="v-btns">
         <button onclick="this.innerText='${v.hi}'">Hindi</button>
         <button onclick="speak('${v.word}')">🔊 Listen</button>
     </div>
 </div>`;
-}).join('');
+        }).join('');
     },
     toggleF(k) { state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); sync(); this.render(); },
     toggleHardFilter() {
@@ -215,6 +208,3 @@ window.toggleTrick = function(k) {
 };
 
 init();
-
-
-
