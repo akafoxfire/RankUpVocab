@@ -708,6 +708,39 @@ body.dark .fav-pill:hover {
     transform: scale(1.05);
 }
 
+/* Card ke andar trick ka parda */
+.trick-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: none; /* Shuru mein chhupa rahega */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+    z-index: 10;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.bulb-btn {
+    cursor: pointer;
+    font-size: 20px;
+    background: none;
+    border: none;
+    margin-left: 10px;
+}
+
+.close-trick {
+    position: absolute;
+    top: 5px; right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+}
+
 /* Mobile Responsive */
 @media (max-width: 480px) {
     #auth-section {
@@ -716,3 +749,4 @@ body.dark .fav-pill:hover {
         gap: 5px;
     }
 }
+
