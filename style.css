@@ -728,3 +728,55 @@ body.dark .fav-pill:hover {
         width: 32px !important;
         margin-right: 0 !important;
     }
+
+    /* --- GOOGLE ICON BUTTON STYLE --- */
+#login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card); /* Glass effect ke liye */
+    border: 1px solid var(--brd);
+    border-radius: 50%; /* Isse button gol ho jayega */
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#login-btn:hover {
+    background: var(--bg);
+    transform: scale(1.05);
+}
+
+/* --- TERA MOBILE & LAPTOP HEADER (FINAL VERSION) --- */
+.nav-content {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 1300px !important;
+    margin: 0 auto !important;
+    padding: 10px 20px !important;
+}
+
+@media screen and (max-width: 600px) {
+    /* Mobile pe RankUpVocab text hide */
+    .logo span, .logo {
+        font-size: 0 !important;
+    }
+    .nav-logo-img {
+        width: 32px !important;
+    }
+
+    /* Hi Name chota rahega par dikhega */
+    #user-name {
+        font-size: 0.75rem !important;
+        margin-right: 5px;
+    }
+
+    /* Sab kuch ek line mein fit hoga */
+    .nav-content {
+        padding: 8px 10px !important;
+    }
+}
+
