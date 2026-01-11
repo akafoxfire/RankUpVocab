@@ -99,12 +99,21 @@ g.innerHTML = filtered.map(v => {
     <h3 style="margin:10px 0">${v.word}</h3>
     <p style="margin-bottom:15px">${v.meaning}</p>
     
-    <div id="overlay-${k}" class="trick-overlay" style="display:none;">
-        <span class="close-overlay" onclick="toggleTrick('${k}')">✖</span>
-        <h4 style="color:var(--p); margin-bottom:10px;">Magic Trick</h4>
-        <textarea class="trick-textarea" id="trick-input-${k}" placeholder="Lambi trick yahan likhein...">${savedTrick}</textarea>
-        <button class="trick-save-btn" style="width:100%; margin-top:10px;" onclick="handleSaveTrick('${k}')">Save to Cloud</button>
+    <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:100; flex-direction:column; padding:10px; box-sizing:border-box; border-radius:12px;">
+    
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <h4 style="margin:0; font-size:0.9rem; color:var(--p);">💡 Edit Mnemonic</h4>
+        <span class="close-overlay" onclick="toggleTrick('${k}')" style="cursor:pointer; font-size:1.2rem; color:#ef4444; font-weight:bold;">✖</span>
     </div>
+
+    <textarea class="trick-textarea" id="trick-input-${k}" 
+        style="flex-grow: 1; width: 100%; background: rgba(var(--p-rgb), 0.05); border: 1px solid var(--p); padding: 10px; border-radius: 8px; resize: none; font-family: inherit; font-size: 0.95rem; line-height: 1.4;"
+        placeholder="Apni trick yahan likhein... Isme ab kafi space hai!">${savedTrick}</textarea>
+    
+    <button class="trick-save-btn" 
+        style="width:100%; margin-top:8px; padding:10px; background:var(--p); color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;" 
+        onclick="handleSaveTrick('${k}')">Save to Cloud</button>
+</div>
 
     <div class="v-btns">
         <button onclick="this.innerText='${v.hi}'">Hindi</button>
@@ -206,5 +215,6 @@ window.toggleTrick = function(k) {
 };
 
 init();
+
 
 
