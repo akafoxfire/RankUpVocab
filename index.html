@@ -187,13 +187,15 @@
   };
 
   // --- AUTH STATUS ---
-  onAuthStateChanged(auth, async (user) => {
+ onAuthStateChanged(auth, async (user) => {
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
     const userName = document.getElementById('user-name');
 
     if (user) {
-      loginBtn.style.display = 'none';
+      // Login hone par login button ko puri tarah gayab karein
+      loginBtn.setAttribute('style', 'display: none !important'); 
+      
       logoutBtn.style.display = 'inline-block';
       userName.textContent = "Hi, " + user.displayName.split(' ')[0];
       userName.style.display = 'inline-block';
@@ -204,7 +206,8 @@
       snap.forEach(d => tricks[d.id] = d.data().trick);
       if (window.updateLocalTricks) window.updateLocalTricks(tricks);
     } else {
-      loginBtn.style.display = 'inline-block';
+      // Logout hone par login button dikhayein
+      loginBtn.setAttribute('style', 'display: flex !important');
       logoutBtn.style.display = 'none';
       userName.style.display = 'none';
     }
@@ -212,6 +215,7 @@
 </script>
 </body>
 </html>
+
 
 
 
