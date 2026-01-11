@@ -207,4 +207,50 @@ window.toggleTrick = function(k) {
     }
 };
 
+// Firebase Auth Listener (Ye check karega ki user login hai ya nahi)
+firebase.auth().onAuthStateChanged((user) => {
+    const loginBtn = document.getElementById('login-btn');
+    const userName = document.getElementById('user-name');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (user) {
+        // LOGIN HONE PAR:
+        if(loginBtn) loginBtn.style.display = 'none'; // Google Icon hide
+        if(userName) {
+            userName.style.display = 'inline-block';
+            userName.innerText = 'Hi, ' + user.displayName.split(' ')[0]; // Sirf First Name
+        }
+        if(logoutBtn) logoutBtn.style.display = 'inline-block'; // Logout button show
+        
+        // Data sync karne ke liye (tricks etc)
+        if (window.loadUserTricks) window.loadUserTricks(user.uid);
+    } else {
+        // LOGOUT HONE PAR:
+        if(loginBtn) loginBtn.style.display = 'flex'; // Google Icon wapas dikhao
+        if(userName) userName.style.display = 'none';
+        if(logoutBtn) logoutBtn.style.display = 'none';
+    }
+});
+
+// Login Function
+window.login = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    try {
+        await firebase.auth().signInWithPopup(provider);
+    } catch (error) {
+        console.error("Login Failed", error);
+    }
+};
+
+// Logout Function
+window.logout = async () => {
+    try {
+        await firebase.auth().signOut();
+        location.reload(); // Page refresh taaki data clear ho jaye
+    } catch (error) {
+        console.error("Logout Failed", error);
+    }
+};
+
 init();
+
