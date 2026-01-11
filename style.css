@@ -22,32 +22,6 @@ body.dark {
     --p: #818cf8;
 }
 
-body.dark .vocab-card,
-body.dark .glass-card,
-body.dark .q-card,
-body.dark .d-card {
-    background: var(--card);
-    border: 1px solid var(--brd);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-}
-
-body.dark .opt-btn {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #f1f5f9;
-}
-
-body.dark .opt-btn:hover {
-    background: var(--p);
-    color: white;
-    border-color: var(--p);
-}
-
-body.dark .t-btn.active {
-    background: #1e293b;
-    color: var(--p);
-}
-
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--bg);
@@ -141,7 +115,6 @@ body {
     border-radius: 20px;
     border: 1px solid var(--brd);
     text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .d-card h5 {
@@ -178,7 +151,6 @@ body {
     border-radius: 12px;
     display: flex;
     align-items: center;
-    min-width: 250px;
 }
 
 .search-box input {
@@ -188,40 +160,23 @@ body {
     color: var(--txt);
     padding-left: 10px;
     outline: none;
-    font-size: 0.95rem;
 }
 
-select, .fav-pill {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: 1px solid var(--brd);
-    background: var(--card);
-    font-weight: 700;
-    color: var(--txt);
-    cursor: pointer;
-}
-
-/* STUDY GRID */
+/* CARDS GRID */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 15px;
 }
 
+/* VOCAB CARD */
 .vocab-card {
     background: var(--card);
     border: 1px solid var(--brd);
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-    position: relative; /* Overlays ke liye zaroori */
+    position: relative; /* Overlay ke liye zaroori */
     overflow: hidden;
-}
-
-.vocab-card:hover {
-    border-color: var(--p);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .v-btns {
@@ -239,10 +194,9 @@ select, .fav-pill {
     color: var(--txt);
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.9rem;
 }
 
-/* --- TRICK OVERLAY (ADD KIYA GAYA) --- */
+/* TRICK OVERLAY - FULL SPACE UTILIZATION */
 .trick-overlay {
     position: absolute;
     top: 0;
@@ -251,7 +205,7 @@ select, .fav-pill {
     height: 100%;
     background: var(--card);
     z-index: 100;
-    display: none; /* JS isey flex kar dega */
+    display: none; /* JS toggle karega */
     flex-direction: column;
     padding: 15px;
     box-sizing: border-box;
@@ -260,7 +214,7 @@ select, .fav-pill {
 }
 
 .trick-textarea {
-    flex: 1; /* Pura space lega */
+    flex-grow: 1;
     width: 100%;
     background: rgba(99, 102, 241, 0.05);
     border: 1px dashed var(--p);
@@ -274,12 +228,6 @@ select, .fav-pill {
     outline: none;
 }
 
-body.dark .trick-textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: #334155;
-    color: #f1f5f9;
-}
-
 .close-overlay {
     align-self: flex-end;
     cursor: pointer;
@@ -289,27 +237,117 @@ body.dark .trick-textarea {
     margin-bottom: 5px;
 }
 
-.bulb-btn {
-    cursor: pointer;
-    font-size: 1.1rem;
-    background: none;
-    border: none;
+/* QUIZ SECTION - RESTORED */
+.setup-wrap {
+    max-width: 600px;
+    margin: 40px auto;
 }
 
-/* --- BAKI PURANA CODE --- */
-.trick-save-btn {
+.glass-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid var(--brd);
+}
+
+.cat-select {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.c-chip {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--brd);
+    background: var(--bg);
+    color: var(--txt);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.c-chip.active {
+    background: var(--p);
+    color: white;
+    border-color: var(--p);
+}
+
+.num-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.f-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.f-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--brd);
+    background: var(--bg);
+    color: var(--txt);
+    font-weight: 700;
+}
+
+.launch-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
     background: var(--p);
     color: white;
     border: none;
-    padding: 10px;
-    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1rem;
     cursor: pointer;
-    font-weight: bold;
+}
+
+/* FOOTER - RESTORED */
+.app-footer {
+    margin-top: 50px;
+    padding: 30px 0;
+    border-top: 1px solid var(--brd);
+    background: var(--card);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-small {
+    width: 30px;
+    height: 30px;
+    background: var(--p);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 800;
 }
 
 .hidden { display: none !important; }
 
+/* UTILS */
 @media (max-width: 600px) {
     .dash-grid { grid-template-columns: 1fr; }
-    .vocab-card { padding: 20px; }
+    .num-grid { grid-template-columns: 1fr; }
 }
+
+
