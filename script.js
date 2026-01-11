@@ -1,14 +1,22 @@
 const state = {
     all: [],
-    favs: new Set(JSON.parse(localStorage.getItem('ru_favs')) || []),
+    // Shuruat mein khali rakhein, login ke baad cloud se aayega
+    favs: new Set(),
     userTricks: {}, 
     quiz: { pool: [], idx: 0, ans: [], cat: 'ALL' },
     filterFav: false
 };
 
+// --- CLOUD SYNC FUNCTIONS (Called from index.html) ---
 window.updateLocalTricks = (data) => {
     state.userTricks = data;
     app.render(); 
+};
+
+window.updateLocalFavs = (data) => {
+    state.favs = new Set(data);
+    syncStats(); // Stats update karein bina localStorage use kiye
+    app.render();
 };
 
 async function init() {
@@ -18,16 +26,19 @@ async function init() {
             fetch('idioms.json').then(r => r.json())
         ]);
         state.all = [...o.vocabulary.map(v => ({ ...v, type: 'OWS' })), ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))];
-        sync(); 
+        syncStats(); 
         app.render();
     } catch (e) { console.error("Data Load Error"); }
 }
 
-function sync() {
-    document.getElementById('stat-ows').innerText = state.all.filter(v => v.type === 'OWS').length;
-    document.getElementById('stat-idioms').innerText = state.all.filter(v => v.type === 'Idiom').length;
-    document.getElementById('stat-hard').innerText = state.favs.size;
-    localStorage.setItem('ru_favs', JSON.stringify([...state.favs]));
+// Sirf screen par numbers update karne ke liye
+function syncStats() {
+    if(document.getElementById('stat-ows'))
+        document.getElementById('stat-ows').innerText = state.all.filter(v => v.type === 'OWS').length;
+    if(document.getElementById('stat-idioms'))
+        document.getElementById('stat-idioms').innerText = state.all.filter(v => v.type === 'Idiom').length;
+    if(document.getElementById('stat-hard'))
+        document.getElementById('stat-hard').innerText = state.favs.size;
 }
 
 function speak(t) {
@@ -115,7 +126,23 @@ const app = {
 </div>`;
         }).join('');
     },
-    toggleF(k) { state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); sync(); this.render(); },
+    // Toggle Favorite ab Cloud ke saath sync hoga
+    toggleF(k) { 
+        const isAdding = !state.favs.has(k);
+        if (isAdding) {
+            state.favs.add(k);
+        } else {
+            state.favs.delete(k);
+        }
+        
+        // Cloud Sync call
+        if (window.saveFavToCloud) {
+            window.saveFavToCloud(k, isAdding);
+        }
+        
+        syncStats(); 
+        this.render(); 
+    },
     toggleHardFilter() {
         state.filterFav = !state.filterFav;
         const btn = document.getElementById('hf-btn');
