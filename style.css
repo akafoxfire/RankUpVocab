@@ -624,18 +624,15 @@ body.dark .fav-pill:hover {
 }
 
 /* --- Login Section Styling --- */
-/* --- AUTH SECTION (LOGIN/LOGOUT KE LIYE) --- */
 #auth-section {
-    display: flex !important;
-    justify-content: flex-end !important; /* Items ko right side rakhega */
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 0 !important; /* Extra padding hatao warna header mota lagega */
-    background: transparent !important; /* Header ka background main navbar handle karega */
-    border: none !important; /* Extra border hatao */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 5%;
+    background: var(--bg-card); /* Aapki purani card background variable */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
-
-
 
 /* --- GOOGLE ICON BUTTON CLEAN LOOK --- */
 #login-btn {
@@ -776,13 +773,6 @@ body.dark .fav-pill:hover {
     padding: 10px 20px !important;
 }
 
-    /* Mobile ke liye bas gap kam kar de */
-@media screen and (max-width: 600px) {
-    #auth-section {
-        gap: 6px !important;
-    }
-}
-
 @media screen and (max-width: 600px) {
     /* Mobile pe RankUpVocab text hide */
     .logo span, .logo {
@@ -804,7 +794,48 @@ body.dark .fav-pill:hover {
     }
 }
 
+    /* --- LOGIN/LOGOUT UI FIX --- */
 
+/* Jab login ho jaye, toh icon ko JAD SE khatam karo */
+#login-btn[style*="display: none"] {
+    display: none !important;
+}
+
+/* User name dikhte hi icon hide karne ka double protection */
+#user-name:not(:empty) ~ #login-btn {
+    display: none !important;
+}
+
+/* Auth section ka alignment desktop aur mobile dono par sahi rakho */
+#auth-section {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+/* Mobile par buttons ka size maintain rakho */
+@media (max-width: 600px) {
+    #auth-section {
+        gap: 8px;
+    }
+    #login-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Trick Overlay Fix: Taaki text area sahi dikhe */
+.trick-overlay textarea {
+    width: 100%;
+    min-height: 100px;
+    background: rgba(129, 140, 248, 0.1);
+    border: 1px dashed var(--p);
+    padding: 12px;
+    color: var(--txt);
+    border-radius: 12px;
+    font-family: inherit;
+    resize: none;
+}
 
 
 
