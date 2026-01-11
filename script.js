@@ -80,23 +80,30 @@ const app = {
         let filtered = state.all.filter(v => (t === 'ALL' || v.type === t) && (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s)));
         if (state.filterFav) filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
 
-        g.innerHTML = filtered.map(v => {
-            const k = `${v.type}-${v.id}`;
-            const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
-            const savedTrick = state.userTricks[k] || ""; // Agar cloud se trick aayi hai toh yahan dikhegi
-            
-            return `
-<div class="vocab-card" id="card-${v.type}-${v.id}"> 
+        // app.render() ke andar ka map function replace karein:
+g.innerHTML = filtered.map(v => {
+    const k = `${v.type}-${v.id}`;
+    const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
+    const savedTrick = state.userTricks[k] || ""; 
+    
+    return `
+<div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
     <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
         <span>${v.type} #${v.id}${repeatTag}</span> 
-        <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem">${state.favs.has(k) ? '❤️' : '🤍'}</button>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <button onclick="toggleTrick('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem" title="Add Trick">💡</button>
+            <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem">${state.favs.has(k) ? '❤️' : '🤍'}</button>
+        </div>
     </div>
+    
     <h3 style="margin:10px 0">${v.word}</h3>
     <p style="margin-bottom:15px">${v.meaning}</p>
     
-    <div class="trick-container">
-        <input type="text" class="trick-input" id="trick-input-${k}" value="${savedTrick}" placeholder="Apni trick likhein...">
-        <button class="trick-save-btn" onclick="handleSaveTrick('${k}')">Save</button>
+    <div id="overlay-${k}" class="trick-overlay" style="display:none;">
+        <span class="close-overlay" onclick="toggleTrick('${k}')">✖</span>
+        <h4 style="color:var(--p); margin-bottom:10px;">Magic Trick</h4>
+        <textarea class="trick-textarea" id="trick-input-${k}" placeholder="Lambi trick yahan likhein...">${savedTrick}</textarea>
+        <button class="trick-save-btn" style="width:100%; margin-top:10px;" onclick="handleSaveTrick('${k}')">Save to Cloud</button>
     </div>
 
     <div class="v-btns">
@@ -104,7 +111,7 @@ const app = {
         <button onclick="speak('${v.word}')">🔊 Listen</button>
     </div>
 </div>`;
-        }).join('');
+}).join('');
     },
     toggleF(k) { state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); sync(); this.render(); },
     toggleHardFilter() {
@@ -189,5 +196,15 @@ document.getElementById('theme-btn').onclick = () => {
     document.getElementById('theme-btn').innerText = isDark ? '☀️' : '🌙';
 };
 
+window.toggleTrick = function(k) {
+    const overlay = document.getElementById(`overlay-${k}`);
+    if (overlay.style.display === "none" || overlay.style.display === "") {
+        overlay.style.display = "flex";
+    } else {
+        overlay.style.display = "none";
+    }
+};
+
 init();
+
 
