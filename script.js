@@ -30,15 +30,25 @@ function speak(t) {
     window.speechSynthesis.speak(s);
 }
 
-// 1. Jump Function (Ise script mein kahin bhi rakh do)
 function jumpToCard() {
     const id = document.getElementById('jump-id').value;
-    const targetCard = document.getElementById(`card-${id}`);
+    let type = document.getElementById('typeFilter').value;
+    
+    // Agar "ALL" selected hai, toh hum default OWS maan rahe hain 
+    // ya fir tum filter change karke search kar sakte ho
+    if(type === 'ALL') type = 'OWS'; 
+
+    const targetId = `card-${type}-${id}`;
+    const targetCard = document.getElementById(targetId);
+    
     if (targetCard) {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        targetCard.style.outline = "2px solid var(--p)";
-        setTimeout(() => targetCard.style.outline = "none", 2000);
-    } else { alert("ID #" + id + " nahi mili!"); }
+        targetCard.style.outline = "3px solid var(--p)";
+        targetCard.style.outlineOffset = "5px";
+        setTimeout(() => targetCard.style.outline = "none", 2500);
+    } else { 
+        alert(`${type} mein ID #${id} nahi mili. Filter check karein!`); 
+    }
 }
 
 // 2. Updated app.render (Sirf loop ke andar ka part update kiya hai)
@@ -54,16 +64,18 @@ const app = {
             const k = `${v.type}-${v.id}`;
             const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0'; // Fire Tag Logic
             return `
-            <div class="vocab-card" id="card-${v.id}"> <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
-                    <span>${v.type} #${v.id}${repeatTag}</span> <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem">${state.favs.has(k)?'❤️':'🤍'}</button>
-                </div>
-                <h3 style="margin:10px 0">${v.word}</h3>
-                <p style="margin-bottom:15px">${v.meaning}</p>
-                <div class="v-btns">
-                    <button onclick="this.innerText='${v.hi}'">Hindi</button>
-                    <button onclick="speak('${v.word}')">🔊 Listen</button>
-                </div>
-            </div>`;
+<div class="vocab-card" id="card-${v.type}-${v.id}"> 
+    <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
+        <span>${v.type} #${v.id}${repeatTag}</span> 
+        <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem">${state.favs.has(k)?'❤️':'🤍'}</button>
+    </div>
+    <h3 style="margin:10px 0">${v.word}</h3>
+    <p style="margin-bottom:15px">${v.meaning}</p>
+    <div class="v-btns">
+        <button onclick="this.innerText='${v.hi}'">Hindi</button>
+        <button onclick="speak('${v.word}')">🔊 Listen</button>
+    </div>
+</div>`;
         }).join('');
     },
     toggleF(k) { state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); sync(); this.render(); },
