@@ -636,7 +636,7 @@ body.dark .fav-pill:hover {
 
 /* --- GOOGLE ICON BUTTON CLEAN LOOK --- */
 #login-btn {
-    display: flex !important;
+   
     align-items: center !important;      /* Vertical center */
     justify-content: center !important;   /* Horizontal center */
     background: var(--card);
@@ -793,6 +793,7 @@ body.dark .fav-pill:hover {
         padding: 8px 10px !important;
     }
 }
+
 
 
 
