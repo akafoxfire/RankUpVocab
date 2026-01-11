@@ -624,15 +624,18 @@ body.dark .fav-pill:hover {
 }
 
 /* --- Login Section Styling --- */
+/* --- AUTH SECTION (LOGIN/LOGOUT KE LIYE) --- */
 #auth-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 5%;
-    background: var(--bg-card); /* Aapki purani card background variable */
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex !important;
+    justify-content: flex-end !important; /* Items ko right side rakhega */
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 0 !important; /* Extra padding hatao warna header mota lagega */
+    background: transparent !important; /* Header ka background main navbar handle karega */
+    border: none !important; /* Extra border hatao */
 }
+
+
 
 /* --- GOOGLE ICON BUTTON CLEAN LOOK --- */
 #login-btn {
@@ -773,6 +776,13 @@ body.dark .fav-pill:hover {
     padding: 10px 20px !important;
 }
 
+    /* Mobile ke liye bas gap kam kar de */
+@media screen and (max-width: 600px) {
+    #auth-section {
+        gap: 6px !important;
+    }
+}
+
 @media screen and (max-width: 600px) {
     /* Mobile pe RankUpVocab text hide */
     .logo span, .logo {
@@ -793,6 +803,7 @@ body.dark .fav-pill:hover {
         padding: 8px 10px !important;
     }
 }
+
 
 
 
