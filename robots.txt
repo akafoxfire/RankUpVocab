@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://akafoxfire.github.io/RankUpVocab/sitemap.xml
