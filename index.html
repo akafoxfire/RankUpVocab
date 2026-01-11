@@ -9,36 +9,47 @@
 </head>
 <body class="light">
     <header class="navbar">
-        <div class="container nav-content">
-            <div class="logo">
-                <img src="logo.png" alt="RankUp" class="nav-logo-img">
-                RankUp<span>Vocab</span>
-            </div>
-            <div class="tabs">
-                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
-                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
-            </div>
-            <div id="auth-section">
-                <button id="login-btn" onclick="login()" title="Login with Google">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G">
-                </button>
-                <span id="user-name" style="display:none;"></span>
-                <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
-            </div>
-            <button id="theme-btn" class="circ-btn">🌙</button>
+    <div class="container nav-content">
+        <div class="logo">
+            <img src="logo.png" alt="RankUp" class="nav-logo-img">
+            RankUp<span>Vocab</span>
         </div>
-    </header>
+
+        <div class="tabs">
+            <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+            <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+        </div>
+
+        <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+            <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px; border: 1px solid var(--brd); background: white; cursor: pointer;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
+            </button>
+
+            <span id="user-name" style="display:none; font-weight:bold;"></span>
+            <button id="logout-btn" style="display:none; background: #f44336; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;" onclick="logout()">Logout</button>
+        </div>
+
+        <button id="theme-btn" class="circ-btn">🌙</button>
+    </div>
+</header>
 
     <main class="container">
         <div class="dash-grid">
-            <div class="d-card p-clr"><h5>OWS</h5><p id="stat-ows">0</p></div>
-            <div class="d-card b-clr"><h5>IDIOMS</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card r-clr"><h5>FAVORITES</h5><p id="stat-hard">0</p></div>
+            <div class="d-card p-clr"><h5>OWS COUNT</h5><p id="stat-ows">0</p></div>
+            <div class="d-card b-clr"><h5>IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
+            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
         </div>
 
         <section id="view-study" class="view">
             <div class="tool-flex">
-                <div class="search-box"><span>🔍</span><input type="text" id="searchBar" placeholder="Search..." oninput="app.render()"></div>
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
+                </div>
+                <div class="jump-box" style="display: flex; gap: 5px;">
+                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
+                    <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
+                </div>
                 <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Categories</option>
                     <option value="OWS">OWS</option>
@@ -52,36 +63,64 @@
         <section id="view-setup" class="view hidden">
             <div class="setup-wrap">
                 <div class="glass-card">
-                    <h2 class="title">Quiz Setup</h2>
-                    <div class="cat-select" style="display:flex; gap:10px; margin:20px 0;">
-                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix</button>
-                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS</button>
+                    <h2 class="title">Configure Quiz</h2>
+                    <div class="cat-select">
+                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
+                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
                         <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
                     </div>
-                    <input type="number" id="qLimit" value="10" style="padding:10px; border-radius:10px; border:1px solid var(--brd);">
-                    <button onclick="quiz.init()" class="launch-btn" style="margin-top:20px; background:var(--p); color:white; padding:15px; border:none; border-radius:12px; width:100%; cursor:pointer;">Start Quiz ⚡</button>
+                    <div class="num-grid">
+                        <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
+                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
+                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
+                    </div>
+                    <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
                 </div>
             </div>
         </section>
 
         <section id="view-play" class="view hidden">
             <div class="quiz-container">
-                <h4 id="q-label">Question 1/10</h4>
-                <div class="progress-bg"><div id="q-bar" class="progress-fill" style="height:8px; background:var(--p); width:0%;"></div></div>
-                <h2 id="q-text" style="margin:30px 0;">Meaning...</h2>
-                <div id="q-opts" class="opts-grid"></div>
+                <div class="q-header">
+                    <span id="q-label">Question 1/10</span>
+                    <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
+                </div>
+                <div class="q-card">
+                    <h2 id="q-text">Meaning...</h2>
+                    <div id="q-opts" class="opts-grid"></div>
+                </div>
             </div>
         </section>
 
         <section id="view-results" class="view hidden">
             <div class="res-card">
-                <h1>Score: <span id="result-score">0/0</span></h1>
-                <div id="analysis-list" style="margin-top:20px;"></div>
-                <button onclick="router('study')" class="t-btn p-clr" style="color:white; background:var(--p); padding:10px 20px; border-radius:10px; margin-top:20px;">Home</button>
+                <div class="score-box">
+                    <small>Final Score</small>
+                    <h1 id="result-score">0/0</h1>
+                </div>
+                <div class="res-actions">
+                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
+                    <button onclick="router('study')" class="btn-home">Home</button>
+                </div>
             </div>
+            <div id="analysis-list" class="analysis-stack"></div>
         </section>
     </main>
 
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo-small">R</div>
+                <span>Rakesh Kumar Dudhawal</span>
+            </div>
+            <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
+            <div class="footer-links">
+                <span>Hard Work Beats Talent</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -101,37 +140,49 @@
         const db = getFirestore(appFB);
         const provider = new GoogleAuthProvider();
 
-        window.login = () => signInWithPopup(auth, provider);
-        window.logout = () => signOut(auth).then(() => location.reload());
+        window.login = async () => {
+            try { await signInWithPopup(auth, provider); } catch (e) { console.error(e); }
+        };
 
-        window.saveTrickToCloud = async (id, text) => {
+        window.logout = async () => {
+            await signOut(auth);
+            location.reload();
+        };
+
+        window.saveTrickToCloud = async (wordId, trickText) => {
             const user = auth.currentUser;
-            if (user) {
-                await setDoc(doc(db, "users", user.uid, "tricks", id), { trick: text });
+            if (!user) return alert("Pehle Login karein!");
+            try {
+                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
+                    trick: trickText,
+                    timestamp: new Date()
+                });
                 alert("Saved! ✅");
-            }
+            } catch (e) { console.error(e); }
         };
 
         onAuthStateChanged(auth, async (user) => {
             const lb = document.getElementById('login-btn');
             const lo = document.getElementById('logout-btn');
             const un = document.getElementById('user-name');
+
             if (user) {
+                // FIXED: Direct style control for Google Icon
                 lb.style.display = 'none';
                 lo.style.display = 'inline-block';
-                un.style.display = 'inline-block';
                 un.textContent = "Hi, " + user.displayName.split(' ')[0];
+                un.style.display = 'inline-block';
+
                 const snap = await getDocs(collection(db, "users", user.uid, "tricks"));
                 let tricks = {};
                 snap.forEach(d => tricks[d.id] = d.data().trick);
-                state.userTricks = tricks;
-                app.render();
+                if (window.updateLocalTricks) window.updateLocalTricks(tricks);
             } else {
                 lb.style.display = 'flex';
-                lo.style.display = 'none'; un.style.display = 'none';
+                lo.style.display = 'none';
+                un.style.display = 'none';
             }
         });
     </script>
-    <script src="script.js" defer></script>
 </body>
 </html>
