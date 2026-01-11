@@ -634,21 +634,30 @@ body.dark .fav-pill:hover {
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
+/* --- GOOGLE ICON BUTTON CLEAN LOOK --- */
 #login-btn {
-    background: #4285F4;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important; /* Blue color hatane ke liye */
+    border: 1px solid var(--brd); /* Sirf halki boundary dikhegi */
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: none !important; /* Agar koi shadow hai toh wo bhi hat jayegi */
     transition: 0.3s;
 }
 
 #login-btn:hover {
-    background: #357ae8;
-    transform: translateY(-1px);
+    background: rgba(0, 0, 0, 0.05) !important; /* Hover par halka grey shade */
+    border-color: var(--accent);
+}
+
+#login-btn img {
+    width: 22px; /* Icon ka size thoda adjust kiya */
+    height: auto;
 }
 
 #logout-btn {
@@ -779,4 +788,5 @@ body.dark .fav-pill:hover {
         padding: 8px 10px !important;
     }
 }
+
 
