@@ -117,18 +117,25 @@
     </footer>
     <script src="script.js"></script>
     <script type="module">
+  // 1. Saare Imports ek saath
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { 
     getAuth, 
-    signInWithRedirect, // Ye add karna zaroori hai
+    signInWithRedirect, 
     getRedirectResult, 
     GoogleAuthProvider, 
     onAuthStateChanged, 
     signOut 
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { 
+    getFirestore, 
+    doc, 
+    setDoc, 
+    getDocs, 
+    collection 
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  // Tumhari Config
+  // 2. Firebase Config
   const firebaseConfig = {
     apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
     authDomain: "rankupvocab.firebaseapp.com",
@@ -138,47 +145,31 @@
     appId: "1:1038821377168:web:39c201773384c4b8408415"
   };
 
-  // Initialize Firebase
+  // 3. Initialize Firebase (Sirf ek baar)
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
-  // 1. LOGIN FUNCTION
- window.login = async () => {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
+  // 4. LOGIN FUNCTION
+  window.login = async () => {
     try {
-        // Ab ye error nahi dega kyunki humne upar import kar liya hai
         await signInWithRedirect(auth, provider);
     } catch (error) {
         console.error("Login Error:", error);
         alert("Login nahi ho paya: " + error.message);
     }
-};
+  };
 
-  // 2. LOGOUT FUNCTION
-  window.logout = () => signOut(auth);
+  // 5. LOGOUT FUNCTION
+  window.logout = async () => {
+    try {
+      await signOut(auth);
+      location.reload(); // Logout ke baad page refresh
+    } catch (e) { console.error(e); }
+  };
 
-  // 3. USER STATUS CHECK (Login hai ya nahi)
-  onAuthStateChanged(auth, (user) => {
-    const loginBtn = document.getElementById('login-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const userName = document.getElementById('user-name');
-
-    if (user) {
-      loginBtn.style.display = 'none';
-      logoutBtn.style.display = 'inline-block';
-      userName.textContent = "Hi, " + user.displayName.split(' ')[0];
-      userName.style.display = 'inline-block';
-    } else {
-      loginBtn.style.display = 'inline-block';
-      logoutBtn.style.display = 'none';
-      userName.style.display = 'none';
-    }
-  });
-
-  // 4. TRICK SAVE KARNE KA FUNCTION (Database mein)
+  // 6. TRICK SAVE FUNCTION (Database)
   window.saveTrickToCloud = async (wordId, trickText) => {
     const user = auth.currentUser;
     if (!user) {
@@ -186,17 +177,57 @@
       return;
     }
     try {
-      // User ki id ke andar wordId se trick save hogi
       await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
         trick: trickText,
         timestamp: new Date()
       });
-      alert("Trick Cloud par save ho gayi!");
+      alert("Trick Cloud par save ho gayi! ✅");
     } catch (e) {
       console.error("Error saving:", e);
+      alert("Save fail: " + e.message);
     }
   };
+
+  // 7. AUTH STATUS & DATA SYNC
+  onAuthStateChanged(auth, async (user) => {
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const userName = document.getElementById('user-name');
+
+    if (user) {
+      // UI Update
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = 'inline-block';
+      userName.textContent = "Hi, " + user.displayName.split(' ')[0];
+      userName.style.display = 'inline-block';
+
+      // Cloud se saari tricks load karo
+      try {
+        const querySnapshot = await getDocs(collection(db, "users", user.uid, "tricks"));
+        let tricks = {};
+        querySnapshot.forEach((doc) => {
+            tricks[doc.id] = doc.data().trick;
+        });
+        
+        // script.js ko data bhejo
+        if (window.updateLocalTricks) {
+            window.updateLocalTricks(tricks);
+        }
+      } catch (e) { console.error("Data Load Error:", e); }
+
+    } else {
+      // UI Reset
+      loginBtn.style.display = 'inline-block';
+      logoutBtn.style.display = 'none';
+      userName.style.display = 'none';
+      
+      if (window.updateLocalTricks) {
+          window.updateLocalTricks({});
+      }
+    }
+  });
 </script>
 </body>
 </html>
+
 
