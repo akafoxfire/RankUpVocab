@@ -10,10 +10,10 @@
 <body class="light">
     <header class="navbar">
     <div class="container nav-content">
-        <div class="logo">
-            <img src="logo.png" alt="RankUp" class="nav-logo-img">
-            RankUp<span>Vocab</span>
-        </div>
+        <div class="logo" onclick="openAboutModal()" style="cursor: pointer;">
+    <img src="logo.png" alt="RankUp" class="nav-logo-img">
+    RankUp<span>Vocab</span>
+</div>
 
         <div class="tabs">
             <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
@@ -233,8 +233,44 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 </script>
+
+    <div id="aboutModal" class="modal-overlay" onclick="closeAboutModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="closeAboutModal()">&times;</span>
+        
+        <div class="about-header">
+            <img src="logo.png" alt="RankUp" style="width: 50px;">
+            <h2>RankUp Vocab | SSC Preparation Pro Tool</h2>
+        </div>
+        
+        <div class="about-body">
+            <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखो।</strong></p>
+            <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है जिसे SSC (CGL, CHSL, MTS, CPO) और अन्य Competitive Exams की तैयारी के लिए खास तौर पर डिजाइन किया गया है।</p>
+            
+            <h3>🔥 मुख्य विशेषताएँ (Key Features)</h3>
+            <ul>
+                <li><strong>Mnemonics Magic (Cloud Sync):</strong> अपनी खुद की Trick लिखें और Google Account पर सेव करें।</li>
+                <li><strong>Targeted Quiz:</strong> Word संख्या के हिसाब से Range-wise प्रैक्टिस करें।</li>
+                <li><strong>Mistake Bucket:</strong> सिर्फ गलत हुए सवालों को दोबारा हल करें।</li>
+                <li><strong>Personalized Hard List:</strong> कठिन शब्दों को Favorite मार्क करें।</li>
+            </ul>
+
+            <h3>🛠️ इसे इस्तेमाल कैसे करें?</h3>
+            <p>1. <strong>Study Mode:</strong> शब्दों को पढ़ें और उनकी ऑडियो सुनें।<br>
+               2. <strong>Save Trick:</strong> मुश्किल शब्दों के लिए अपनी Trick क्लाउड पर सेव करें।<br>
+               3. <strong>Quiz Challenge:</strong> अपनी Range चुनें और Score ट्रैक करें।</p>
+
+            <div class="about-footer">
+                <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
+                <p>Version 2.0 (Cloud Enabled)</p>
+            </div>
+        </div>
+    </div>
+</div>
+    
 </body>
 </html>
+
 
 
 
