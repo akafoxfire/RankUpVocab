@@ -436,3 +436,64 @@ body {
         font-size: 1.3rem;
     }
 }
+
+/* --- 1. QUIZ OPTIONS BUTTONS FIX --- */
+.opts-grid .opt-btn {
+    padding: 22px 20px !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--brd) !important;
+    background: var(--bg) !important;
+    color: var(--txt) !important;
+    font-weight: 700 !important;
+    font-size: 1.05rem !important;
+    cursor: pointer !important;
+    transition: 0.2s !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.opts-grid .opt-btn:hover {
+    border-color: var(--p) !important;
+    background: var(--card) !important;
+    transform: scale(1.02) !important;
+}
+
+/* --- 2. RESULT PAGE BUTTONS FIX (Retry/Home) --- */
+.res-actions {
+    display: flex !important;
+    gap: 15px !important;
+    justify-content: center !important;
+    margin-top: 30px !important;
+}
+
+.res-actions button, 
+.btn-retry, 
+.btn-home {
+    padding: 15px 30px !important;
+    border-radius: 15px !important;
+    border: none !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    transition: 0.3s !important;
+    font-family: inherit !important;
+}
+
+.btn-retry {
+    background: var(--p) !important;
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2) !important;
+}
+
+.btn-home {
+    background: var(--brd) !important;
+    color: var(--txt) !important;
+}
+
+/* --- 3. ANALYSIS CARDS FIX (Result ke niche wali list) --- */
+.analysis-stack .vocab-card {
+    border-radius: 16px !important;
+    padding: 20px !important;
+    margin-bottom: 12px !important;
+    background: var(--card) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+}
