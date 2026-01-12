@@ -3,49 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RankUp Vocab | Premium Learning</title>
+    <title>RankUp Vocab</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="light">
     <header class="navbar">
-        <div class="nav-content">
-            <div class="logo" id="main-logo">
-                <img src="logo.png" alt="R" class="nav-logo-img">
+        <div class="container nav-content">
+            <div class="logo" id="main-logo" style="cursor: pointer !important;">
+                <img src="logo.png" alt="RankUp" class="nav-logo-img">
                 RankUp<span>Vocab</span>
             </div>
             <div class="tabs">
                 <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
                 <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
             </div>
-            <div style="display:flex; gap:10px; align-items:center;">
-                <button id="theme-btn" class="t-btn" style="padding:10px; border-radius:12px; background:var(--bg)">🌙</button>
-                <div id="auth-section">
-                    <button id="login-btn" onclick="login()" style="background:var(--p); color:white; border:none; padding:10px 18px; border-radius:12px; font-weight:800; cursor:pointer;">Login</button>
-                    <span id="user-name" style="display:none; font-weight:700;"></span>
-                </div>
+            <div id="auth-section" style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+                <button id="login-btn" onclick="login()" title="Login with Google" class="login-circ">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
+                </button>
+                <span id="user-name" style="display:none; font-weight:700;"></span>
+                <button id="logout-btn" style="display:none;" onclick="logout()" class="t-btn-small">Logout</button>
+                <button id="theme-btn" class="circ-btn">🌙</button>
             </div>
         </div>
     </header>
 
     <main class="container">
         <div class="dash-grid">
-            <div class="d-card p-clr"><h5>One Words</h5><p id="stat-ows">0</p></div>
-            <div class="d-card"><h5>Idioms</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card"><h5>Favorites</h5><p id="stat-hard" style="color:#ef4444">0</p></div>
+            <div class="d-card p-clr"><h5>OWS COUNT</h5><p id="stat-ows">0</p></div>
+            <div class="d-card b-clr"><h5>IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
+            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
         </div>
 
         <section id="view-study" class="view">
             <div class="tool-flex">
                 <div class="search-box">
                     <span>🔍</span>
-                    <input type="text" id="searchBar" placeholder="Find words, meanings, tricks..." oninput="handleSearch()">
+                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="handleSearch()">
                 </div>
-                <select id="typeFilter" onchange="app.render()" class="t-btn" style="background:var(--card); border:1px solid var(--brd)">
+                <div class="jump-box">
+                    <input type="number" id="jump-id" placeholder="ID">
+                    <button onclick="jumpToCard()">Go</button>
+                </div>
+                <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Categories</option>
                     <option value="OWS">OWS</option>
                     <option value="Idiom">Idioms</option>
                 </select>
-                <button onclick="app.toggleHardFilter()" id="hf-btn" class="t-btn" style="border:1px solid var(--brd)">Favorites ❤️</button>
+                <button onclick="app.toggleHardFilter()" id="hf-btn" class="fav-pill">Favorites ❤️</button>
             </div>
             <div id="study-grid" class="cards-grid"></div>
         </section>
@@ -53,23 +59,55 @@
         <section id="view-setup" class="view hidden">
             <div class="setup-wrap">
                 <div class="glass-card">
-                    <h2 style="margin-bottom:20px; font-weight:800;">Configure Session</h2>
-                    <div class="cat-select">
-                        <button onclick="quiz.setCat('ALL', this)" class="t-btn active" style="width:100%">Mix All</button>
+                    <h2 style="margin-bottom:20px; font-weight:800;">Quiz Setup</h2>
+                    <div class="cat-select" style="margin-bottom:20px;">
+                        <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
+                        <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
+                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
                     </div>
-                    <button onclick="quiz.init()" class="launch-btn">Start Practice</button>
+                    <div class="num-grid">
+                        <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
+                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
+                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
+                    </div>
+                    <button onclick="quiz.init()" class="launch-btn">Start Practice ⚡</button>
                 </div>
             </div>
         </section>
-        
-        <section id="view-play" class="view hidden"></section>
-        <section id="view-results" class="view hidden"></section>
+
+        <section id="view-play" class="view hidden">
+            <div class="quiz-container">
+                <div class="q-header">
+                    <span id="q-label" style="font-weight:800; color:var(--p)">Question 1/10</span>
+                    <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
+                </div>
+                <div class="q-card">
+                    <h2 id="q-text" style="margin:20px 0; font-weight:700;">Meaning...</h2>
+                    <div id="q-opts"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-results" class="view hidden">
+            <div class="res-card">
+                <h1 id="result-score" style="font-size:3.5rem; color:var(--p); font-weight:900;">0/0</h1>
+                <p style="margin-bottom:20px; font-weight:700;">Practice Session Complete!</p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
+                    <button onclick="router('study')" class="btn-home">Home</button>
+                </div>
+            </div>
+            <div id="analysis-list" class="analysis-stack" style="margin-top:20px;"></div>
+        </section>
     </main>
 
     <footer class="app-footer">
-        <div class="container">
-            <p>Made with 🔥 for SSC Aspirants</p>
-            <p style="font-size:0.8rem; opacity:0.6; margin-top:10px;">© 2026 RankUp Vocab Premium</p>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo-small">R</div>
+                <span>Rakesh Kumar Dudhawal</span>
+            </div>
+            <p>© 2026 RankUp Vocab. Engineered for SSC Aspirants.</p>
         </div>
     </footer>
 
@@ -82,12 +120,12 @@
             </div>
             <div class="about-body">
                 <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखो।</strong></p>
-                <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है।</p>
+                <p>RankUp Vocab एक स्मार्ट Web Application है जिसे SSC तैयारी के लिए खास तौर पर डिजाइन किया गया है।</p>
                 <h3>🔥 मुख्य विशेषताएँ</h3>
-                <ul>
-                    <li><strong>Mnemonics Magic:</strong> Cloud Sync के साथ।</li>
-                    <li><strong>Targeted Quiz:</strong> Range-wise प्रैक्टिस।</li>
-                    <li><strong>Mistake Bucket:</strong> गलत सवालों का रिविजन।</li>
+                <ul style="list-style:none; padding:0;">
+                    <li style="margin-bottom:10px;">🚀 <strong>Mnemonics Magic:</strong> अपनी Trick क्लाउड पर सेव करें।</li>
+                    <li style="margin-bottom:10px;">🚀 <strong>Targeted Quiz:</strong> Range-wise प्रैक्टिस करें।</li>
+                    <li style="margin-bottom:10px;">🚀 <strong>Mistake Bucket:</strong> गलत सवालों को दोबारा हल करें।</li>
                 </ul>
                 <div class="about-footer">
                     <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
@@ -160,4 +198,5 @@
     </script>
 </body>
 </html>
+
 
