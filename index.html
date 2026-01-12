@@ -9,29 +9,25 @@
 </head>
 <body class="light">
     <header class="navbar">
-    <div class="container nav-content">
-      <div class="logo" id="main-logo" style="cursor: pointer !important; position: relative; z-index: 10;">
-    <img src="logo.png" alt="RankUp" class="nav-logo-img">
-    RankUp<span>Vocab</span>
-</div>
-
-        <div class="tabs">
-            <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
-            <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+        <div class="container nav-content">
+            <div class="logo" id="main-logo" style="cursor: pointer !important; position: relative; z-index: 10;">
+                <img src="logo.png" alt="RankUp" class="nav-logo-img">
+                RankUp<span>Vocab</span>
+            </div>
+            <div class="tabs">
+                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+            </div>
+            <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+                <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
+                </button>
+                <span id="user-name" style="display:none; font-weight:bold;"></span>
+                <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
+            </div>
+            <button id="theme-btn" class="circ-btn">🌙</button>
         </div>
-
-        <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
-    <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
-    </button>
-
-    <span id="user-name" style="display:none; font-weight:bold;"></span>
-    <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
-</div>
-
-        <button id="theme-btn" class="circ-btn">🌙</button>
-    </div>
-</header>
+    </header>
 
     <main class="container">
         <div class="dash-grid">
@@ -44,12 +40,12 @@
             <div class="tool-flex">
                 <div class="search-box">
                     <span>🔍</span>
-                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
+                    <input type="text" id="searchBar" placeholder="Search meanings..." oninput="handleSearch()">
                 </div>
                 <div class="jump-box" style="display: flex; gap: 5px;">
-    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
-    <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
-</div>
+                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
+                    <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
+                </div>
                 <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Categories</option>
                     <option value="OWS">OWS</option>
@@ -106,6 +102,7 @@
             <div id="analysis-list" class="analysis-stack"></div>
         </section>
     </main>
+
     <footer class="app-footer">
         <div class="container footer-content">
             <div class="footer-brand">
@@ -118,129 +115,7 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
-    <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { 
-    getAuth, 
-    signInWithPopup, 
-    GoogleAuthProvider, 
-    onAuthStateChanged, 
-    signOut 
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { 
-    getFirestore, 
-    doc, 
-    setDoc, 
-    getDocs, 
-    collection 
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
-    authDomain: "rankupvocab.firebaseapp.com",
-    projectId: "rankupvocab",
-    storageBucket: "rankupvocab.firebasestorage.app",
-    messagingSenderId: "1038821377168",
-    appId: "1:1038821377168:web:39c201773384c4b8408415"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const provider = new GoogleAuthProvider();
-
-  // --- LOGIN ---
-  window.login = async () => {
-    try {
-        await signInWithPopup(auth, provider);
-    } catch (error) {
-        alert("Login Error: " + error.message);
-    }
-  };
-
-  // --- LOGOUT ---
-  window.logout = async () => {
-    await signOut(auth);
-    location.reload();
-  };
-
-  // --- SAVE TRICK (Ise check karo, ye ab window par hai) ---
-  window.saveTrickToCloud = async (wordId, trickText) => {
-    const user = auth.currentUser; // Ye auth upar wala hi use karega
-    
-    if (!user) {
-      alert("Pehle Google se login karein!");
-      return;
-    }
-
-    try {
-      await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
-        trick: trickText,
-        timestamp: new Date()
-      });
-      alert("Trick Cloud par save ho gayi! ✅");
-    } catch (e) {
-      console.error("Save Error:", e);
-      alert("Save fail: " + e.message);
-    }
-  };
-window.saveFavToCloud = async (key, isAdd) => {
-  const user = auth.currentUser;
-  if (!user) return;
-
-  const favDoc = doc(db, "users", user.uid, "favorites", key);
-  try {
-    if (isAdd) {
-      await setDoc(favDoc, { savedAt: new Date() });
-    } else {
-      // Agar favorite hataya to cloud se delete karein
-      const { deleteDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
-      await deleteDoc(favDoc);
-    }
-  } catch (e) {
-    console.error("Fav Sync Error:", e);
-  }
-};
-        // index.html ki module script ke andar ye likha hona chahiye
-window.openAboutModal = function() {
-    const modal = document.getElementById('aboutModal');
-    if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-};
-  // --- AUTH STATUS ---
-onAuthStateChanged(auth, async (user) => {
-  const loginBtn = document.getElementById('login-btn');
-  const logoutBtn = document.getElementById('logout-btn');
-  const userName = document.getElementById('user-name');
-
-  if (user) {
-    loginBtn.setAttribute('style', 'display: none !important');
-    logoutBtn.style.display = 'inline-block';
-    userName.textContent = "Hi, " + user.displayName.split(' ')[0];
-    userName.style.display = 'inline-block';
-
-    // 1. Load Tricks
-    const trickSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
-    let tricks = {};
-    trickSnap.forEach(d => tricks[d.id] = d.data().trick);
-    if (window.updateLocalTricks) window.updateLocalTricks(tricks);
-
-    // 2. Load Favorites from Cloud (Naya Logic)
-    const favSnap = await getDocs(collection(db, "users", user.uid, "favorites"));
-    let cloudFavs = [];
-    favSnap.forEach(d => cloudFavs.push(d.id)); // document ID hi word key hai (e.g., "OWS-1")
-    if (window.updateLocalFavs) window.updateLocalFavs(cloudFavs);
-
-  } else {
-    loginBtn.setAttribute('style', 'display: flex !important');
-    logoutBtn.style.display = 'none';
-    userName.style.display = 'none';
-  }
-});
-</script>
     <div id="aboutModal" class="modal-overlay hidden" onclick="if(event.target==this) closeAboutModal()">
         <div class="modal-content">
             <div class="modal-header">
@@ -250,13 +125,12 @@ onAuthStateChanged(auth, async (user) => {
             </div>
             <div class="about-body">
                 <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखो।</strong></p>
-                <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है जिसे SSC (CGL, CHSL, MTS, CPO) और अन्य Competitive Exams की तैयारी के लिए खास तौर पर डिजाइन किया गया है।</p>
-                <h3>🔥 मुख्य विशेषताएँ (Key Features)</h3>
+                <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है।</p>
+                <h3>🔥 मुख्य विशेषताएँ</h3>
                 <ul>
-                    <li><strong>Mnemonics Magic (Cloud Sync):</strong> अपनी खुद की Trick लिखें और Google Account पर सेव करें।</li>
-                    <li><strong>Targeted Quiz:</strong> Word संख्या के हिसाब से Range-wise प्रैक्टिस करें।</li>
-                    <li><strong>Mistake Bucket:</strong> सिर्फ गलत हुए सवालों को दोबारा हल करें।</li>
-                    <li><strong>Personalized Hard List:</strong> कठिन शब्दों को Favorite मार्क करें।</li>
+                    <li><strong>Mnemonics Magic:</strong> Cloud Sync के साथ।</li>
+                    <li><strong>Targeted Quiz:</strong> Range-wise प्रैक्टिस।</li>
+                    <li><strong>Mistake Bucket:</strong> गलत सवालों का रिविजन।</li>
                 </ul>
                 <div class="about-footer">
                     <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
@@ -266,18 +140,66 @@ onAuthStateChanged(auth, async (user) => {
         </div>
     </div>
 
+    <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDocs, collection, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAcQmU2n_JcIOG-9ONCH74_AGFDyvLOpNM",
+            authDomain: "rankupvocab.firebaseapp.com",
+            projectId: "rankupvocab",
+            storageBucket: "rankupvocab.firebasestorage.app",
+            messagingSenderId: "1038821377168",
+            appId: "1:1038821377168:web:39c201773384c4b8408415"
+        };
+
+        const appFirebase = initializeApp(firebaseConfig);
+        const auth = getAuth(appFirebase);
+        const db = getFirestore(appFirebase);
+        const provider = new GoogleAuthProvider();
+
+        window.login = async () => { try { await signInWithPopup(auth, provider); } catch (e) { alert(e.message); } };
+        window.logout = async () => { await signOut(auth); location.reload(); };
+
+        window.saveTrickToCloud = async (wordId, trickText) => {
+            const user = auth.currentUser;
+            if (!user) return alert("Login First!");
+            try {
+                await setDoc(doc(db, "users", user.uid, "tricks", wordId), { trick: trickText, timestamp: new Date() });
+                alert("Saved to Cloud! ✅");
+            } catch (e) { console.error(e); }
+        };
+
+        window.saveFavToCloud = async (key, isAdd) => {
+            const user = auth.currentUser;
+            if (!user) return;
+            const favDoc = doc(db, "users", user.uid, "favorites", key);
+            isAdd ? await setDoc(favDoc, { savedAt: new Date() }) : await deleteDoc(favDoc);
+        };
+
+        onAuthStateChanged(auth, async (user) => {
+            const lBtn = document.getElementById('login-btn'), loBtn = document.getElementById('logout-btn'), uName = document.getElementById('user-name');
+            if (user) {
+                lBtn.style.setProperty('display', 'none', 'important');
+                loBtn.style.display = 'inline-block';
+                uName.textContent = "Hi, " + user.displayName.split(' ')[0];
+                uName.style.display = 'inline-block';
+
+                const [tSnap, fSnap] = await Promise.all([
+                    getDocs(collection(db, "users", user.uid, "tricks")),
+                    getDocs(collection(db, "users", user.uid, "favorites"))
+                ]);
+                let tricks = {}; tSnap.forEach(d => tricks[d.id] = d.data().trick);
+                let favs = []; fSnap.forEach(d => favs.push(d.id));
+                window.updateLocalTricks(tricks);
+                window.updateLocalFavs(favs);
+            } else {
+                lBtn.style.setProperty('display', 'flex', 'important');
+                loBtn.style.display = 'none'; uName.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
