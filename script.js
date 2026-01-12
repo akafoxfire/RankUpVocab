@@ -6,8 +6,16 @@ const state = {
     filterFav: false
 };
 
-window.updateLocalTricks = (data) => { state.userTricks = data; app.render(); };
-window.updateLocalFavs = (data) => { state.favs = new Set(data); syncStats(); app.render(); };
+window.updateLocalTricks = (data) => {
+    state.userTricks = data;
+    app.render(); 
+};
+
+window.updateLocalFavs = (data) => {
+    state.favs = new Set(data);
+    syncStats(); 
+    app.render();
+};
 
 async function init() {
     try {
@@ -16,7 +24,8 @@ async function init() {
             fetch('idioms.json').then(r => r.json())
         ]);
         state.all = [...o.vocabulary.map(v => ({ ...v, type: 'OWS' })), ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))];
-        syncStats(); app.render();
+        syncStats(); 
+        app.render();
     } catch (e) { console.error("Data Load Error"); }
 }
 
@@ -43,14 +52,16 @@ function jumpToCard() {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         targetCard.style.outline = "3px solid var(--p)";
         setTimeout(() => targetCard.style.outline = "none", 2500);
-    } else { alert("ID not found!"); }
+    } else { alert("Word with this ID not found in current list!"); }
 }
 
 window.handleSaveTrick = function(k) {
     const trickText = document.getElementById(`trick-input-${k}`).value.trim();
-    if (!trickText) return alert("Likhiye pehle!");
-    if (window.saveTrickToCloud) { window.saveTrickToCloud(k, trickText); state.userTricks[k] = trickText; }
-    else { alert("Login First!"); }
+    if (!trickText) return alert("Please enter some text!");
+    if (window.saveTrickToCloud) {
+        window.saveTrickToCloud(k, trickText);
+        state.userTricks[k] = trickText;
+    } else { alert("Firebase logic not loaded!"); }
 };
 
 const app = {
@@ -68,15 +79,19 @@ const app = {
                 <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
                     <span>${v.type} #${v.id} 🔥${v.r || 0}</span> 
                     <div>
-                        <button onclick="toggleTrick('${k}')" style="background:none; border:none; cursor:pointer;">💡</button>
-                        <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer;">${state.favs.has(k) ? '❤️' : '🤍'}</button>
+                        <button onclick="toggleTrick('${k}')" style="background:none; border:none; cursor:pointer; font-size: 1rem;">💡</button>
+                        <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size: 1rem;">${state.favs.has(k) ? '❤️' : '🤍'}</button>
                     </div>
                 </div>
-                <h3>${v.word}</h3><p>${v.meaning}</p>
-                <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:10; flex-direction:column; padding:15px; border-radius:20px;">
-                    <span onclick="toggleTrick('${k}')" style="align-self:flex-end; cursor:pointer; color:red;">✖</span>
-                    <textarea id="trick-input-${k}" style="flex:1; margin:10px 0; padding:10px; border:1px dashed var(--p); border-radius:10px;">${savedTrick}</textarea>
-                    <button onclick="handleSaveTrick('${k}')" style="background:var(--p); color:white; border:none; padding:10px; border-radius:8px; cursor:pointer;">Save</button>
+                <h3>${v.word}</h3>
+                <p>${v.meaning}</p>
+                <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:10; flex-direction:column; padding:15px; border-radius:20px; box-shadow: inset 0 0 10px rgba(0,0,0,0.1);">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-weight:700; font-size:0.8rem;">My Trick:</span>
+                        <span onclick="toggleTrick('${k}')" style="cursor:pointer; color:red; font-weight:bold;">✖</span>
+                    </div>
+                    <textarea id="trick-input-${k}" placeholder="Write your mnemonic here..." style="flex:1; margin:10px 0; padding:10px; border:1px dashed var(--p); border-radius:10px; background:var(--bg); color:var(--txt); font-family:inherit;">${savedTrick}</textarea>
+                    <button onclick="handleSaveTrick('${k}')" style="background:var(--p); color:white; border:none; padding:10px; border-radius:8px; cursor:pointer; font-weight:700;">Save to Cloud</button>
                 </div>
                 <div class="v-btns">
                     <button onclick="this.innerText='${v.hi}'">Hindi</button>
@@ -89,7 +104,8 @@ const app = {
         const isAdd = !state.favs.has(k);
         isAdd ? state.favs.add(k) : state.favs.delete(k);
         if (window.saveFavToCloud) window.saveFavToCloud(k, isAdd);
-        syncStats(); this.render(); 
+        syncStats(); 
+        this.render(); 
     },
     toggleHardFilter() {
         state.filterFav = !state.filterFav;
@@ -101,41 +117,62 @@ const app = {
 };
 
 const quiz = {
-    setCat(c, el) { state.quiz.cat = c; document.querySelectorAll('.c-chip').forEach(b => b.classList.remove('active')); el.classList.add('active'); },
+    setCat(c, el) { 
+        state.quiz.cat = c; 
+        document.querySelectorAll('.c-chip').forEach(b => b.classList.remove('active')); 
+        el.classList.add('active'); 
+    },
     init() {
         const lim = parseInt(document.getElementById('qLimit').value);
         const fr = parseInt(document.getElementById('qFrom').value);
         const to = parseInt(document.getElementById('qTo').value);
         state.quiz.pool = state.all.filter(v => (state.quiz.cat === 'ALL' || v.type === state.quiz.cat) && v.id >= fr && v.id <= to).sort(() => 0.5 - Math.random()).slice(0, lim);
-        if (!state.quiz.pool.length) return alert("Range check karein!");
-        state.quiz.idx = 0; state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
-        router('play'); this.render();
+        if (!state.quiz.pool.length) return alert("No words found in this range!");
+        state.quiz.idx = 0; 
+        state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
+        router('play'); 
+        this.render();
     },
     render() {
         const q = state.quiz.pool[state.quiz.idx];
-        if (!q.opts) { let dist = state.all.filter(v => v.word !== q.word).sort(() => 0.5 - Math.random()).slice(0, 3); q.opts = [...dist, q].sort(() => 0.5 - Math.random()); }
+        if (!q.opts) { 
+            let dist = state.all.filter(v => v.word !== q.word).sort(() => 0.5 - Math.random()).slice(0, 3); 
+            q.opts = [...dist, q].sort(() => 0.5 - Math.random()); 
+        }
         document.getElementById('q-label').innerText = `Question ${state.quiz.idx + 1}/${state.quiz.pool.length}`;
         document.getElementById('q-bar').style.width = `${((state.quiz.idx + 1) / state.quiz.pool.length) * 100}%`;
         document.getElementById('q-text').innerText = q.meaning;
         document.getElementById('q-opts').innerHTML = q.opts.map(o => `<button class="opt-btn" onclick="quiz.select('${o.word}')">${o.word}</button>`).join('');
     },
-    select(w) { state.quiz.ans[state.quiz.idx] = w; if (state.quiz.idx < state.quiz.pool.length - 1) { state.quiz.idx++; this.render(); } else { this.finish(); } },
+    select(w) { 
+        state.quiz.ans[state.quiz.idx] = w; 
+        if (state.quiz.idx < state.quiz.pool.length - 1) { 
+            state.quiz.idx++; 
+            this.render(); 
+        } else { 
+            this.finish(); 
+        } 
+    },
     finish() {
         router('results');
         let correct = 0;
         document.getElementById('analysis-list').innerHTML = state.quiz.pool.map((q, i) => {
-            const isOk = state.quiz.ans[i] === q.word; if (isOk) correct++;
+            const isOk = state.quiz.ans[i] === q.word; 
+            if (isOk) correct++;
             return `<div class="vocab-card" style="border-left:5px solid ${isOk ? '#10b981' : '#ef4444'}; margin-bottom:10px;">
-                <p>${q.meaning}</p><b>${q.word} ${isOk ? '✅' : '❌'}</b>
+                <p>${q.meaning}</p>
+                <b>Correct: ${q.word} ${isOk ? '✅' : '❌ (You: ' + (state.quiz.ans[i] || 'Skipped') + ')'}</b>
             </div>`;
         }).join('');
         document.getElementById('result-score').innerText = `${correct}/${state.quiz.pool.length}`;
     },
     retryMistakes() {
         state.quiz.pool = state.quiz.pool.filter((q, i) => state.quiz.ans[i] !== q.word);
-        state.quiz.idx = 0; state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
+        state.quiz.idx = 0; 
+        state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
         if (!state.quiz.pool.length) return router('study');
-        router('play'); this.render();
+        router('play'); 
+        this.render();
     }
 };
 
@@ -153,19 +190,28 @@ document.getElementById('theme-btn').onclick = () => {
 };
 
 window.toggleTrick = function(k) {
-    const o = document.getElementById(`overlay-${k}`);
-    o.style.display = (o.style.display === "none" || o.style.display === "") ? "flex" : "none";
+    const overlay = document.getElementById(`overlay-${k}`);
+    if (overlay.style.display === "none" || overlay.style.display === "") {
+        overlay.style.display = "flex";
+    } else {
+        overlay.style.display = "none";
+    }
 };
 
-// MODAL LOGIC FIX
 window.openAboutModal = function() {
     const m = document.getElementById('aboutModal');
-    if (m) { m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    if (m) {
+        m.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
+    }
 };
 
 window.closeAboutModal = function() {
     const m = document.getElementById('aboutModal');
-    if (m) { m.style.display = 'none'; document.body.style.overflow = 'auto'; }
+    if (m) {
+        m.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
+    }
 };
 
 init();
