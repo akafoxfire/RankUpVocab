@@ -153,19 +153,35 @@ const quiz = {
             this.finish(); 
         } 
     },
-    finish() {
-        router('results');
-        let correct = 0;
-        document.getElementById('analysis-list').innerHTML = state.quiz.pool.map((q, i) => {
-            const isOk = state.quiz.ans[i] === q.word; 
-            if (isOk) correct++;
-            return `<div class="vocab-card" style="border-left:5px solid ${isOk ? '#10b981' : '#ef4444'}; margin-bottom:10px;">
-                <p>${q.meaning}</p>
-                <b>Correct: ${q.word} ${isOk ? '✅' : '❌ (You: ' + (state.quiz.ans[i] || 'Skipped') + ')'}</b>
-            </div>`;
-        }).join('');
-        document.getElementById('result-score').innerText = `${correct}/${state.quiz.pool.length}`;
-    },
+   finish() {
+    router('results');
+    let correct = 0;
+    
+    // 1. Analysis List Render
+    document.getElementById('analysis-list').innerHTML = state.quiz.pool.map((q, i) => {
+        const isOk = state.quiz.ans[i] === q.word; 
+        if (isOk) correct++;
+        return `<div class="vocab-card" style="border-left:5px solid ${isOk ? '#10b981' : '#ef4444'}; margin-bottom:10px;">
+            <p style="font-size:0.9rem; margin-bottom:8px">${q.meaning}</p>
+            <div style="display:flex; justify-content:space-between; align-items:center">
+                <span style="font-size:0.8rem; color:#64748b">Your: <b>${state.quiz.ans[i] || '-'}</b></span>
+                <span style="font-weight:800">${q.word} ${isOk ? '✅' : '❌'}</span>
+            </div>
+        </div>`;
+    }).join('');
+
+    // 2. Score Update
+    document.getElementById('result-score').innerText = `${correct}/${state.quiz.pool.length}`;
+
+    // 3. Buttons Fix (Ye line zaroori hai design ke liye)
+    const resActions = document.querySelector('.res-actions');
+    if(resActions) {
+        resActions.innerHTML = `
+            <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
+            <button onclick="router('study')" class="btn-home">Back to Home</button>
+        `;
+    }
+}
     retryMistakes() {
         state.quiz.pool = state.quiz.pool.filter((q, i) => state.quiz.ans[i] !== q.word);
         state.quiz.idx = 0; 
@@ -215,3 +231,4 @@ window.closeAboutModal = function() {
 };
 
 init();
+
