@@ -10,10 +10,10 @@
 <body class="light">
     <header class="navbar">
     <div class="container nav-content">
-        <div class="logo">
-            <img src="logo.png" alt="RankUp" class="nav-logo-img">
-            RankUp<span>Vocab</span>
-        </div>
+       <div class="logo" onclick="openAboutModal()" style="cursor: pointer;">
+    <img src="logo.png" alt="RankUp" class="nav-logo-img">
+    RankUp<span>Vocab</span>
+</div>
 
         <div class="tabs">
             <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
@@ -233,7 +233,7 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 </script>
-    <div id="aboutModal" class="modal-overlay" onclick="if(event.target==this) closeAboutModal()">
+    <div id="aboutModal" class="modal-overlay hidden" onclick="if(event.target==this) closeAboutModal()">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="logo-small">R</div>
@@ -260,6 +260,7 @@ onAuthStateChanged(auth, async (user) => {
 
 </body>
 </html>
+
 
 
 
