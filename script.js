@@ -234,7 +234,8 @@ window.toggleTrick = function(k) {
     }
 };
 
-// --- FINAL MODAL LOGIC (Cleaned & Unified) ---
+// --- FINAL & CLEAN MODAL LOGIC ---
+// Isse humne module se bahar nikal kar global banaya hai
 window.openAboutModal = function() {
     const modal = document.getElementById('aboutModal');
     if (modal) {
@@ -251,16 +252,17 @@ window.closeAboutModal = function() {
     }
 };
 
-// Sabse solid tarika click pakadne ka (Laptop + Mobile)
-document.addEventListener('click', (e) => {
+// Laptop/Desktop ke liye Fail-safe Click Listener
+// Ye ID par nahi, seedha '.logo' class par kaam karega
+document.addEventListener('mousedown', (e) => {
     if (e.target.closest('.logo')) {
-        e.preventDefault();
         window.openAboutModal();
     }
 });
 
 
 init();
+
 
 
 
