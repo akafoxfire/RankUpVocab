@@ -885,28 +885,31 @@ body.dark .fav-pill:hover {
 .about-footer p strong {
     color: var(--p);
 }
-/* Desktop/Laptop Fix */
+/* --- FINAL DESKTOP & MODAL FIX --- */
 @media screen and (min-width: 601px) {
     .logo {
-        cursor: pointer !important;
-        pointer-events: auto !important; /* Ye click enable karega */
+        font-size: 1.5rem !important; /* Laptop par text wapas dikhao */
         display: flex !important;
-        font-size: 1.4rem !important; /* Laptop par text wapas layega */
+        align-items: center !important;
+        cursor: pointer !important;
+        pointer-events: auto !important; 
+        min-width: 180px !important; /* Clickable area bada karo */
     }
-    
-    .nav-logo-img {
-        pointer-events: none; /* Image click ko block na kare */
+    .logo span {
+        display: inline !important; /* 'Vocab' text ko laptop par dikhao */
     }
 }
 
-/* Modal Z-Index Fix */
+/* Modal hamesha sabse upar dikhe */
 .modal-overlay {
-    z-index: 10000 !important; /* Taaki laptop navbar ke piche na chupe */
+    z-index: 99999 !important;
 }
 
-.logo {
-    cursor: pointer !important;
+/* Safety for hidden class */
+.hidden {
+    display: none !important;
 }
+
 
 
 
