@@ -251,6 +251,17 @@ window.closeAboutModal = function() {
     }
 };
 
+// Laptop aur Desktop ke liye direct listener
+document.addEventListener('click', function (e) {
+    // Check karein ki kya click logo par ya uske andar ki image par hua hai
+    if (e.target.closest('.logo')) {
+        if (typeof window.openAboutModal === 'function') {
+            window.openAboutModal();
+        }
+    }
+});
+
 init();
+
 
 
