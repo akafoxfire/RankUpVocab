@@ -497,3 +497,46 @@ body {
     background: var(--card) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
 }
+
+/* Result Page Buttons Styling */
+.res-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-retry, .btn-home {
+    padding: 14px 24px !important;
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    border: none !important;
+    font-size: 0.95rem !important;
+    transition: 0.3s ease;
+}
+
+.btn-retry {
+    background: var(--p) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-home {
+    background: var(--brd) !important;
+    color: var(--txt) !important;
+}
+
+/* Quiz Options Grid Fix */
+.opts-grid .opt-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin: 5px 0;
+    background: var(--card);
+    border: 2px solid var(--brd);
+    border-radius: 15px;
+    font-weight: 700;
+    color: var(--txt);
+    cursor: pointer;
+}
