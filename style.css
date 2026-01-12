@@ -281,3 +281,100 @@ body {
     .nav-content { gap: 10px; }
     .modal-content { padding: 20px; }
 }
+
+/* --- FOOTER CSS (As per original design) --- */
+.app-footer {
+    background: var(--card);
+    border-top: 1px solid var(--brd);
+    padding: 40px 0;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--p);
+}
+
+.logo-small {
+    background: var(--p);
+    color: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 0.7rem;
+}
+
+.footer-content p {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.footer-links {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--p);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* --- QUIZ OPTIONS CSS FIX --- */
+.opts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns design */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.opt-btn {
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--brd);
+    background: var(--bg);
+    color: var(--txt);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.opt-btn:hover {
+    border-color: var(--p);
+    background: var(--card);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.1);
+}
+
+/* Dark mode compatibility for Quiz Buttons */
+body.dark .opt-btn {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark .opt-btn:hover {
+    background: var(--p);
+    color: white;
+}
+
+/* Mobile Responsive Quiz */
+@media (max-width: 600px) {
+    .opts-grid {
+        grid-template-columns: 1fr; /* Mobile par ek ke niche ek options */
+    }
+}
