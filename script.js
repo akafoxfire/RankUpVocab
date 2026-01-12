@@ -234,34 +234,21 @@ window.toggleTrick = function(k) {
     }
 };
 
-// --- FINAL & CLEAN MODAL LOGIC ---
-// Isse humne module se bahar nikal kar global banaya hai
-window.openAboutModal = function() {
-    const modal = document.getElementById('aboutModal');
-    if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
+// --- FINAL MODAL LOGIC (Replace everything below toggleTrick) ---
+window.closeAboutModal = () => {
+    const m = document.getElementById('aboutModal');
+    if (m) { m.classList.add('hidden'); document.body.style.overflow = 'auto'; }
 };
 
-window.closeAboutModal = function() {
-    const modal = document.getElementById('aboutModal');
-    if (modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-};
-
-// Laptop/Desktop ke liye Fail-safe Click Listener
-// Ye ID par nahi, seedha '.logo' class par kaam karega
 document.addEventListener('mousedown', (e) => {
     if (e.target.closest('.logo')) {
-        window.openAboutModal();
+        const m = document.getElementById('aboutModal');
+        if (m) { m.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
     }
 });
 
-
 init();
+
 
 
 
