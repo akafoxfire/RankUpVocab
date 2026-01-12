@@ -235,22 +235,29 @@ window.toggleTrick = function(k) {
 };
 
 // --- ABOUT MODAL FUNCTIONS ---
+// Modal Functions - Globally accessible banaya hai taaki html se call ho sake
 window.openAboutModal = function() {
-    const modal = document.getElementById('aboutModal');
-    if (modal) modal.style.display = 'flex';
-};
-
-window.closeAboutModal = function() {
-    const modal = document.getElementById('aboutModal');
-    if (modal) modal.style.display = 'none';
-};
-
-// Bahar click karne par modal band ho jaye
-window.onclick = function(event) {
-    const modal = document.getElementById('aboutModal');
-    if (event.target == modal) {
-        modal.style.display = "none";
+    const m = document.getElementById('aboutModal');
+    if (m) {
+        m.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Modal khulne par page scroll na ho
     }
 };
 
+window.closeAboutModal = function() {
+    const m = document.getElementById('aboutModal');
+    if (m) {
+        m.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Page scroll wapas chalu
+    }
+};
+
+// Bahar click karne par band ho jaye
+window.addEventListener('click', function(e) {
+    const m = document.getElementById('aboutModal');
+    if (e.target === m) {
+        closeAboutModal();
+    }
+});
 init();
+
