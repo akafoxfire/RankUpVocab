@@ -134,49 +134,69 @@ const quiz = {
         const lim = parseInt(document.getElementById('qLimit').value);
         const fr = parseInt(document.getElementById('qFrom').value);
         const to = parseInt(document.getElementById('qTo').value);
-        state.quiz.pool = state.all.filter(v => (state.quiz.cat === 'ALL' || v.type === state.quiz.cat) && v.id >= fr && v.id <= to)
-            .sort(() => 0.5 - Math.random()).slice(0, lim);
-        if (!state.quiz.pool.length) return alert("No words in this range!");
-        state.quiz.idx = 0; state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
-        router('play'); this.render();
+
+        // Range Filter Logic
+        state.quiz.pool = state.all.filter(v => 
+            (state.quiz.cat === 'ALL' || v.type === state.quiz.cat) && 
+            v.id >= fr && v.id <= to
+        ).sort(() => 0.5 - Math.random()).slice(0, lim);
+
+        if (state.quiz.pool.length === 0) return alert("Is range mein koi words nahi mile!");
+
+        state.quiz.idx = 0;
+        state.quiz.ans = [];
+        router('play');
+        this.render();
     },
     render() {
         const q = state.quiz.pool[state.quiz.idx];
-        let dist = state.all.filter(v => v.word !== q.word).sort(() => 0.5 - Math.random()).slice(0, 3);
-        let opts = [...dist, q].sort(() => 0.5 - Math.random());
+        let distractors = state.all.filter(v => v.word !== q.word).sort(() => 0.5 - Math.random()).slice(0, 3);
+        let options = [...distractors, q].sort(() => 0.5 - Math.random());
+
         document.getElementById('q-label').innerText = `Question ${state.quiz.idx + 1}/${state.quiz.pool.length}`;
         document.getElementById('q-bar').style.width = `${((state.quiz.idx + 1) / state.quiz.pool.length) * 100}%`;
         document.getElementById('q-text').innerText = q.meaning;
-        document.getElementById('q-opts').innerHTML = opts.map(o => `<button class="opt-btn" onclick="quiz.select('${o.word}')">${o.word}</button>`).join('');
+        
+        document.getElementById('q-opts').innerHTML = options.map(o => `
+            <button class="opt-btn" onclick="quiz.select('${o.word}')">${o.word}</button>
+        `).join('');
     },
     select(w) {
         state.quiz.ans[state.quiz.idx] = w;
-        if (state.quiz.idx < state.quiz.pool.length - 1) { state.quiz.idx++; this.render(); }
-        else { this.finish(); }
+        if (state.quiz.idx < state.quiz.pool.length - 1) {
+            state.quiz.idx++;
+            this.render();
+        } else {
+            this.finish();
+        }
     },
     finish() {
         router('results');
-        let correct = 0;
-        document.getElementById('analysis-list').innerHTML = state.quiz.pool.map((q, i) => {
-            const isOk = state.quiz.ans[i] === q.word; if (isOk) correct++;
-            return `<div class="vocab-card" style="border-left:5px solid ${isOk ? '#10b981' : '#ef4444'}; margin-bottom:10px;">
-                <p style="font-size:0.9rem; margin-bottom:8px">${q.meaning}</p>
-                <div style="display:flex; justify-content:space-between; align-items:center">
-                    <span style="font-size:0.8rem; color:#64748b">Your: <b>${state.quiz.ans[i] || '-'}</b></span>
-                    <span style="font-weight:800">${q.word} ${isOk ? '✅' : '❌'}</span>
-                </div>
-            </div>`;
+        let score = 0;
+        const analysis = state.quiz.pool.map((q, i) => {
+            const isCorrect = state.quiz.ans[i] === q.word;
+            if (isCorrect) score++;
+            return `
+                <div class="vocab-card" style="border-left: 5px solid ${isCorrect ? '#10b981' : '#ef4444'}">
+                    <p>${q.meaning}</p>
+                    <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                        <span style="font-size:0.8rem">Your: ${state.quiz.ans[i] || 'Skip'}</span>
+                        <span style="font-weight:800; color:${isCorrect ? '#10b981' : '#ef4444'}">${q.word}</span>
+                    </div>
+                </div>`;
         }).join('');
-        document.getElementById('result-score').innerText = `${correct}/${state.quiz.pool.length}`;
+        document.getElementById('result-score').innerText = `${score}/${state.quiz.pool.length}`;
+        document.getElementById('analysis-list').innerHTML = analysis;
     },
     retryMistakes() {
         state.quiz.pool = state.quiz.pool.filter((q, i) => state.quiz.ans[i] !== q.word);
-        state.quiz.idx = 0; state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
-        if (!state.quiz.pool.length) return router('study');
-        router('play'); this.render();
+        if (state.quiz.pool.length === 0) return router('study');
+        state.quiz.idx = 0;
+        state.quiz.ans = [];
+        router('play');
+        this.render();
     }
 };
-
 function router(v) {
     document.querySelectorAll('.view').forEach(e => e.classList.add('hidden'));
     document.getElementById('view-' + v).classList.remove('hidden');
@@ -210,3 +230,4 @@ window.addEventListener('click', (e) => {
 });
 
 init();
+
