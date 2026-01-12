@@ -10,9 +10,9 @@
 <body class="light">
     <header class="navbar">
     <div class="container nav-content">
-        <div class="logo" onclick="openAboutModal()" style="cursor: pointer;">
-    <img src="logo.png" alt="RankUp" class="nav-logo-img">
-    RankUp<span>Vocab</span>
+       <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important; display: flex !important; align-items: center;">
+    <img src="logo.png" alt="RankUp" class="nav-logo-img" style="pointer-events: none;">
+    <span style="pointer-events: none;">RankUp<span style="color:var(--p)">Vocab</span></span>
 </div>
 
         <div class="tabs">
@@ -270,6 +270,7 @@ onAuthStateChanged(auth, async (user) => {
     
 </body>
 </html>
+
 
 
 
