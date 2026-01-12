@@ -9,28 +9,27 @@
 </head>
 <body class="light">
     <header class="navbar">
-    <div class="container nav-content">
-       <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important; display: flex !important; align-items: center;">
-            <img src="logo.png" alt="RankUp" class="nav-logo-img" style="pointer-events: none;">
-            <span style="pointer-events: none;">RankUp<span style="color:var(--p)">Vocab</span></span>
-        </div>
+        <div class="container nav-content">
+            <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important;">
+                <img src="logo.png" alt="RankUp" class="nav-logo-img">
+                RankUp<span>Vocab</span>
+            </div>
 
-        <div class="tabs">
-            <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
-            <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
-        </div>
+            <div class="tabs">
+                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+            </div>
 
-        <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
-            <button id="login-btn" onclick="login()" title="Login with Google">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
-            </button>
-            <span id="user-name" style="display:none; font-weight:bold; font-size: 0.8rem; color: var(--p);"></span>
-            <button id="logout-btn" style="display:none; background:none; border:1px solid #ef4444; color:#ef4444; padding:4px 8px; border-radius:8px; cursor:pointer; font-size:0.7rem; font-weight:bold;" onclick="logout()">Logout</button>
+            <div id="auth-section" style="display: flex; align-items: center; gap: 8px;">
+                <button id="login-btn" onclick="login()" title="Login with Google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
+                </button>
+                <span id="user-name" style="display:none; font-weight:bold; font-size: 0.8rem;"></span>
+                <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
+            </div>
+            <button id="theme-btn" class="circ-btn">🌙</button>
         </div>
-
-        <button id="theme-btn" class="circ-btn">🌙</button>
-    </div>
-</header>
+    </header>
 
     <main class="container">
         <div class="dash-grid">
@@ -46,7 +45,7 @@
                     <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
                 </div>
                 <div class="jump-box" style="display: flex; gap: 5px;">
-                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
+                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt);">
                     <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
                 </div>
                 <select id="typeFilter" onchange="app.render()">
@@ -70,8 +69,8 @@
                     </div>
                     <div class="num-grid">
                         <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
-                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
-                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
+                        <div class="f-group"><label>From (ID)</label><input type="number" id="qFrom" value="1"></div>
+                        <div class="f-group"><label>To (ID)</label><input type="number" id="qTo" value="1000"></div>
                     </div>
                     <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
                 </div>
@@ -85,58 +84,35 @@
                     <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
                 </div>
                 <div class="q-card">
-                    <h2 id="q-text">Meaning...</h2>
+                    <h2 id="q-text" style="margin-bottom: 25px; font-size: 1.4rem;">Meaning...</h2>
                     <div id="q-opts" class="opts-grid"></div>
                 </div>
             </div>
         </section>
 
         <section id="view-results" class="view hidden">
-            <div class="res-card">
+            <div class="res-card" style="text-align: center; margin-bottom: 30px;">
                 <div class="score-box">
                     <small>Final Score</small>
                     <h1 id="result-score">0/0</h1>
                 </div>
-                <div class="res-actions">
-                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home">Home</button>
+                <div class="res-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                    <button onclick="quiz.retryMistakes()" class="btn-retry" style="padding:12px 20px; border-radius:12px; border:none; background:#ef4444; color:white; font-weight:bold; cursor:pointer;">Retry Mistakes</button>
+                    <button onclick="router('study')" class="btn-home" style="padding:12px 20px; border-radius:12px; border:none; background:var(--p); color:white; font-weight:bold; cursor:pointer;">Back Home</button>
                 </div>
             </div>
             <div id="analysis-list" class="analysis-stack"></div>
         </section>
     </main>
 
-    <footer class="app-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <div class="logo-small">R</div>
-                <span>Rakesh Kumar Dudhawal</span>
-            </div>
-            <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
-        </div>
-    </footer>
-
     <div id="aboutModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeAboutModal()">&times;</span>
-            <div class="about-header">
-                <img src="logo.png" alt="RankUp" style="width: 50px; border-radius: 10px; margin-bottom: 10px;">
-                <h2 style="color: var(--p);">RankUp Vocab | SSC Pro</h2>
-            </div>
-            <div class="about-body">
-                <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखo।</strong></p>
-                <p>RankUp Vocab ek smart web application hai jo SSC preparation ko aasan banata hai.</p>
-                <h3 style="margin-top: 15px; color: var(--p);">🔥 Features:</h3>
-                <ul style="padding-left: 20px; margin-bottom: 15px;">
-                    <li><strong>Cloud Mnemonics:</strong> Apni trick likhein aur save karein.</li>
-                    <li><strong>Custom Quizzes:</strong> Range-wise practice karein.</li>
-                    <li><strong>Mistake Retry:</strong> Galat sawalon ka dobara test lein.</li>
-                </ul>
-                <div class="about-footer">
-                    <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
-                    <p>Version 2.0 (Cloud Sync Enabled)</p>
-                </div>
-            </div>
+            <h2 style="color: var(--p); margin-bottom: 15px;">RankUp Vocab Pro</h2>
+            <p><strong>SSC Preparation Simplified.</strong></p>
+            <p>Apne mushkil words ko trick ke saath cloud par save karein aur targeted quiz ke sath taiyari karein.</p>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--brd);">
+            <p>Developer: Rakesh Kumar Dudhawal</p>
         </div>
     </div>
 
@@ -165,10 +141,10 @@
 
         window.saveTrickToCloud = async (wordId, trickText) => {
             const user = auth.currentUser;
-            if (!user) return alert("Pehle Login karein!");
+            if (!user) return alert("Please Login!");
             try {
-                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), { trick: trickText, timestamp: new Date() });
-                alert("Saved! ✅");
+                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), { trick: trickText });
+                alert("Saved to Cloud! ✅");
             } catch (e) { console.error(e); }
         };
 
@@ -189,9 +165,11 @@
                 logoutBtn.style.display = 'inline-block';
                 userName.textContent = "Hi, " + user.displayName.split(' ')[0];
                 userName.style.display = 'inline-block';
+                
                 const tSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
                 let tricks = {}; tSnap.forEach(d => tricks[d.id] = d.data().trick);
                 if (window.updateLocalTricks) window.updateLocalTricks(tricks);
+
                 const fSnap = await getDocs(collection(db, "users", user.uid, "favorites"));
                 let cloudFavs = []; fSnap.forEach(d => cloudFavs.push(d.id));
                 if (window.updateLocalFavs) window.updateLocalFavs(cloudFavs);
