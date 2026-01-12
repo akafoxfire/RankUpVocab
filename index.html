@@ -9,39 +9,69 @@
 </head>
 <body class="light">
     <header class="navbar">
-        <div class="container nav-content">
-            <div class="logo" onclick="openAboutModal()" style="cursor: pointer; display: flex; align-items: center;">
-                <img src="logo.png" alt="RankUp" class="nav-logo-img">
-                <span>RankUp<span style="color:var(--p)">Vocab</span></span>
-            </div>
-
-            <div class="tabs">
-                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
-                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
-            </div>
-
-            <div id="auth-section">
-                <button id="theme-btn" class="icon-btn">🌙</button>
-            </div>
+    <div class="container nav-content">
+       <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important; display: flex !important; align-items: center;">
+            <img src="logo.png" alt="RankUp" class="nav-logo-img" style="pointer-events: none;">
+            <span style="pointer-events: none;">RankUp<span style="color:var(--p)">Vocab</span></span>
         </div>
+
+        <div class="tabs">
+            <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+            <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+        </div>
+
+        <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
+            <div id="user-info" style="display: none; align-items: center; gap: 10px;">
+                <img id="user-photo" src="" alt="" style="width: 30px; height: 30px; border-radius: 50%;">
+                <span id="user-name" style="font-size: 0.8rem; font-weight: 600; color: var(--txt);"></span>
+            </div>
+            <button id="login-btn" class="icon-btn" title="Login with Google">👤</button>
+            <button id="logout-btn" class="icon-btn" title="Logout" style="display: none;">🚪</button>
+            <button id="theme-btn" class="icon-btn">🌙</button>
+        </div>
+    </div>
     </header>
 
     <main class="container">
+        <div id="dashboard" class="dashboard-stats">
+            <div class="stat-card">
+                <span class="stat-val" id="stat-ows">0</span>
+                <span class="stat-label">OWS Loaded</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-val" id="stat-idioms">0</span>
+                <span class="stat-label">Idioms Loaded</span>
+            </div>
+            <div class="stat-card" onclick="app.toggleHardFilter()" id="hf-btn" style="cursor:pointer">
+                <span class="stat-val" id="stat-hard">0</span>
+                <span class="stat-label">Favorites ❤️</span>
+            </div>
+        </div>
+
         <div id="view-study" class="view">
             <div class="search-box">
                 <input type="text" id="searchBar" placeholder="Search words or meanings..." oninput="app.render()">
                 <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Types</option>
-                    <option value="OWS">OWS</option>
-                    <option value="Idiom">Idioms</option>
+                    <option value="OWS">OWS Only</option>
+                    <option value="Idiom">Idioms Only</option>
                 </select>
+                <div class="jump-box" style="display: flex; gap: 5px;">
+                    <input type="number" id="jump-id" placeholder="ID" style="width: 60px;">
+                    <button onclick="jumpToCard()" class="t-btn" style="padding: 5px 10px;">Jump</button>
+                </div>
             </div>
             <div id="study-grid" class="study-grid"></div>
         </div>
 
         <div id="view-setup" class="view hidden">
             <div class="setup-card">
-                <h2>Quiz Settings</h2>
+                <h2 style="margin-bottom: 20px;">Quiz Settings</h2>
+                <div class="cat-selector">
+                    <button class="c-chip active" onclick="quiz.setCat('ALL', this)">All</button>
+                    <button class="c-chip" onclick="quiz.setCat('OWS', this)">OWS</button>
+                    <button class="c-chip" onclick="quiz.setCat('Idiom', this)">Idioms</button>
+                </div>
                 <div class="setup-group">
                     <label>Limit Questions</label>
                     <input type="number" id="qLimit" value="10">
@@ -53,7 +83,7 @@
                         <input type="number" id="qTo" value="500">
                     </div>
                 </div>
-                <button onclick="quiz.init()" class="start-btn">Start Quiz</button>
+                <button onclick="quiz.init()" class="start-btn">Start Practice</button>
             </div>
         </div>
 
@@ -72,23 +102,48 @@
 
         <div id="view-results" class="view hidden">
             <div class="res-card">
-                <h1>Result: <span id="result-score">0/0</span></h1>
-                <div class="res-actions" id="res-actions-div">
-                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home">Back to Home</button>
+                <div class="res-circle">
+                    <span id="result-score" style="font-size: 2.5rem; font-weight: 800; color: var(--p);">0/0</span>
+                    <p style="font-weight: 600; color: #64748b;">Accuracy</p>
                 </div>
-                <div id="analysis-list" class="analysis-stack"></div>
+                <div class="res-actions" id="res-actions-div"></div>
+                <div id="analysis-list" class="analysis-stack" style="margin-top: 30px; text-align: left;"></div>
             </div>
         </div>
     </main>
 
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo-small">R</div>
+                <span>RankUp Vocab</span>
+            </div>
+            <p>© 2025 RankUp Vocab. Designed for SSC Aspirants.</p>
+            <div class="footer-links">Privacy • Terms • Contact</div>
+        </div>
+    </footer>
+
     <div id="aboutModal" class="modal-overlay" onclick="if(event.target==this) closeAboutModal()">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeAboutModal()">&times;</span>
-            <h2>About RankUp Vocab</h2>
+            <div class="modal-header">
+                <div class="logo-small">R</div>
+                <span style="font-weight: 800; font-size: 1.2rem;">About RankUp Vocab</span>
+                <span class="close-modal" onclick="closeAboutModal()">&times;</span>
+            </div>
             <div class="about-body">
-                <p>One Word Substitutions और Idioms के लिए बेहतरीन तैयारी प्लेटफॉर्म।</p>
-                <p><b>Developer:</b> Rakesh Kumar Dudhawal</p>
+                <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखो।</strong></p>
+                <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है जिसे SSC (CGL, CHSL, MTS, CPO) और अन्य Competitive Exams की तैयारी के लिए खास तौर पर डिजाइन किया गया है।</p>
+                <h3>🔥 मुख्य विशेषताएँ (Key Features)</h3>
+                <ul>
+                    <li><strong>Mnemonics Magic (Cloud Sync):</strong> अपनी खुद की Trick लिखें और Google Account पर सेव करें।</li>
+                    <li><strong>Targeted Quiz:</strong> Word संख्या के हिसाब से Range-wise प्रैक्टिस करें।</li>
+                    <li><strong>Mistake Bucket:</strong> सिर्फ गलत हुए सवालों को दोबारा हल करें।</li>
+                    <li><strong>Personalized Hard List:</strong> कठिन शब्दों को Favorite मार्क करें।</li>
+                </ul>
+                <div class="about-footer">
+                    <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
+                    <p>Version 2.0 (Cloud Enabled)</p>
+                </div>
             </div>
         </div>
     </div>
