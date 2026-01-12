@@ -904,6 +904,9 @@ body.dark .fav-pill:hover {
     z-index: 10000 !important; /* Taaki laptop navbar ke piche na chupe */
 }
 
+.logo {
+    cursor: pointer !important;
+}
 
 
 
