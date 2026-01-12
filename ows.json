@@ -690,12 +690,213 @@
   { "id": 689, "type": "OWS", "word": "Fluke", "meaning": "Accidental good fortune", "hi": "अकस्मात सफलता", "r": "" },
   { "id": 690, "type": "OWS", "word": "Flux", "meaning": "Continuous movement and change", "hi": "प्रवाह", "r": "" },
   { "id": 691, "type": "OWS", "word": "Foeticide", "meaning": "Destruction of a foetus", "hi": "भ्रूण हत्या", "r": "" },
-  { "id": 692, "type": "OWS", "word": "Folktale", "meaning": "A story that is passed down from generation to generation through spoken word", "hi": "लोककथा", "r": "" }
+  { "id": 692, "type": "OWS", "word": "Folktale", "meaning": "A story that is passed down from generation to generation through spoken word", "hi": "लोककथा", "r": "" },
+    {
+      "id": 693,
+      "type": "OWS",
+      "word": "Follow",
+      "meaning": "Go or come after a person or thing proceeding ahead",
+      "hi": "अनुसरण करना",
+      "r": 0
+    },
+    {
+      "id": 694,
+      "type": "OWS",
+      "word": "Foreman",
+      "meaning": "Chief of a group of workmen",
+      "hi": "अधिकर्मी",
+      "r": 0
+    },
+    {
+      "id": 695,
+      "type": "OWS",
+      "word": "Forensics",
+      "meaning": "Scientific tests or techniques used in connection with the detection of crime",
+      "hi": "अपराध की जांच के लिए वैज्ञानिक प्रौद्योगिकी",
+      "r": 0
+    },
+    {
+      "id": 696,
+      "type": "OWS",
+      "word": "Foresight",
+      "meaning": "Ability to see what might happen in the future",
+      "hi": "दूरदर्शिता",
+      "r": 0
+    },
+    {
+      "id": 697,
+      "type": "OWS",
+      "word": "Forfeited",
+      "meaning": "Be deprived of property or a right or privilege as a penalty for wrongdoing",
+      "hi": "जब्त कर लिया",
+      "r": 0
+    },
+    {
+      "id": 698,
+      "type": "OWS",
+      "word": "Forge",
+      "meaning": "Move ahead or forward steadily and gradually",
+      "hi": "लगातार आगे बढ़ना",
+      "r": 0
+    },
+    {
+      "id": 699,
+      "type": "OWS",
+      "word": "Forgery",
+      "meaning": "Falsification of documents etc.",
+      "hi": "जालसाजी",
+      "r": 2
+    },
+    {
+      "id": 700,
+      "type": "OWS",
+      "word": "Forthright",
+      "meaning": "Direct and outspoken",
+      "hi": "स्पष्टवादी",
+      "r": 0
+    },
+    {
+      "id": 701,
+      "type": "OWS",
+      "word": "Fortnight",
+      "meaning": "A period of two weeks",
+      "hi": "दो सप्ताह",
+      "r": 2
+    },
+    {
+      "id": 702,
+      "type": "OWS",
+      "word": "Fortuitous",
+      "meaning": "Something that is to your advantage but happened by chance",
+      "hi": "भाग्यशाली",
+      "r": 0
+    },
+    {
+      "id": 703,
+      "type": "OWS",
+      "word": "Fossil",
+      "meaning": "The hard remains of a prehistoric animal or planet that are found inside a rock",
+      "hi": "जीवावशेष",
+      "r": 0
+    },
+    {
+      "id": 704,
+      "type": "OWS",
+      "word": "Foundling",
+      "meaning": "An abandoned child of unknown parents who is found by somebody",
+      "hi": "परित्यक्त शिशु",
+      "r": 0
+    },
+    {
+      "id": 705,
+      "type": "OWS",
+      "word": "Foyer",
+      "meaning": "An entrance hall in a building used by the public, especially a hotel or theatre",
+      "hi": "बरामदा",
+      "r": 3
+    },
+    {
+      "id": 706,
+      "type": "OWS",
+      "word": "Fragile",
+      "meaning": "Something which gets broken easily",
+      "hi": "नाज़ुक",
+      "r": 4
+    },
+    {
+      "id": 707,
+      "type": "OWS",
+      "word": "Frailty",
+      "meaning": "Weakness and poor health",
+      "hi": "कमज़ोरी",
+      "r": 0
+    },
+    {
+      "id": 708,
+      "type": "OWS",
+      "word": "Franchise",
+      "meaning": "Constitutional right to cast vote / License granted to a company to market products",
+      "hi": "मताधिकार, विशेष विक्रय अधिकार",
+      "r": 3
+    },
+    {
+      "id": 709,
+      "type": "OWS",
+      "word": "Fratricide",
+      "meaning": "Murder of one's brother or sister",
+      "hi": "भ्रातृहत्या",
+      "r": 4
+    },
+    {
+      "id": 710,
+      "type": "OWS",
+      "word": "Fraud",
+      "meaning": "An act of deceiving somebody in order to make money",
+      "hi": "धोखा",
+      "r": 2
+    },
+    {
+      "id": 711,
+      "type": "OWS",
+      "word": "Fraught",
+      "meaning": "Causing or affected by anxiety or stress",
+      "hi": "व्याकुल",
+      "r": 0
+    },
+    {
+      "id": 712,
+      "type": "OWS",
+      "word": "Frustration",
+      "meaning": "The feeling of being upset or annoyed as a result of being unable to achieve something",
+      "hi": "निराशा",
+      "r": 0
+    },
+    {
+      "id": 713,
+      "type": "OWS",
+      "word": "Fugitive",
+      "meaning": "A person who has escaped from captivity or is in hiding",
+      "hi": "भगोड़ा",
+      "r": 6
+    },
+    {
+      "id": 714,
+      "type": "OWS",
+      "word": "Fumbling",
+      "meaning": "Doing something awkwardly or in a clumsy manner",
+      "hi": "गड़बड़ करना",
+      "r": 0
+    },
+    {
+      "id": 715,
+      "type": "OWS",
+      "word": "Funambulist",
+      "meaning": "One who walks on ropes",
+      "hi": "रस्सी पर चलनेवाला नट",
+      "r": 1
+    },
+    {
+      "id": 716,
+      "type": "OWS",
+      "word": "Fundraiser",
+      "meaning": "An organisation that raises money for a particular cause",
+      "hi": "विशेष उद्देश्य के लिए धन जुटाना",
+      "r": 0
+    },
+    {
+      "id": 717,
+      "type": "OWS",
+      "word": "Fungus",
+      "meaning": "Simple, fast-spreading plant without flowers or leaves, which can often cause disease",
+      "hi": "फफूँदी",
+      "r": 0
+    }
 
 
     
   ]
 }
+
 
 
 
