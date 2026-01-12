@@ -69,27 +69,31 @@ const app = {
         );
         if (state.filterFav) filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
 
-        g.innerHTML = filtered.map(v => {
+        // Batch rendering for better performance
+        g.innerHTML = filtered.map((v, index) => {
             const k = `${v.type}-${v.id}`;
             const isFav = state.favs.has(k);
             return `
-            <div class="vocab-card" id="card-${v.type}-${v.id}">
-                <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
-                    <span>${v.type} #${v.id} 🔥${v.r || 0}</span>
-                    <div>
-                        <button onclick="toggleTrick('${k}')" style="background:none; border:none; cursor:pointer;">💡</button>
-                        <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer;">${isFav ? '❤️' : '🤍'}</button>
+            <div class="vocab-card" style="animation: fadeInUp 0.4s ease forwards ${index * 0.05}s; opacity:0;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.7rem; font-weight:800; color:var(--p); background:var(--p-soft); padding:4px 10px; border-radius:8px;">${v.type} #${v.id}</span>
+                    <div style="display:flex; gap:10px;">
+                        <button onclick="toggleTrick('${k}')" title="Trick" style="background:none; border:none; cursor:pointer; font-size:1.2rem;">💡</button>
+                        <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.2rem;">${isFav ? '❤️' : '🤍'}</button>
                     </div>
                 </div>
-                <h3 style="margin:10px 0">${v.word}</h3>
-                <p>${v.meaning}</p>
-                <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:10; flex-direction:column; padding:15px; border-radius:20px;">
-                    <textarea id="trick-input-${k}" style="flex:1; margin-bottom:10px; padding:10px; border-radius:10px; border:1px dashed var(--p);">${state.userTricks[k] || ""}</textarea>
-                    <button class="trick-save-btn" onclick="handleSaveTrick('${k}')">Save to Cloud</button>
-                    <button onclick="toggleTrick('${k}')" style="margin-top:5px; background:none; border:none; color:red; cursor:pointer;">Close</button>
+                <h3 style="font-weight:800;">${v.word}</h3>
+                <p style="color:var(--txt-sec); font-size:0.95rem; min-height:45px;">${v.meaning}</p>
+                
+                <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:100; border-radius:28px; padding:20px; flex-direction:column; border:2px solid var(--p);">
+                    <h4 style="font-size:0.8rem; margin-bottom:10px;">Cloud Mnemonic</h4>
+                    <textarea id="trick-input-${k}" style="flex:1; padding:12px; border-radius:12px; border:1px solid var(--brd); background:var(--bg); color:var(--txt); outline:none; resize:none;">${state.userTricks[k] || ""}</textarea>
+                    <button onclick="handleSaveTrick('${k}')" class="launch-btn" style="padding:10px; font-size:0.9rem; margin-top:10px;">Save Sync</button>
+                    <button onclick="toggleTrick('${k}')" style="background:none; border:none; color:#ef4444; font-weight:bold; margin-top:8px; cursor:pointer;">Close</button>
                 </div>
+
                 <div class="v-btns">
-                    <button onclick="this.innerText='${v.hi}'">Hindi</button>
+                    <button onclick="this.innerText='${v.hi}'" style="border:none; background:var(--p-soft); color:var(--p);">Hindi</button>
                     <button onclick="speak('${v.word}')">🔊 Listen</button>
                 </div>
             </div>`;
@@ -168,4 +172,14 @@ window.toggleTrick = (k) => {
 window.closeAboutModal = () => { document.getElementById('aboutModal').classList.add('hidden'); };
 document.getElementById('main-logo').onclick = () => { document.getElementById('aboutModal').classList.remove('hidden'); };
 
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+`;
+document.head.appendChild(style);
+
 init();
+
