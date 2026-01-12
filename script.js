@@ -260,8 +260,40 @@ document.addEventListener('click', function (e) {
         }
     }
 });
+// --- Modal Logic (Laptop & Mobile Fix) ---
+const openModal = () => {
+    const modal = document.getElementById('aboutModal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+const closeModal = () => {
+    const modal = document.getElementById('aboutModal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+};
+
+// Functions ko Global window object mein daalna (Zaroori step)
+window.openAboutModal = openModal;
+window.closeAboutModal = closeModal;
+
+// Laptop ke liye direct Event Listener (Fail-safe)
+document.addEventListener('DOMContentLoaded', () => {
+    const logo = document.getElementById('main-logo');
+    if (logo) {
+        logo.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    }
+});
 
 init();
+
 
 
 
