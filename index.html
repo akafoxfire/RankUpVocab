@@ -10,9 +10,9 @@
 <body class="light">
     <header class="navbar">
         <div class="container nav-content">
-            <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important;">
-                <img src="logo.png" alt="RankUp" class="nav-logo-img">
-                RankUp<span>Vocab</span>
+            <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important; display: flex !important; align-items: center;">
+                <img src="logo.png" alt="RankUp" class="nav-logo-img" style="pointer-events: none;">
+                <span style="pointer-events: none;">RankUp<span style="color:var(--p)">Vocab</span></span>
             </div>
 
             <div class="tabs">
@@ -20,13 +20,14 @@
                 <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
             </div>
 
-            <div id="auth-section" style="display: flex; align-items: center; gap: 8px;">
-                <button id="login-btn" onclick="login()" title="Login with Google">
+            <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+                <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
                 </button>
-                <span id="user-name" style="display:none; font-weight:bold; font-size: 0.8rem;"></span>
+                <span id="user-name" style="display:none; font-weight:bold;"></span>
                 <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
             </div>
+
             <button id="theme-btn" class="circ-btn">🌙</button>
         </div>
     </header>
@@ -45,7 +46,7 @@
                     <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
                 </div>
                 <div class="jump-box" style="display: flex; gap: 5px;">
-                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt);">
+                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
                     <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
                 </div>
                 <select id="typeFilter" onchange="app.render()">
@@ -69,8 +70,8 @@
                     </div>
                     <div class="num-grid">
                         <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
-                        <div class="f-group"><label>From (ID)</label><input type="number" id="qFrom" value="1"></div>
-                        <div class="f-group"><label>To (ID)</label><input type="number" id="qTo" value="1000"></div>
+                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
+                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
                     </div>
                     <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
                 </div>
@@ -84,37 +85,39 @@
                     <div class="progress-bg"><div id="q-bar" class="progress-fill"></div></div>
                 </div>
                 <div class="q-card">
-                    <h2 id="q-text" style="margin-bottom: 25px; font-size: 1.4rem;">Meaning...</h2>
+                    <h2 id="q-text">Meaning...</h2>
                     <div id="q-opts" class="opts-grid"></div>
                 </div>
             </div>
         </section>
 
         <section id="view-results" class="view hidden">
-            <div class="res-card" style="text-align: center; margin-bottom: 30px;">
+            <div class="res-card">
                 <div class="score-box">
                     <small>Final Score</small>
                     <h1 id="result-score">0/0</h1>
                 </div>
-                <div class="res-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
-                    <button onclick="quiz.retryMistakes()" class="btn-retry" style="padding:12px 20px; border-radius:12px; border:none; background:#ef4444; color:white; font-weight:bold; cursor:pointer;">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home" style="padding:12px 20px; border-radius:12px; border:none; background:var(--p); color:white; font-weight:bold; cursor:pointer;">Back Home</button>
+                <div class="res-actions">
+                    <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
+                    <button onclick="router('study')" class="btn-home">Home</button>
                 </div>
             </div>
             <div id="analysis-list" class="analysis-stack"></div>
         </section>
     </main>
 
-    <div id="aboutModal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeAboutModal()">&times;</span>
-            <h2 style="color: var(--p); margin-bottom: 15px;">RankUp Vocab Pro</h2>
-            <p><strong>SSC Preparation Simplified.</strong></p>
-            <p>Apne mushkil words ko trick ke saath cloud par save karein aur targeted quiz ke sath taiyari karein.</p>
-            <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--brd);">
-            <p>Developer: Rakesh Kumar Dudhawal</p>
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo-small">R</div>
+                <span>Rakesh Kumar Dudhawal</span>
+            </div>
+            <p>© 2026 RankUp Vocab. Engineered for Excellence.</p>
+            <div class="footer-links">
+                <span>Hard Work Beats Talent</span>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
     <script type="module">
@@ -136,24 +139,36 @@
         const db = getFirestore(appFB);
         const provider = new GoogleAuthProvider();
 
-        window.login = () => signInWithPopup(auth, provider);
-        window.logout = () => signOut(auth).then(() => location.reload());
+        window.login = async () => {
+            try { await signInWithPopup(auth, provider); } 
+            catch (error) { alert("Login Error: " + error.message); }
+        };
+
+        window.logout = async () => {
+            await signOut(auth);
+            location.reload();
+        };
 
         window.saveTrickToCloud = async (wordId, trickText) => {
             const user = auth.currentUser;
-            if (!user) return alert("Please Login!");
+            if (!user) return alert("Pehle Google se login karein!");
             try {
-                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), { trick: trickText });
-                alert("Saved to Cloud! ✅");
-            } catch (e) { console.error(e); }
+                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
+                    trick: trickText,
+                    timestamp: new Date()
+                });
+                alert("Trick Cloud par save ho gayi! ✅");
+            } catch (e) { alert("Save fail: " + e.message); }
         };
 
         window.saveFavToCloud = async (key, isAdd) => {
             const user = auth.currentUser;
             if (!user) return;
             const favDoc = doc(db, "users", user.uid, "favorites", key);
-            if (isAdd) await setDoc(favDoc, { savedAt: new Date() });
-            else await deleteDoc(favDoc);
+            try {
+                if (isAdd) await setDoc(favDoc, { savedAt: new Date() });
+                else await deleteDoc(favDoc);
+            } catch (e) { console.error("Fav Sync Error:", e); }
         };
 
         onAuthStateChanged(auth, async (user) => {
@@ -161,24 +176,50 @@
             const logoutBtn = document.getElementById('logout-btn');
             const userName = document.getElementById('user-name');
             if (user) {
-                loginBtn.style.display = 'none';
+                loginBtn.setAttribute('style', 'display: none !important');
                 logoutBtn.style.display = 'inline-block';
                 userName.textContent = "Hi, " + user.displayName.split(' ')[0];
                 userName.style.display = 'inline-block';
-                
-                const tSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
-                let tricks = {}; tSnap.forEach(d => tricks[d.id] = d.data().trick);
+
+                const trickSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
+                let tricks = {};
+                trickSnap.forEach(d => tricks[d.id] = d.data().trick);
                 if (window.updateLocalTricks) window.updateLocalTricks(tricks);
 
-                const fSnap = await getDocs(collection(db, "users", user.uid, "favorites"));
-                let cloudFavs = []; fSnap.forEach(d => cloudFavs.push(d.id));
+                const favSnap = await getDocs(collection(db, "users", user.uid, "favorites"));
+                let cloudFavs = [];
+                favSnap.forEach(d => cloudFavs.push(d.id));
                 if (window.updateLocalFavs) window.updateLocalFavs(cloudFavs);
             } else {
-                loginBtn.style.display = 'flex';
+                loginBtn.setAttribute('style', 'display: flex !important');
                 logoutBtn.style.display = 'none';
                 userName.style.display = 'none';
             }
         });
     </script>
+
+    <div id="aboutModal" class="modal-overlay" onclick="closeAboutModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeAboutModal()">&times;</span>
+            <div class="about-header">
+                <img src="logo.png" alt="RankUp" style="width: 50px;">
+                <h2>RankUp Vocab | SSC Preparation Pro Tool</h2>
+            </div>
+            <div class="about-body">
+                <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखो।</strong></p>
+                <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है जिसे SSC (CGL, CHSL, MTS, CPO) की तैयारी के लिए बनाया गया है।</p>
+                <h3>🔥 मुख्य विशेषताएँ</h3>
+                <ul>
+                    <li><strong>Mnemonics Magic:</strong> अपनी Trick क्लाउड पर सेव करें।</li>
+                    <li><strong>Targeted Quiz:</strong> Range-wise प्रैक्टिस करें।</li>
+                    <li><strong>Mistake Bucket:</strong> सिर्फ गलत सवालों को दोबारा हल करें।</li>
+                </ul>
+                <div class="about-footer">
+                    <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
+                    <p>Version 2.0 (Cloud Enabled)</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
