@@ -885,6 +885,24 @@ body.dark .fav-pill:hover {
 .about-footer p strong {
     color: var(--p);
 }
+/* Desktop/Laptop Fix */
+@media screen and (min-width: 601px) {
+    .logo {
+        cursor: pointer !important;
+        pointer-events: auto !important; /* Ye click enable karega */
+        display: flex !important;
+        font-size: 1.4rem !important; /* Laptop par text wapas layega */
+    }
+    
+    .nav-logo-img {
+        pointer-events: none; /* Image click ko block na kare */
+    }
+}
+
+/* Modal Z-Index Fix */
+.modal-overlay {
+    z-index: 10000 !important; /* Taaki laptop navbar ke piche na chupe */
+}
 
 
 
