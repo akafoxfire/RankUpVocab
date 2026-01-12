@@ -6,7 +6,7 @@
     --brd: #e2e8f0;
 }
 
-/* SOFT NIGHT MODE - Premium Navy/Charcoal Tone */
+/* SOFT NIGHT MODE */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,7 +27,6 @@ body {
     background: var(--bg);
     color: var(--txt);
     line-height: 1.5;
-    overflow-x: hidden;
 }
 
 .container {
@@ -36,7 +35,7 @@ body {
     padding: 0 20px;
 }
 
-/* --- NAVBAR --- */
+/* --- NAVBAR & LOGOUT DESIGN --- */
 .navbar {
     background: var(--card);
     border-bottom: 1px solid var(--brd);
@@ -44,7 +43,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
 }
 
 .nav-content {
@@ -53,63 +51,28 @@ body {
     align-items: center;
 }
 
-.logo {
+#auth-section {
     display: flex;
     align-items: center;
-    font-weight: 800;
-    font-size: 1.3rem;
-    letter-spacing: -0.5px;
+    gap: 10px;
 }
 
-.nav-logo-img {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    object-fit: cover;
-    margin-right: 8px;
-}
-
-.tabs {
-    background: var(--bg);
-    padding: 4px;
-    border-radius: 12px;
-    display: flex;
-    gap: 4px;
-    border: 1px solid var(--brd);
-}
-
-.t-btn {
-    border: none;
-    background: none;
-    padding: 8px 18px;
+#logout-btn {
+    background: #fee2e2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+    padding: 6px 12px;
     border-radius: 8px;
     font-weight: 700;
+    font-size: 0.75rem;
     cursor: pointer;
-    color: #64748b;
-    font-size: 0.85rem;
 }
 
-.t-btn.active {
-    background: var(--card);
-    color: var(--p);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+#logout-btn:hover {
+    background: #fecaca;
 }
 
-.circ-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--brd);
-    background: var(--card);
-    cursor: pointer;
-    color: var(--txt);
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* --- DASHBOARD STATS (Original Colors) --- */
+/* --- DASHBOARD (p-clr, b-clr, r-clr) --- */
 .dash-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -123,124 +86,15 @@ body {
     border-radius: 20px;
     border: 1px solid var(--brd);
     text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.d-card h5 {
-    font-size: 0.65rem;
-    color: #64748b;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.d-card p {
-    font-size: 1.8rem;
-    font-weight: 800;
 }
 
 .p-clr p { color: #8b5cf6; }
 .b-clr p { color: #3b82f6; }
 .r-clr p { color: #ef4444; }
 
-/* --- TOOLS --- */
-.tool-flex {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-    align-items: center;
-    flex-wrap: wrap;
-}
+/* --- QUIZ SECTION FIX --- */
+.view.hidden { display: none !important; }
 
-.search-box {
-    flex: 1;
-    background: var(--card);
-    border: 1px solid var(--brd);
-    padding: 10px 15px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    min-width: 250px;
-}
-
-.search-box input {
-    border: none;
-    background: none;
-    width: 100%;
-    color: var(--txt);
-    outline: none;
-    padding-left: 10px;
-    font-family: inherit;
-    font-weight: 600;
-}
-
-#typeFilter, .fav-pill {
-    padding: 10px 15px;
-    border-radius: 12px;
-    border: 1px solid var(--brd);
-    background: var(--card);
-    color: var(--txt);
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.fav-pill.fav-active {
-    background: #fee2e2;
-    color: #ef4444;
-    border-color: #fecaca;
-}
-
-/* --- VOCAB CARDS --- */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 15px;
-}
-
-.vocab-card {
-    background: var(--card);
-    border: 1px solid var(--brd);
-    padding: 25px;
-    border-radius: 20px;
-    position: relative;
-    transition: transform 0.2s;
-}
-
-.v-btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.v-btns button {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 700;
-    cursor: pointer;
-}
-
-/* --- MNEMONICS OVERLAY --- */
-.trick-overlay {
-    background: var(--card);
-    padding: 15px;
-    border-radius: 20px;
-    flex-direction: column;
-}
-
-.trick-overlay textarea {
-    background: rgba(129, 140, 248, 0.08);
-    border: 1px dashed var(--p);
-    color: var(--txt);
-    padding: 10px;
-    border-radius: 12px;
-    resize: none;
-}
-
-/* --- QUIZ SECTION (Original Glass Design) --- */
 .setup-wrap {
     display: flex;
     justify-content: center;
@@ -254,153 +108,82 @@ body {
     width: 100%;
     max-width: 500px;
     border: 1px solid var(--brd);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.cat-select {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.c-chip {
-    flex: 1;
-    padding: 12px;
-    border-radius: 12px;
-    border: 2px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.c-chip.active {
-    border-color: var(--p);
-    color: var(--p);
-    background: rgba(99, 102, 241, 0.05);
-}
-
-.num-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.f-group label {
-    display: block;
-    font-size: 0.65rem;
-    font-weight: 800;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    opacity: 0.7;
-}
-
-.f-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 700;
-}
-
-.launch-btn {
-    width: 100%;
-    padding: 18px;
-    border-radius: 15px;
-    border: none;
-    background: var(--p);
-    color: white;
-    font-weight: 800;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-
-.quiz-container {
-    max-width: 800px;
-    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .q-card {
     background: var(--card);
-    padding: 50px 40px;
+    padding: 40px;
     border-radius: 32px;
     border: 1px solid var(--brd);
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    margin-top: 20px;
 }
 
 .opts-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .opt-btn {
-    padding: 22px;
-    border-radius: 20px;
+    padding: 18px;
+    border-radius: 15px;
     border: 2px solid var(--brd);
     background: var(--bg);
     color: var(--txt);
     font-weight: 700;
     cursor: pointer;
+    font-size: 1rem;
 }
 
-/* --- FOOTER --- */
-.app-footer {
+.opt-btn:hover {
+    border-color: var(--p);
+}
+
+/* Results & Analysis */
+.res-card {
     background: var(--card);
-    border-top: 1px solid var(--brd);
-    padding: 40px 0;
-    margin-top: 60px;
+    padding: 30px;
+    border-radius: 24px;
     text-align: center;
+    border: 1px solid var(--brd);
+    margin-bottom: 20px;
 }
 
-/* --- ABOUT MODAL (Clean Original) --- */
+.score-box h1 {
+    font-size: 3rem;
+    color: var(--p);
+}
+
+.analysis-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- MODAL --- */
 .modal-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);
-    z-index: 9999 !important;
+    z-index: 9999;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
 .modal-content {
     background: var(--card);
-    color: var(--txt);
-    width: 100%;
-    max-width: 550px;
-    max-height: 85vh;
-    border-radius: 24px;
     padding: 30px;
+    border-radius: 24px;
+    max-width: 550px;
     position: relative;
-    overflow-y: auto;
     border: 1px solid var(--brd);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #ef4444;
-}
-
-/* --- MOBILE --- */
-@media screen and (max-width: 600px) {
-    .dash-grid, .num-grid, .opts-grid {
-        grid-template-columns: 1fr;
-    }
-    .logo span { display: none; }
+@media (max-width: 600px) {
+    .dash-grid, .opts-grid { grid-template-columns: 1fr; }
 }
