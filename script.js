@@ -234,4 +234,23 @@ window.toggleTrick = function(k) {
     }
 };
 
+// --- ABOUT MODAL FUNCTIONS ---
+window.openAboutModal = function() {
+    const modal = document.getElementById('aboutModal');
+    if (modal) modal.style.display = 'flex';
+};
+
+window.closeAboutModal = function() {
+    const modal = document.getElementById('aboutModal');
+    if (modal) modal.style.display = 'none';
+};
+
+// Bahar click karne par modal band ho jaye
+window.onclick = function(event) {
+    const modal = document.getElementById('aboutModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
 init();
