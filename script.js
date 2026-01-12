@@ -237,15 +237,20 @@ window.toggleTrick = function(k) {
 // About Modal Functions
 window.openAboutModal = function() {
     const modal = document.getElementById('aboutModal');
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Background scroll rokne ke liye
+    if(modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
 };
 
 window.closeAboutModal = function() {
     const modal = document.getElementById('aboutModal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto'; // Scroll vapas shuru
+    if(modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
 };
 
 init();
+
 
