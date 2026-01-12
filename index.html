@@ -10,7 +10,7 @@
 <body class="light">
     <header class="navbar">
     <div class="container nav-content">
-       <div class="logo" onclick="openAboutModal()" style="cursor: pointer; display: flex; align-items: center;">
+       <div class="logo" onclick="openAboutModal()" style="cursor: pointer !important; display: flex !important; align-items: center;">
             <img src="logo.png" alt="RankUp" class="nav-logo-img" style="pointer-events: none;">
             <span style="pointer-events: none;">RankUp<span style="color:var(--p)">Vocab</span></span>
         </div>
@@ -21,21 +21,31 @@
         </div>
 
         <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
-            <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px;">
+            <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px; border: 1px solid var(--brd); background: var(--card); cursor: pointer;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
             </button>
-            <span id="user-name" style="display:none; font-weight:bold;"></span>
-            <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
+            <span id="user-name" style="display:none; font-size: 0.9rem; font-weight: 700; color: var(--p);"></span>
+            <button id="logout-btn" style="display:none; background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600;" onclick="logout()">Logout</button>
         </div>
+        
         <button id="theme-btn" class="circ-btn">🌙</button>
     </div>
 </header>
 
     <main class="container">
         <div class="dash-grid">
-            <div class="d-card p-clr"><h5>OWS COUNT</h5><p id="stat-ows">0</p></div>
-            <div class="d-card b-clr"><h5>IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
+            <div class="d-card p-clr">
+                <h5>OWS COUNT</h5>
+                <p id="stat-ows">0</p>
+            </div>
+            <div class="d-card b-clr">
+                <h5>IDIOMS COUNT</h5>
+                <p id="stat-idioms">0</p>
+            </div>
+            <div class="d-card r-clr">
+                <h5>SAVED (HARD)</h5>
+                <p id="stat-hard">0</p>
+            </div>
         </div>
 
         <section id="view-study" class="view">
@@ -44,18 +54,25 @@
                     <span>🔍</span>
                     <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
                 </div>
+                
                 <div class="jump-box" style="display: flex; gap: 5px;">
                     <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
                     <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
                 </div>
-                <select id="typeFilter" onchange="app.render()">
+
+                <select id="typeFilter" onchange="app.render()" style="padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:600;">
                     <option value="ALL">All Categories</option>
                     <option value="OWS">OWS</option>
                     <option value="Idiom">Idioms</option>
                 </select>
-                <button onclick="app.toggleHardFilter()" id="hf-btn" class="fav-pill">Favorites ❤️</button>
+
+                <button onclick="app.toggleHardFilter()" id="hf-btn" class="fav-pill">
+                    Favorites ❤️
+                </button>
             </div>
-            <div id="study-grid" class="cards-grid"></div>
+
+            <div id="study-grid" class="cards-grid">
+                </div>
         </section>
 
         <section id="view-setup" class="view hidden">
@@ -65,12 +82,12 @@
                     <div class="cat-select">
                         <button onclick="quiz.setCat('ALL', this)" class="c-chip active">Mix All</button>
                         <button onclick="quiz.setCat('OWS', this)" class="c-chip">OWS Only</button>
-                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms</button>
+                        <button onclick="quiz.setCat('Idiom', this)" class="c-chip">Idioms Only</button>
                     </div>
                     <div class="num-grid">
-                        <div class="f-group"><label>Limit</label><input type="number" id="qLimit" value="10"></div>
-                        <div class="f-group"><label>From</label><input type="number" id="qFrom" value="1"></div>
-                        <div class="f-group"><label>To</label><input type="number" id="qTo" value="1000"></div>
+                        <div class="f-group"><label>Questions Limit</label><input type="number" id="qLimit" value="10"></div>
+                        <div class="f-group"><label>From ID</label><input type="number" id="qFrom" value="1"></div>
+                        <div class="f-group"><label>To ID</label><input type="number" id="qTo" value="1000"></div>
                     </div>
                     <button onclick="quiz.init()" class="launch-btn">Launch Session ⚡</button>
                 </div>
@@ -98,7 +115,7 @@
                 </div>
                 <div class="res-actions">
                     <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home">Home</button>
+                    <button onclick="router('study')" class="btn-home">Back to Home</button>
                 </div>
             </div>
             <div id="analysis-list" class="analysis-stack"></div>
@@ -119,28 +136,33 @@
     </footer>
 
     <div id="aboutModal" class="modal-overlay" onclick="closeAboutModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeAboutModal()">&times;</span>
-            <div class="about-header">
-                <img src="logo.png" alt="RankUp" style="width: 50px;">
-                <h2>RankUp Vocab | SSC Preparation Pro Tool</h2>
-            </div>
-            <div class="about-body">
-                <p><strong>One Word Substitutions aur Idioms – ab ratna nahi, yaad rakhna seekho.</strong></p>
-                <p>RankUp Vocab ek smart Web Application hai jise SSC exams ki taiyari ke liye banaya gaya hai.</p>
-                <h3>🔥 Key Features</h3>
-                <ul>
-                    <li><strong>Mnemonics Magic:</strong> Apni trick cloud par save karein.</li>
-                    <li><strong>Targeted Quiz:</strong> Range-wise practice karein.</li>
-                    <li><strong>Mistake Bucket:</strong> Galat sawalo ko dobara solve karein.</li>
-                </ul>
-                <div class="about-footer">
-                    <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
-                    <p>Version 2.0 (Cloud Enabled)</p>
-                </div>
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="closeAboutModal()">&times;</span>
+        
+        <div class="about-header">
+            <img src="logo.png" alt="RankUp" style="width: 60px; margin-bottom: 10px;">
+            <h2>RankUp Vocab | SSC Preparation Pro Tool</h2>
+        </div>
+        
+        <div class="about-body">
+            <p><strong>One Word Substitutions और Idioms – अब रटना नहीं, याद रखना सीखो।</strong></p>
+            <p>RankUp Vocab एक स्मार्ट <strong>Web Application</strong> है जिसे SSC (CGL, CHSL, MTS, CPO) और अन्य Competitive Exams की तैयारी के लिए खास तौर पर डिजाइन किया गया है।</p>
+            
+            <h3>🔥 मुख्य विशेषताएँ (Key Features)</h3>
+            <ul>
+                <li><strong>Mnemonics Magic (Cloud Sync):</strong> अपनी खुद की Trick लिखें और Google Account पर सेव करें।</li>
+                <li><strong>Targeted Quiz:</strong> Word संख्या के हिसाब se Range-wise प्रैक्टिस करें।</li>
+                <li><strong>Mistake Bucket:</strong> सिर्फ गलत हुए सवालों को दोबारा हल करें।</li>
+                <li><strong>Personalized Hard List:</strong> कठिन शब्दों को Favorite मार्क करें।</li>
+            </ul>
+
+            <div class="about-footer">
+                <p><strong>Developer:</strong> Rakesh Kumar Dudhawal</p>
+                <p>Version 2.0 (Cloud Enabled)</p>
             </div>
         </div>
     </div>
+</div>
 
     <script src="script.js"></script>
     <script type="module">
@@ -162,22 +184,35 @@
         const db = getFirestore(app);
         const provider = new GoogleAuthProvider();
 
-        window.login = async () => { try { await signInWithPopup(auth, provider); } catch (e) { alert(e.message); } };
-        window.logout = async () => { await signOut(auth); location.reload(); };
+        window.login = async () => {
+            try { await signInWithPopup(auth, provider); } catch (e) { alert("Login Error: " + e.message); }
+        };
+
+        window.logout = async () => {
+            await signOut(auth);
+            location.reload();
+        };
 
         window.saveTrickToCloud = async (wordId, trickText) => {
             const user = auth.currentUser;
-            if (!user) return alert("Login please!");
+            if (!user) return alert("Please Login to save tricks!");
             try {
-                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), { trick: trickText, timestamp: new Date() });
-                alert("Saved! ✅");
-            } catch (e) { console.error(e); }
+                await setDoc(doc(db, "users", user.uid, "tricks", wordId.toString()), {
+                    trick: trickText,
+                    timestamp: new Date()
+                });
+                alert("Trick saved to cloud! ✅");
+            } catch (e) { console.error("Firestore Error:", e); }
         };
 
         window.saveFavToCloud = async (key, isAdd) => {
-            const user = auth.currentUser; if (!user) return;
+            const user = auth.currentUser;
+            if (!user) return;
             const favDoc = doc(db, "users", user.uid, "favorites", key);
-            try { if (isAdd) await setDoc(favDoc, { savedAt: new Date() }); else await deleteDoc(favDoc); } catch (e) { console.error(e); }
+            try {
+                if (isAdd) await setDoc(favDoc, { savedAt: new Date() });
+                else await deleteDoc(favDoc);
+            } catch (e) { console.error("Firestore Fav Error:", e); }
         };
 
         onAuthStateChanged(auth, async (user) => {
@@ -186,11 +221,15 @@
                 document.getElementById('logout-btn').style.display = 'inline-block';
                 document.getElementById('user-name').textContent = "Hi, " + user.displayName.split(' ')[0];
                 document.getElementById('user-name').style.display = 'inline-block';
+
                 const tSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
-                let tricks = {}; tSnap.forEach(d => tricks[d.id] = d.data().trick);
+                let tricks = {};
+                tSnap.forEach(d => tricks[d.id] = d.data().trick);
                 window.updateLocalTricks(tricks);
+
                 const fSnap = await getDocs(collection(db, "users", user.uid, "favorites"));
-                let favs = []; fSnap.forEach(d => favs.push(d.id));
+                let favs = [];
+                fSnap.forEach(d => favs.push(d.id));
                 window.updateLocalFavs(favs);
             }
         });
