@@ -234,10 +234,10 @@ window.toggleTrick = function(k) {
     }
 };
 
-// About Modal Functions
+// --- FINAL MODAL LOGIC (Cleaned & Unified) ---
 window.openAboutModal = function() {
     const modal = document.getElementById('aboutModal');
-    if(modal) {
+    if (modal) {
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
@@ -245,54 +245,23 @@ window.openAboutModal = function() {
 
 window.closeAboutModal = function() {
     const modal = document.getElementById('aboutModal');
-    if(modal) {
+    if (modal) {
         modal.classList.add('hidden');
         document.body.style.overflow = 'auto';
     }
 };
 
-// Laptop aur Desktop ke liye direct listener
-document.addEventListener('click', function (e) {
-    // Check karein ki kya click logo par ya uske andar ki image par hua hai
+// Sabse solid tarika click pakadne ka (Laptop + Mobile)
+document.addEventListener('click', (e) => {
     if (e.target.closest('.logo')) {
-        if (typeof window.openAboutModal === 'function') {
-            window.openAboutModal();
-        }
+        e.preventDefault();
+        window.openAboutModal();
     }
 });
-// --- Modal Logic (Laptop & Mobile Fix) ---
-const openModal = () => {
-    const modal = document.getElementById('aboutModal');
-    if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-};
 
-const closeModal = () => {
-    const modal = document.getElementById('aboutModal');
-    if (modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-};
-
-// Functions ko Global window object mein daalna (Zaroori step)
-window.openAboutModal = openModal;
-window.closeAboutModal = closeModal;
-
-// Laptop ke liye direct Event Listener (Fail-safe)
-document.addEventListener('DOMContentLoaded', () => {
-    const logo = document.getElementById('main-logo');
-    if (logo) {
-        logo.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-        });
-    }
-});
 
 init();
+
 
 
 
