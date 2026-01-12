@@ -730,18 +730,7 @@ body.dark .fav-pill:hover {
         gap: 5px;
     }
 }
-@media screen and (max-width: 600px) {
-    /* Logo ka text hide (Sirf 'R' icon bachega) */
-    .logo {
-        font-size: 0 !important;
-    }
-    .logo span {
-        display: none !important;
-    }
-    .nav-logo-img {
-        width: 32px !important;
-        margin-right: 0 !important;
-    }
+
 
     /* --- GOOGLE ICON BUTTON STYLE --- */
 #login-btn {
@@ -909,6 +898,7 @@ body.dark .fav-pill:hover {
 .hidden {
     display: none !important;
 }
+
 
 
 
