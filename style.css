@@ -1,334 +1,186 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
+/* --- ADVANCED THEME VARIABLES --- */
 :root {
     --p: #6366f1; 
-    --p-dark: #4f46e5;
-    --p-soft: rgba(99, 102, 241, 0.1);
     --p-glow: rgba(99, 102, 241, 0.3);
+    --p-soft: rgba(99, 102, 241, 0.08);
     --bg: #f8fafc; 
     --card: #ffffff; 
     --txt: #0f172a; 
     --txt-sec: #64748b;
     --brd: #e2e8f0;
-    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
 }
 
 body.dark {
-    --bg: #020617; 
+    --bg: #030712; 
     --card: #0f172a; 
-    --txt: #f8fafc; 
+    --txt: #f9fafb; 
     --txt-sec: #94a3b8;
     --brd: #1e293b;
     --p: #818cf8;
-    --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
 }
 
-/* --- BASE STYLES --- */
+/* --- SYSTEM RESET --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 body {
     background: var(--bg);
     color: var(--txt);
-    overflow-x: hidden;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--brd); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--p); }
+.container { max-width: 1150px; margin: auto; padding: 0 20px; }
 
-.container { max-width: 1200px; margin: auto; padding: 0 20px; }
-
-/* --- PREMIUM NAVBAR --- */
+/* --- PREMIUM NAVIGATION --- */
 .navbar {
-    position: sticky;
-    top: 15px;
-    z-index: 1000;
-    margin-bottom: 30px;
-    background: var(--card);
-    border: 1px solid var(--brd);
-    border-radius: 24px;
-    padding: 12px 20px;
+    position: sticky; top: 15px; z-index: 1000;
+    background: rgba(var(--card), 0.85);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--brd); border-radius: 24px;
+    margin: 15px auto 40px; padding: 10px 20px;
     box-shadow: var(--shadow);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(var(--card), 0.8);
 }
 
 .nav-content { display: flex; justify-content: space-between; align-items: center; }
 
 .logo {
-    font-weight: 800;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    letter-spacing: -0.5px;
+    font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; gap: 10px;
 }
+.logo span { color: var(--p); }
+.nav-logo-img { width: 36px; height: 36px; border-radius: 10px; box-shadow: 0 4px 12px var(--p-glow); }
 
-.logo span {
-    background: linear-gradient(135deg, var(--p), #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.nav-logo-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px var(--p-soft);
-}
-
-/* TABS DESIGN */
+/* TAB SWITCHER */
 .tabs {
-    background: var(--p-soft);
-    padding: 6px;
-    border-radius: 16px;
-    display: flex;
-    gap: 8px;
+    background: var(--p-soft); padding: 5px; border-radius: 14px;
+    display: flex; gap: 4px; border: 1px solid var(--brd);
 }
-
 .t-btn {
-    border: none;
-    background: transparent;
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-weight: 700;
-    color: var(--txt-sec);
-    cursor: pointer;
-    font-size: 0.95rem;
+    border: none; background: transparent; padding: 8px 18px;
+    border-radius: 10px; font-weight: 700; color: var(--txt-sec); cursor: pointer;
 }
-
 .t-btn.active {
-    background: var(--card);
-    color: var(--p);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: var(--card); color: var(--p); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* --- BENTO STATS --- */
+/* --- BENTO DASHBOARD --- */
 .dash-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin: 40px 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0;
 }
-
 .d-card {
-    background: var(--card);
-    padding: 30px;
-    border-radius: 28px;
-    border: 1px solid var(--brd);
-    text-align: left;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    background: var(--card); padding: 25px; border-radius: 28px;
+    border: 1px solid var(--brd); text-align: left;
+    position: relative; overflow: hidden; box-shadow: var(--shadow);
 }
-
-.d-card::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 80px;
-    height: 80px;
-    background: var(--p-soft);
-    border-radius: 50%;
-}
-
 .d-card h5 {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: var(--txt-sec);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    font-size: 0.7rem; font-weight: 800; color: var(--txt-sec);
+    text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px;
 }
+.d-card p { font-size: 2.2rem; font-weight: 800; color: var(--txt); }
+.d-card.r-clr p { color: #ef4444; } /* Hard list highlight */
 
-.d-card p {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-top: 10px;
-    color: var(--txt);
-}
-
-/* --- SEARCH & FILTERS --- */
+/* --- SEARCH & JUMP BAR --- */
 .tool-flex {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 40px;
-    background: var(--card);
-    padding: 15px;
-    border-radius: 24px;
-    border: 1px solid var(--brd);
-    box-shadow: var(--shadow);
+    display: flex; gap: 12px; margin-bottom: 35px; flex-wrap: wrap;
+    background: var(--card); padding: 12px; border-radius: 20px;
+    border: 1px solid var(--brd); box-shadow: var(--shadow);
 }
-
 .search-box {
-    flex: 2;
-    background: var(--bg);
-    border-radius: 16px;
-    padding: 0 18px;
-    display: flex;
-    align-items: center;
-    border: 1px solid transparent;
+    flex: 2; background: var(--bg); border-radius: 14px;
+    padding: 0 15px; display: flex; align-items: center; border: 1px solid transparent;
 }
-
-.search-box:focus-within {
-    border-color: var(--p);
-    box-shadow: 0 0 0 4px var(--p-glow);
-}
-
+.search-box:focus-within { border-color: var(--p); box-shadow: 0 0 0 4px var(--p-glow); }
 .search-box input {
-    height: 50px;
-    border: none;
-    background: transparent;
-    width: 100%;
-    outline: none;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--txt);
+    height: 48px; border: none; background: transparent; width: 100%;
+    outline: none; font-weight: 600; color: var(--txt); font-size: 0.95rem;
 }
 
-/* --- VOCAB CARDS --- */
+.jump-box input {
+    width: 65px; height: 48px; border-radius: 12px; border: 1px solid var(--brd);
+    background: var(--bg); color: var(--txt); font-weight: 800; text-align: center;
+}
+
+/* --- THE VOCAB CARDS --- */
 .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 25px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px;
 }
-
 .vocab-card {
-    background: var(--card);
-    border: 1px solid var(--brd);
-    padding: 35px;
-    border-radius: 32px;
-    position: relative;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    animation: fadeInUp 0.5s ease backwards;
+    background: var(--card); border: 1px solid var(--brd);
+    padding: 35px; border-radius: 32px; position: relative;
+    box-shadow: var(--shadow); display: flex; flex-direction: column;
 }
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .vocab-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--p);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); border-color: var(--p);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
 .vocab-card h3 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    color: var(--txt);
+    font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;
+    letter-spacing: -0.5px; color: var(--txt);
 }
-
 .vocab-card p {
-    color: var(--txt-sec);
-    font-size: 1.05rem;
-    margin-bottom: 25px;
-    min-height: 50px;
+    color: var(--txt-sec); font-size: 1rem; margin-bottom: 30px; min-height: 50px;
 }
 
-/* BUTTONS */
-.v-btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+/* TRICK OVERLAY (Perfect Fix) */
+.trick-overlay {
+    display: none; position: absolute; inset: 0;
+    background: var(--card); z-index: 20; padding: 25px;
+    border-radius: 32px; flex-direction: column; border: 2px solid var(--p);
+}
+.trick-overlay textarea {
+    flex: 1; border-radius: 15px; border: 1px solid var(--brd);
+    padding: 15px; font-weight: 600; background: var(--bg); color: var(--txt); resize: none;
 }
 
+/* HINDI & LISTEN BUTTONS */
+.v-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .v-btns button {
-    padding: 14px;
-    border-radius: 16px;
-    border: 1.5px solid var(--brd);
-    background: var(--bg);
-    color: var(--txt);
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 0.9rem;
+    padding: 14px; border-radius: 16px; border: 1.5px solid var(--brd);
+    background: var(--bg); color: var(--txt); font-weight: 700; cursor: pointer;
 }
-
 .v-btns button:hover {
-    background: var(--p);
-    color: white;
-    border-color: var(--p);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px var(--p-glow);
+    background: var(--p); color: white; border-color: var(--p);
+    box-shadow: 0 8px 15px var(--p-glow);
 }
 
 /* --- FOOTER --- */
 .app-footer {
-    background: var(--card);
-    border-top: 1px solid var(--brd);
-    padding: 60px 0;
-    margin-top: 80px;
+    background: var(--card); border-top: 1px solid var(--brd);
+    padding: 50px 0; margin-top: 80px; text-align: center;
+}
+.logo-small {
+    background: var(--p); color: white; width: 35px; height: 35px;
+    border-radius: 10px; display: inline-flex; align-items: center;
+    justify-content: center; font-weight: 800; margin-bottom: 15px;
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 800;
-    font-size: 1.4rem;
-}
-
-/* --- MODAL DESIGN --- */
+/* --- ABOUT MODAL --- */
 .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(2, 6, 23, 0.8);
-    backdrop-filter: blur(8px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    position: fixed; inset: 0; background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(8px); z-index: 2000;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
 }
-
 .modal-content {
-    background: var(--card);
-    width: 100%;
-    max-width: 550px;
-    border-radius: 35px;
-    border: 1px solid var(--brd);
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    background: var(--card); width: 100%; max-width: 550px;
+    border-radius: 35px; border: 1px solid var(--brd);
+    overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.3);
 }
-
 .modal-header {
-    padding: 25px 30px;
-    background: var(--p-soft);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 25px 30px; background: var(--p-soft);
+    display: flex; justify-content: space-between; border-bottom: 1px solid var(--brd);
 }
-
-.about-body {
-    padding: 40px;
-}
-
-.about-body h3 {
-    color: var(--p);
-    margin: 25px 0 15px;
-    font-size: 1.2rem;
-}
+.about-body { padding: 35px; color: var(--txt); }
+.about-body h3 { color: var(--p); margin: 20px 0 10px; }
+.about-body li { margin-bottom: 12px; font-size: 0.95rem; }
 
 .hidden { display: none !important; }
