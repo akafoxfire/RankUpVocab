@@ -890,12 +890,42 @@
       "meaning": "Simple, fast-spreading plant without flowers or leaves, which can often cause disease",
       "hi": "फफूँदी",
       "r": 0
-    }
+    },
+    { "id": 718, "type": "OWS", "word": "Fur", "meaning": "Hair of animals, which is soft and used for making wool", "hi": "रोआं", "r": 0 },
+  { "id": 719, "type": "OWS", "word": "Fuselage", "meaning": "The main body of an aircraft", "hi": "हवाई जहाज का ढांचा", "r": 0 },
+  { "id": 720, "type": "OWS", "word": "Fuss", "meaning": "A state of agitation especially over a trivial matter", "hi": "हंगामा", "r": 0 },
+  { "id": 721, "type": "OWS", "word": "Gallant", "meaning": "A brave, nobleminded or chivalrous man", "hi": "वीर", "r": 0 },
+  { "id": 722, "type": "OWS", "word": "Galling", "meaning": "Causing annoyance or resentment", "hi": "कष्टदायक", "r": 0 },
+  { "id": 723, "type": "OWS", "word": "Gambit", "meaning": "An act or remark that is calculated to gain an advantage", "hi": "चाल", "r": 0 },
+  { "id": 724, "type": "OWS", "word": "Gambol", "meaning": "To skip about playfully", "hi": "उछल कूद", "r": 0 },
+  { "id": 725, "type": "OWS", "word": "Garbled", "meaning": "To express in an unclear way", "hi": "अस्पष्ट", "r": 0 },
+  { "id": 726, "type": "OWS", "word": "Garrulous", "meaning": "Talks a lot to explain something very trivial", "hi": "बातूनी", "r": 0 },
+  { "id": 727, "type": "OWS", "word": "Gastronomy", "meaning": "The art and practice of cooking and eating good food", "hi": "पाक कला", "r": 0 },
+  { "id": 728, "type": "OWS", "word": "General", "meaning": "Chief or Commander of army/Affecting all or most people, places, things, etc.", "hi": "सेनाध्यक्ष/सामान्य", "r": 0 },
+  { "id": 729, "type": "OWS", "word": "Genesis", "meaning": "The origin or birth of a thing", "hi": "उत्पत्ति", "r": 0 },
+  { "id": 730, "type": "OWS", "word": "Genetics", "meaning": "Science of heredity", "hi": "आनुवंशिकी", "r": 0 },
+  { "id": 731, "type": "OWS", "word": "Genius", "meaning": "A Person With Uncommon Intellect", "hi": "प्रतिभाशाली व्यक्ति", "r": 0 },
+  { "id": 732, "type": "OWS", "word": "Genocide", "meaning": "The murder of a whole race or a group of people", "hi": "नरसंहार", "r": 0 },
+  { "id": 733, "type": "OWS", "word": "Genuine", "meaning": "Really coming from its stated, advertised or reputed source", "hi": "असली", "r": 0 },
+  { "id": 734, "type": "OWS", "word": "Geologist", "meaning": "A person who studies the Earth and the materials of which it is made", "hi": "भूवैज्ञानिक", "r": 0 },
+  { "id": 735, "type": "OWS", "word": "Geology", "meaning": "The study of earth, including the origin and history of the rocks and soil of which the earth is made", "hi": "भूगर्भशास्त्र", "r": 0 },
+  { "id": 736, "type": "OWS", "word": "Geriatrics", "meaning": "The branch of medical science which deals with the problems of the old", "hi": "वृद्धावस्था चिकित्साशास्त्र", "r": 0 },
+  { "id": 737, "type": "OWS", "word": "Gerontocracy", "meaning": "A state governed by old people", "hi": "वृद्ध-शासन", "r": 0 },
+  { "id": 738, "type": "OWS", "word": "Gerontology", "meaning": "Study of the various aspects of aging", "hi": "वृद्धावस्था का अध्ययन", "r": 0 },
+  { "id": 739, "type": "OWS", "word": "Gesture", "meaning": "A movement of part of the body to express an idea or feeling", "hi": "इशारा", "r": 0 },
+  { "id": 740, "type": "OWS", "word": "Ghastly", "meaning": "In a threatening manner", "hi": "खौफनाक रूप से", "r": 0 },
+  { "id": 741, "type": "OWS", "word": "Ghetto", "meaning": "A part of the city especially the slum area", "hi": "बस्ती", "r": 0 },
+  { "id": 742, "type": "OWS", "word": "Gibberish", "meaning": "Unintelligible speech", "hi": "बेमतलब शब्द", "r": 0 },
+  { "id": 743, "type": "OWS", "word": "Gingivitis", "meaning": "Inflammation of gums", "hi": "मसूड़ों की सूजन", "r": 0 },
+  { "id": 744, "type": "OWS", "word": "Glacier", "meaning": "An extremely large mass of ice which moves very slowly, often down a mountain valley", "hi": "हिमनदी", "r": 0 },
+  { "id": 745, "type": "OWS", "word": "Glazier", "meaning": "A person who repairs broken window glasses", "hi": "कांच का काम करने वाला", "r": 0 },
+  { "id": 746, "type": "OWS", "word": "Glossary", "meaning": "A list of technical/special words, especially those in a particular text, explaining their meanings", "hi": "शब्दकोश", "r": 0 }
 
 
     
   ]
 }
+
 
 
 
