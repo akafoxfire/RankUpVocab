@@ -1070,8 +1070,8 @@
   { "id": 894, "type": "OWS", "word": "Incredible", "meaning": "That which cannot be believed", "hi": "अविश्वसनीय", "r": 0 },
   { "id": 895, "type": "OWS", "word": "Indebted", "meaning": "Owing money to someone", "hi": "ऋणी", "r": 0 },
   { "id": 896, "type": "OWS", "word": "Indefatigable", "meaning": "Incapable of feeling tired or exhausted", "hi": "न थकने वाला", "r": 0 },
-  { "id": 897, "type": "OWS", "word": "Indelible", "meaning": "That which cannot be effaced // Extreme or indefinite to be adequately described", "hi": "अमिट / स्थायी", "r": 0 },
-  { "id": 898, "type": "OWS", "word": "Indescribable", "meaning": "Originating or occurring naturally in the place or country where found // native", "hi": "अवर्णनीय", "r": 0 },
+  { "id": 897, "type": "OWS", "word": "Indelible", "meaning": "That which cannot be effaced", "hi": "अमिट / स्थायी", "r": 0 },
+  { "id": 898, "type": "OWS", "word": "Indescribable", "meaning": "Extreme or indefinite to be adequately described", "hi": "अवर्णनीय", "r": 0 },
   { "id": 899, "type": "OWS", "word": "Indigenous", "meaning": "Originating or occurring naturally in the place or country where found // Native", "hi": "स्वदेशी", "r": 0 },
   { "id": 900, "type": "OWS", "word": "Indignation", "meaning": "Anger about an unfair situation or about someone's unfair behaviour", "hi": "अन्याय देखकर क्रोध", "r": 0 },
   { "id": 901, "type": "OWS", "word": "Indispensable", "meaning": "Something that is necessary or crucial", "hi": "अपरिहार्य", "r": 0 },
@@ -1122,6 +1122,7 @@
     
   ]
 }
+
 
 
 
