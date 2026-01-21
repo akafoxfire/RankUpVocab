@@ -41,17 +41,21 @@ function syncStats() {
         document.getElementById('stat-hard').innerText = state.favs.size;
 }
 
-window.speak = function(t) { // window. lagane se ye kahi se bhi access ho jayega
+window.speak = function(t) {
     try {
         window.speechSynthesis.cancel();
-        
-        // Sabse pehle t ko string mein convert karo aur saaf karo
-        let textToSay = String(t).replace(/'/g, "").split('/')[0].split('(')[0].trim();
+        if (!t) return;
+
+        // String clean karne ka logic
+        let textToSay = String(t)
+            .replace(/['’]/g, "") // Normal aur smart dono apostrophe hatao
+            .split('/')[0]
+            .split('(')[0]
+            .trim();
         
         const s = new SpeechSynthesisUtterance(textToSay);
         s.lang = 'en-IN';
         s.rate = 0.9;
-        
         window.speechSynthesis.speak(s);
     } catch (err) {
         console.error("Speaker Error:", err);
@@ -103,6 +107,34 @@ const app = {
             const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
             const savedTrick = state.userTricks[k] || ""; 
             
+const app = {
+    render() {
+        const g = document.getElementById('study-grid');
+        const s = document.getElementById('searchBar').value.toLowerCase();
+        const t = document.getElementById('typeFilter').value;
+        
+        // Data filter logic
+        let filtered = state.all.filter(v => 
+            (t === 'ALL' || v.type === t) && 
+            (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s))
+        );
+        
+        if (state.filterFav) {
+            filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
+        }
+
+        g.innerHTML = filtered.map(v => {
+            const k = `${v.type}-${v.id}`;
+            const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
+            const savedTrick = state.userTricks[k] || ""; 
+            
+            // SPEAKER FIX: Apostrophe wale words ko safe banayein taaki HTML na toote
+            // Ye dog's ko dog\'s bana dega taaki onclick="speak('dog\'s')" chale
+            const safeWord = v.word.replace(/'/g, "\\'"); 
+            
+            // HINDI KEY FIX: Kuch JSON mein 'hindi' hai aur kuch mein 'hi'
+            const hindiText = v.hi || v.hindi || "Hindi meaning not available";
+
             return `
 <div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
     <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
@@ -132,13 +164,13 @@ const app = {
     </div>
 
     <div class="v-btns">
-        <button onclick="this.innerText='${v.hi}'">Hindi</button>
-        <button onclick="speak('${v.word}')">🔊 Listen</button>
+        <button onclick="this.innerText='${hindiText}'">Hindi</button>
+        <button onclick="speak('${safeWord}')">🔊 Listen</button>
     </div>
 </div>`;
         }).join('');
     },
-    // Toggle Favorite ab Cloud ke saath sync hoga
+
     toggleF(k) { 
         const isAdding = !state.favs.has(k);
         if (isAdding) {
@@ -147,7 +179,6 @@ const app = {
             state.favs.delete(k);
         }
         
-        // Cloud Sync call
         if (window.saveFavToCloud) {
             window.saveFavToCloud(k, isAdding);
         }
@@ -155,6 +186,7 @@ const app = {
         syncStats(); 
         this.render(); 
     },
+
     toggleHardFilter() {
         state.filterFav = !state.filterFav;
         const btn = document.getElementById('hf-btn');
@@ -260,6 +292,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 init();
+
 
 
 
