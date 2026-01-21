@@ -46,16 +46,25 @@ window.speak = function(t) {
         window.speechSynthesis.cancel();
         if (!t) return;
 
-        // String clean karne ka logic
+        // Clean text: Apostrophe hatao aur brackets ke andar ka kachra saaf karo
         let textToSay = String(t)
-            .replace(/['’]/g, "") // Normal aur smart dono apostrophe hatao
+            .replace(/['’]/g, "") 
             .split('/')[0]
             .split('(')[0]
             .trim();
         
         const s = new SpeechSynthesisUtterance(textToSay);
-        s.lang = 'en-IN';
-        s.rate = 0.9;
+        
+        // --- PRONUNCIATION FIX ---
+        s.lang = 'en-US';  // US English zyada clear hoti hai accent ke liye
+        s.rate = 0.8;      // Speed thodi kam ki hai taaki har word saaf sunai de
+        s.pitch = 1.1;     // Pitch thodi high ki hai taaki clarity badhe
+        
+        // Browser ke best available voice select karna
+        const voices = window.speechSynthesis.getVoices();
+        const googleVoice = voices.find(v => v.name.includes('Google US English'));
+        if (googleVoice) s.voice = googleVoice;
+
         window.speechSynthesis.speak(s);
     } catch (err) {
         console.error("Speaker Error:", err);
@@ -265,6 +274,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 init();
+
 
 
 
