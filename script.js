@@ -107,27 +107,6 @@ const app = {
             const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
             const savedTrick = state.userTricks[k] || ""; 
             
-const app = {
-    render() {
-        const g = document.getElementById('study-grid');
-        const s = document.getElementById('searchBar').value.toLowerCase();
-        const t = document.getElementById('typeFilter').value;
-        
-        // Filter logic same rakhi hai
-        let filtered = state.all.filter(v => (t === 'ALL' || v.type.toUpperCase() === t.toUpperCase()) && (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s)));
-        if (state.filterFav) filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
-
-        g.innerHTML = filtered.map(v => {
-            const k = `${v.type}-${v.id}`;
-            const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
-            const savedTrick = state.userTricks[k] || ""; 
-            
-            // 1. SPEAKER FIX: Taaki ' ki wajah se button dead na ho
-            const safeWord = v.word.replace(/'/g, "\\'"); 
-            
-            // 2. DATA FIX: Agar JSON mein 'hi' hai ya 'hindi', dono utha lega
-            const displayHindi = v.hi || v.hindi || "Hindi translation";
-
             return `
 <div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
     <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
@@ -157,16 +136,26 @@ const app = {
     </div>
 
     <div class="v-btns">
-        <button onclick="this.innerText='${displayHindi}'">Hindi</button>
-        <button onclick="speak('${safeWord}')">🔊 Listen</button>
+        <button onclick="this.innerText='${v.hi}'">Hindi</button>
+        <button onclick="speak('${v.word}')">🔊 Listen</button>
     </div>
 </div>`;
         }).join('');
     },
+    // Toggle Favorite ab Cloud ke saath sync hoga
     toggleF(k) { 
         const isAdding = !state.favs.has(k);
-        if (isAdding) state.favs.add(k); else state.favs.delete(k);
-        if (window.saveFavToCloud) window.saveFavToCloud(k, isAdding);
+        if (isAdding) {
+            state.favs.add(k);
+        } else {
+            state.favs.delete(k);
+        }
+        
+        // Cloud Sync call
+        if (window.saveFavToCloud) {
+            window.saveFavToCloud(k, isAdding);
+        }
+        
         syncStats(); 
         this.render(); 
     },
@@ -183,6 +172,7 @@ const app = {
         this.render();
     }
 };
+
 
 const quiz = {
     setCat(c, el) {
@@ -275,6 +265,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 init();
+
 
 
 
