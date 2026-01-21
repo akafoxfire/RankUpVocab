@@ -106,7 +106,7 @@ const app = {
             const k = `${v.type}-${v.id}`;
             const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
             const savedTrick = state.userTricks[k] || ""; 
-            
+            const safeWord = v.word.replace(/'/g, "\\'");
             return `
 <div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
     <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
@@ -137,7 +137,7 @@ const app = {
 
     <div class="v-btns">
         <button onclick="this.innerText='${v.hi}'">Hindi</button>
-        <button onclick="speak('${v.word}')">🔊 Listen</button>
+        <button onclick="speak('${safeWord}')">🔊 Listen</button>
     </div>
 </div>`;
         }).join('');
@@ -265,6 +265,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 init();
+
 
 
 
