@@ -113,27 +113,20 @@ const app = {
         const s = document.getElementById('searchBar').value.toLowerCase();
         const t = document.getElementById('typeFilter').value;
         
-        // Data filter logic
-        let filtered = state.all.filter(v => 
-            (t === 'ALL' || v.type === t) && 
-            (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s))
-        );
-        
-        if (state.filterFav) {
-            filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
-        }
+        // Filter logic same rakhi hai
+        let filtered = state.all.filter(v => (t === 'ALL' || v.type.toUpperCase() === t.toUpperCase()) && (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s)));
+        if (state.filterFav) filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
 
         g.innerHTML = filtered.map(v => {
             const k = `${v.type}-${v.id}`;
             const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
             const savedTrick = state.userTricks[k] || ""; 
             
-            // SPEAKER FIX: Apostrophe wale words ko safe banayein taaki HTML na toote
-            // Ye dog's ko dog\'s bana dega taaki onclick="speak('dog\'s')" chale
+            // 1. SPEAKER FIX: Taaki ' ki wajah se button dead na ho
             const safeWord = v.word.replace(/'/g, "\\'"); 
             
-            // HINDI KEY FIX: Kuch JSON mein 'hindi' hai aur kuch mein 'hi'
-            const hindiText = v.hi || v.hindi || "Hindi meaning not available";
+            // 2. DATA FIX: Agar JSON mein 'hi' hai ya 'hindi', dono utha lega
+            const displayHindi = v.hi || v.hindi || "Hindi translation";
 
             return `
 <div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
@@ -164,29 +157,19 @@ const app = {
     </div>
 
     <div class="v-btns">
-        <button onclick="this.innerText='${hindiText}'">Hindi</button>
+        <button onclick="this.innerText='${displayHindi}'">Hindi</button>
         <button onclick="speak('${safeWord}')">🔊 Listen</button>
     </div>
 </div>`;
         }).join('');
     },
-
     toggleF(k) { 
         const isAdding = !state.favs.has(k);
-        if (isAdding) {
-            state.favs.add(k);
-        } else {
-            state.favs.delete(k);
-        }
-        
-        if (window.saveFavToCloud) {
-            window.saveFavToCloud(k, isAdding);
-        }
-        
+        if (isAdding) state.favs.add(k); else state.favs.delete(k);
+        if (window.saveFavToCloud) window.saveFavToCloud(k, isAdding);
         syncStats(); 
         this.render(); 
     },
-
     toggleHardFilter() {
         state.filterFav = !state.filterFav;
         const btn = document.getElementById('hf-btn');
@@ -292,6 +275,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 init();
+
 
 
 
