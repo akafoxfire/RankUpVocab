@@ -42,11 +42,25 @@ function syncStats() {
 }
 
 function speak(t) {
+    // 1. Purani awaaz ko turant stop karo
     window.speechSynthesis.cancel();
-    const s = new SpeechSynthesisUtterance(t);
-    s.rate = 0.9;
+
+    // 2. Text ki safai (Apostrophe aur extra symbols hatao)
+    // .replace(/'/g, "") -> ye dog's ko dogs bana dega
+    // .split('/')[0] -> ye word1 // word2 mein se sirf pehla word lega
+    let cleanedText = t.replace(/'/g, "").split('/')[0].split('(')[0].trim();
+
+    // 3. Naya speech object banalo cleaned text ke saath
+    const s = new SpeechSynthesisUtterance(cleanedText);
+    
+    // 4. Voice settings
+    s.lang = 'en-IN'; // Indian English accent ke liye
+    s.rate = 0.9;     // Speed
+    
+    // 5. Ab bolo!
     window.speechSynthesis.speak(s);
 }
+
 
 function jumpToCard() {
     const id = document.getElementById('jump-id').value;
@@ -248,6 +262,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 init();
+
 
 
 
