@@ -580,13 +580,11 @@ select,
 /* Navbar Image Logo Styling */
 .nav-logo-img {
     width: 32px;
-    /* Perfect size for navbar */
     height: 32px;
+    aspect-ratio: 1/1; /* Ye browser ko space calculate karne mein madad karta hai */
     border-radius: 8px;
-    /* Smooth corners */
     object-fit: cover;
     margin-right: 8px;
-    /* Text se thodi doori */
 }
 
 /* Navbar Logo Container */
@@ -898,6 +896,7 @@ body.dark .fav-pill:hover {
 .hidden {
     display: none !important;
 }
+
 
 
 
