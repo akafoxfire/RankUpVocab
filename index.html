@@ -31,32 +31,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="light">
-    <header class="navbar">
-    <div class="container nav-content">
-      <div class="logo" id="main-logo" style="cursor: pointer !important; position: relative; z-index: 10;">
-    <img src="logo.png" alt="RankUp" class="nav-logo-img" width="32" height="32">
-    RankUp<span>Vocab</span>
-</div>
-<div style="display:none;">
-  <h1>RankUp Vocab by akafoxfire</h1>
-  <p>Practice 2000+ SSC One Word Substitutions and Idioms. Best for CGL, CHSL, and MTS exams. 
-     Includes Hindi meanings and Mnemonics (Memory Tricks).</p>
-</div>
-        <div class="tabs">
-            <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
-            <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <div class="user-profile">
+            
+            <div class="user-info">
+                <span id="user-name-side">Guest User</span> <small id="user-status">SSC Aspirant</small>
+            </div>
+        </div>
+        <button onclick="toggleSidebar()" class="close-sidebar">&times;</button>
+    </div>
+    
+    <div class="sidebar-menu">
+        <div class="menu-sep">Appearance</div>
+        <div class="side-item">
+            <button id="theme-btn" class="circ-btn">🌙</button>
         </div>
 
-        <div id="auth-section" style="text-align: right; padding: 10px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
-    <button id="login-btn" onclick="login()" title="Login with Google" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; padding: 5px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width: 20px;">
-    </button>
+        <div class="menu-sep">Account</div>
+        <div id="side-login-box">
+            <p></p>
+            <button id="login-btn" class="side-login-btn" onclick="login()"> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="18">
+                
+            </button>
+        </div>
+        <button id="logout-btn" class="side-logout-link" onclick="logout()" style="display:none;">Logout</button>
+    </div>
+</aside>
 
-    <span id="user-name" style="display:none; font-weight:bold;"></span>
-    <button id="logout-btn" style="display:none;" onclick="logout()">Logout</button>
-</div>
+<header class="navbar">
+    <div class="container nav-content">
+        <div class="nav-left">
+            <div class="logo" id="main-logo" style="cursor: pointer;">
+                <img src="logo.png" alt="RankUp" class="nav-logo-img" width="32" height="32">
+                RankUp<span>Vocab</span>
+            </div>
+        </div>
 
-        <button id="theme-btn" class="circ-btn">🌙</button>
+        <div class="nav-center">
+            <div class="tabs">
+                <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+                <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <button class="menu-trigger" onclick="toggleSidebar()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
 </header>
 
@@ -239,16 +263,16 @@ window.openAboutModal = function() {
 };
   // --- AUTH STATUS ---
 onAuthStateChanged(auth, async (user) => {
-  const loginBtn = document.getElementById('login-btn');
-  const logoutBtn = document.getElementById('logout-btn');
-  const userName = document.getElementById('user-name');
+  const loginBtn = document.getElementById('login-btn'); // Sidebar wala
+  const logoutBtn = document.getElementById('logout-btn'); // Sidebar wala
+  const userNameSide = document.getElementById('user-name-side'); // Updated ID
 
   if (user) {
-    loginBtn.setAttribute('style', 'display: none !important');
-    logoutBtn.style.display = 'inline-block';
-    userName.textContent = "Hi, " + user.displayName.split(' ')[0];
-    userName.style.display = 'inline-block';
-
+    if(loginBtn) loginBtn.style.display = 'none';
+    if(logoutBtn) logoutBtn.style.display = 'block';
+    if(userNameSide) userNameSide.textContent = "Hi, " + user.displayName.split(' ')[0];
+    
+    // Load Tricks & Favs...
     // 1. Load Tricks
     const trickSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
     let tricks = {};
@@ -262,9 +286,8 @@ onAuthStateChanged(auth, async (user) => {
     if (window.updateLocalFavs) window.updateLocalFavs(cloudFavs);
 
   } else {
-    loginBtn.setAttribute('style', 'display: flex !important');
-    logoutBtn.style.display = 'none';
-    userName.style.display = 'none';
+    if(loginBtn) loginBtn.style.display = 'flex';
+    if(logoutBtn) logoutBtn.style.display = 'none';
   }
 });
 </script>
@@ -295,7 +318,6 @@ onAuthStateChanged(auth, async (user) => {
 
 </body>
 </html>
-
 
 
 
