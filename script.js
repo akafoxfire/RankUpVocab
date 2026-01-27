@@ -273,8 +273,12 @@ document.addEventListener('mousedown', (e) => {
     }
 });
 
-init();
+window.toggleSidebar = function() {
+    document.getElementById('sidebar').classList.toggle('active');
+    document.getElementById('sidebar-overlay').classList.toggle('active');
+};
 
+init();
 
 
 
