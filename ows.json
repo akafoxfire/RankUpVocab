@@ -1493,7 +1493,7 @@
   { "id": 1318, "type": "OWS", "word": "Pile (N.)", "meaning": "A large number of things placed one on top of another", "hi": "ढेर", "r": 0 },
   { "id": 1319, "type": "OWS", "word": "Pilferage (N.)", "meaning": "The act of stealing something in small quantities", "hi": "छोटी चोरी", "r": "1 (1)" },
   { "id": 1320, "type": "OWS", "word": "Pillion (N.)", "meaning": "A seat for a passenger on a bicycle or motorbike", "hi": "पीछे की सीट", "r": 0 },
-  { "id": 1321, "type": "OWS", "word": "Pioneer (N.)", "meaning": "One who does something for the first time", "hi": "प्रथम अन्वेषक", "r": 2 },
+  { "id": 1321, "type": "OWS", "word": "Pioneer (N.)", "meaning": "One who does something for the first time", "hi": "प्रथम अन्वेषक", "r": 2 }
     
 
 
@@ -1501,6 +1501,7 @@
     
   ]
 }
+
 
 
 
