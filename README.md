@@ -27,7 +27,7 @@ RankUp Vocab एक स्मार्ट वेब एप्लिकेशन 
 
 ## 👨‍💻 डेवलपर (Developer)
 
-**Rakesh Kumar Dudhawal**
+**Akafoxfire**
 
 ---
 *अपनी तैयारी को RankUp करें!*
