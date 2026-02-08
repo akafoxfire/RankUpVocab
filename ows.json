@@ -1696,7 +1696,3776 @@
     "word": "Port",
     "meaning": "A place where ships load and unload goods",
     "hi": "बंदरगाह"
+  },
+  {
+    "id": 1351,
+    "type": "OWS",
+    "word": "Portable",
+    "meaning": "Something that can be carried easily",
+    "hi": "आसानी से साथ ले जाने योग्य",
+    "r": 5
+  },
+  {
+    "id": 1352,
+    "type": "OWS",
+    "word": "Portfolio",
+    "meaning": "A collection of drawings, documents, etc. That represent a person's, especially an artist's, work",
+    "hi": "जानकारी संग्रह",
+    "r": 2
+  },
+  {
+    "id": 1353,
+    "type": "OWS",
+    "word": "Posthumous",
+    "meaning": "Occurring or coming into existence after a person's death",
+    "hi": "मरणोपरांत",
+    "r": 4
+  },
+  {
+    "id": 1354,
+    "type": "OWS",
+    "word": "Posthumous Child",
+    "meaning": "A child born after the death of its father",
+    "hi": "पिता के मरणोपरांत पैदा हुआ बच्चा",
+    "r": 2
+  },
+  {
+    "id": 1355,
+    "type": "OWS",
+    "word": "Posthumous Publication",
+    "meaning": "A book published after author's death",
+    "hi": "मरणोपरांत प्रकाशन",
+    "r": 0
+  },
+  {
+    "id": 1356,
+    "type": "OWS",
+    "word": "Postmortem",
+    "meaning": "A medical examination of a dead body",
+    "hi": "शवपरीक्षा",
+    "r": 4
+  },
+  {
+    "id": 1357,
+    "type": "OWS",
+    "word": "Postpone",
+    "meaning": "Delay an event to a later date or time",
+    "hi": "स्थगित करना",
+    "r": 0
+  },
+  {
+    "id": 1358,
+    "type": "OWS",
+    "word": "Postscript",
+    "meaning": "A note appended to a letter after the signature",
+    "hi": "उपसंहार",
+    "r": 2
+  },
+  {
+    "id": 1359,
+    "type": "OWS",
+    "word": "Potable",
+    "meaning": "Fit to drink (water)",
+    "hi": "पीने योग्य",
+    "r": 6
+  },
+  {
+    "id": 1360,
+    "type": "OWS",
+    "word": "Potion",
+    "meaning": "A liquid with healing, magical, or poisonous properties",
+    "hi": "पेय औषधि",
+    "r": 0
+  },
+  {
+    "id": 1361,
+    "type": "OWS",
+    "word": "Potpourri",
+    "meaning": "A mixture of dried flowers and leaves used for making a room smell",
+    "hi": "सुगंधित मिश्रण",
+    "r": 0
+  },
+  {
+    "id": 1362,
+    "type": "OWS",
+    "word": "Practice",
+    "meaning": "Actual application (of an idea, belief, or method)",
+    "hi": "अमल, प्रयोग",
+    "r": 0
+  },
+  {
+    "id": 1363,
+    "type": "OWS",
+    "word": "Pragmatist",
+    "meaning": "One who values practicality",
+    "hi": "व्यवहारवादी",
+    "r": 0
+  },
+  {
+    "id": 1364,
+    "type": "OWS",
+    "word": "Precarious",
+    "meaning": "Dependent on chance or uncertainty",
+    "hi": "अनिश्चित",
+    "r": 0
+  },
+  {
+    "id": 1365,
+    "type": "OWS",
+    "word": "Precedent",
+    "meaning": "A previous case that might serve as an example or guide in subsequent situations",
+    "hi": "मिसाल/पूर्व निर्णय",
+    "r": 0
+  },
+  {
+    "id": 1366,
+    "type": "OWS",
+    "word": "Precipice",
+    "meaning": "A very steep or overhanging rock face or cliff on a mountain",
+    "hi": "खड़ी चट्टान",
+    "r": 0
+  },
+  {
+    "id": 1367,
+    "type": "OWS",
+    "word": "Predator",
+    "meaning": "An animal that lives by killing and eating other animals",
+    "hi": "शिकारी जानवर/परभक्षी",
+    "r": 4
+  },
+  {
+    "id": 1368,
+    "type": "OWS",
+    "word": "Predecessor",
+    "meaning": "Something that precedes and indicates the approach of something/someone",
+    "hi": "पूर्ववर्ती",
+    "r": 0
+  },
+  {
+    "id": 1369,
+    "type": "OWS",
+    "word": "Predicting",
+    "meaning": "We are expecting a good monsoon this year",
+    "hi": "पूर्वानुमान करना",
+    "r": 0
+  },
+  {
+    "id": 1370,
+    "type": "OWS",
+    "word": "Preface",
+    "meaning": "An introduction to a book, especially one that explains the author's aims",
+    "hi": "प्रस्तावना",
+    "r": 2
+  },
+  {
+    "id": 1371,
+    "type": "OWS",
+    "word": "Prejudiced",
+    "meaning": "To be biased against",
+    "hi": "पक्षपातपूर्ण",
+    "r": 0
+  },
+  {
+    "id": 1372,
+    "type": "OWS",
+    "word": "Prelude",
+    "meaning": "An action or event that happens before another important one and forms an introduction to it",
+    "hi": "प्रस्तावना",
+    "r": 0
+  },
+  {
+    "id": 1373,
+    "type": "OWS",
+    "word": "Premiere",
+    "meaning": "The first public performance of a musical or theatrical work or the first showing of a film",
+    "hi": "प्रथम प्रदर्शन",
+    "r": 2
+  },
+  {
+    "id": 1374,
+    "type": "OWS",
+    "word": "Premonition",
+    "meaning": "A strong feeling that something is about to happen, especially something unpleasant",
+    "hi": "पूर्वाभास",
+    "r": 2
+  },
+  {
+    "id": 1375,
+    "type": "OWS",
+    "word": "Prepare",
+    "meaning": "To get ready",
+    "hi": "तैयार करना",
+    "r": 0
+  },
+  {
+    "id": 1376,
+    "type": "OWS",
+    "word": "Prescribe",
+    "meaning": "To order treatment for someone",
+    "hi": "निर्धारित करना",
+    "r": 0
+  },
+  {
+    "id": 1377,
+    "type": "OWS",
+    "word": "Prevaricate",
+    "meaning": "To make evasive or misleading statement",
+    "hi": "छल कपट करना",
+    "r": 0
+  },
+  {
+    "id": 1378,
+    "type": "OWS",
+    "word": "Pride",
+    "meaning": "A group of Lions",
+    "hi": "शेरों का समूह",
+    "r": 0
+  },
+  {
+    "id": 1379,
+    "type": "OWS",
+    "word": "Privilege",
+    "meaning": "Right or advantage available to a person",
+    "hi": "विशेषाधिकार",
+    "r": 0
+  },
+  {
+    "id": 1380,
+    "type": "OWS",
+    "word": "Probationer",
+    "meaning": "A person working on a trial period",
+    "hi": "काम सीखने के लिये नियुक्त",
+    "r": 0
+  },
+  {
+    "id": 1381,
+    "type": "OWS",
+    "word": "Procrastinate",
+    "meaning": "To put off doing something, especially out of habitual carelessness or laziness",
+    "hi": "टालना",
+    "r": 4
+  },
+  {
+    "id": 1382,
+    "type": "OWS",
+    "word": "Procrastination",
+    "meaning": "The art of delaying",
+    "hi": "टालमटोल",
+    "r": 0
+  },
+  {
+    "id": 1383,
+    "type": "OWS",
+    "word": "Prodigal",
+    "meaning": "Spending money freely and rather wastefully",
+    "hi": "खर्चीला",
+    "r": 1
+  },
+  {
+    "id": 1384,
+    "type": "OWS",
+    "word": "Prodigy",
+    "meaning": "A person, especially a young one, with exceptional abilities",
+    "hi": "विलक्षण प्रतिभासंपन्न व्यक्ति",
+    "r": 1
+  },
+  {
+    "id": 1385,
+    "type": "OWS",
+    "word": "Proficiency",
+    "meaning": "A high degree of skill",
+    "hi": "निपुणता",
+    "r": 0
+  },
+  {
+    "id": 1386,
+    "type": "OWS",
+    "word": "Profile",
+    "meaning": "General view of a person's character",
+    "hi": "बाह्य रूपरेखा",
+    "r": 0
+  },
+  {
+    "id": 1387,
+    "type": "OWS",
+    "word": "Profligate",
+    "meaning": "Recklessly extravagant or wasteful in the use of resources",
+    "hi": "अतिअपव्ययी",
+    "r": 0
+  },
+  {
+    "id": 1388,
+    "type": "OWS",
+    "word": "Proletariat",
+    "meaning": "Working-class people regarded collectively",
+    "hi": "श्रमिक वर्ग",
+    "r": 0
+  },
+  {
+    "id": 1389,
+    "type": "OWS",
+    "word": "Proliferation",
+    "meaning": "Rapid increase in the number or amount of something",
+    "hi": "प्रसार, फैलाव",
+    "r": 0
+  },
+  {
+    "id": 1390,
+    "type": "OWS",
+    "word": "Prologue",
+    "meaning": "An introduction to a literary work",
+    "hi": "प्रस्तावना",
+    "r": 3
+  },
+  {
+    "id": 1391,
+    "type": "OWS",
+    "word": "Prolonged",
+    "meaning": "Continuing for a long time",
+    "hi": "दीर्घकालीन",
+    "r": 0
+  },
+  {
+    "id": 1392,
+    "type": "OWS",
+    "word": "Prop",
+    "meaning": "A piece of wood, metal, etc. Used for supporting something or keeping it in position",
+    "hi": "टेक, सहारा",
+    "r": 1
+  },
+  {
+    "id": 1393,
+    "type": "OWS",
+    "word": "Propaganda",
+    "meaning": "Information, especially of a biased or misleading nature, used to promote a political cause or point of view",
+    "hi": "राजनीतिक फायदे वाली पक्षपाती या भ्रामक जानकारी",
+    "r": 0
+  },
+  {
+    "id": 1394,
+    "type": "OWS",
+    "word": "Prophet",
+    "meaning": "A person sent by god to teach the people and give them messages from god",
+    "hi": "पैगम्बर (ईश्वरदूत)",
+    "r": 0
+  },
+  {
+    "id": 1395,
+    "type": "OWS",
+    "word": "Propulsion",
+    "meaning": "The action of driving or pushing forwards",
+    "hi": "संचालक शक्ति",
+    "r": 0
+  },
+  {
+    "id": 1396,
+    "type": "OWS",
+    "word": "Proscribe",
+    "meaning": "To forbid something, especially by law",
+    "hi": "प्रतिबंधित करना",
+    "r": 1
+  },
+  {
+    "id": 1397,
+    "type": "OWS",
+    "word": "Proselyte",
+    "meaning": "A person who has been converted to another religious or political belief",
+    "hi": "धर्मान्तरित व्यक्ति",
+    "r": 0
+  },
+  {
+    "id": 1398,
+    "type": "OWS",
+    "word": "Protagonist",
+    "meaning": "Central character in a story or play",
+    "hi": "नायक",
+    "r": 0
+  },
+  {
+    "id": 1399,
+    "type": "OWS",
+    "word": "Protocol",
+    "meaning": "A system of fixed rules and formal behaviour used at official meetings",
+    "hi": "नियमो की प्रणाली",
+    "r": 0
+  },
+  {
+    "id": 1400,
+    "type": "OWS",
+    "word": "Prototype",
+    "meaning": "The first design of something from which other forms are copied or developed",
+    "hi": "नमूना",
+    "r": 0
+  },
+  {
+    "id": 1401,
+    "type": "OWS",
+    "word": "Provender",
+    "meaning": "Food for farm animals",
+    "hi": "चारा",
+    "r": 0
+  },
+  {
+    "id": 1402,
+    "type": "OWS",
+    "word": "Provincialism",
+    "meaning": "Concern for one's own area or region at the expense of national or supranational unity",
+    "hi": "प्रांतीयता",
+    "r": 0
+  },
+  {
+    "id": 1403,
+    "type": "OWS",
+    "word": "Prowler",
+    "meaning": "A person who moves stealthily about or loiters near a place with a view to committing a crime",
+    "hi": "शिकार की खोज में घूमने वाला",
+    "r": 0
+  },
+  {
+    "id": 1404,
+    "type": "OWS",
+    "word": "Psephologist",
+    "meaning": "One who studies election trends by means of opinion polls",
+    "hi": "चुनाव विश्लेषक",
+    "r": 3
+  },
+  {
+    "id": 1405,
+    "type": "OWS",
+    "word": "Psephology",
+    "meaning": "The study of how people vote in elections",
+    "hi": "चुनाव विश्लेषण",
+    "r": 4
+  },
+  {
+    "id": 1406,
+    "type": "OWS",
+    "word": "Pseudonym",
+    "meaning": "A fictitious name especially one assumed by an author",
+    "hi": "उपनाम",
+    "r": 5
+  },
+  {
+    "id": 1407,
+    "type": "OWS",
+    "word": "Psychologist",
+    "meaning": "A scientist trained in psychology",
+    "hi": "मनोविज्ञानी",
+    "r": 0
+  },
+  {
+    "id": 1408,
+    "type": "OWS",
+    "word": "Psychology",
+    "meaning": "The scientific study of the mind and how it influences behaviour",
+    "hi": "मनोविज्ञान",
+    "r": 6
+  },
+  {
+    "id": 1409,
+    "type": "OWS",
+    "word": "Punctilious",
+    "meaning": "Careful in performing duties",
+    "hi": "अति शिष्टाचारी",
+    "r": 2
+  },
+  {
+    "id": 1410,
+    "type": "OWS",
+    "word": "Pungent",
+    "meaning": "Having a sharply strong taste or smell",
+    "hi": "तीखा",
+    "r": 2
+  },
+  {
+    "id": 1411,
+    "type": "OWS",
+    "word": "Punter",
+    "meaning": "A person who gambles, places a bet, or makes a risky investment",
+    "hi": "जुआरी",
+    "r": 0
+  },
+  {
+    "id": 1412,
+    "type": "OWS",
+    "word": "Purr",
+    "meaning": "Make a low continuous vibratory sound expressing contentment (of a cat)",
+    "hi": "म्याऊँ करना, घुरघुराना",
+    "r": 0
+  },
+  {
+    "id": 1413,
+    "type": "OWS",
+    "word": "Pursue",
+    "meaning": "To run after",
+    "hi": "पीछे लगे रहना",
+    "r": 0
+  },
+  {
+    "id": 1414,
+    "type": "OWS",
+    "word": "Putrefy",
+    "meaning": "Decay of organic matter producing a fetid smell",
+    "hi": "सड़ना",
+    "r": 0
+  },
+  {
+    "id": 1415,
+    "type": "OWS",
+    "word": "Pyromania",
+    "meaning": "An obsessive desire to set fire to things",
+    "hi": "आग लगाने का पागलपन",
+    "r": 1
+  },
+  {
+    "id": 1416,
+    "type": "OWS",
+    "word": "Quack",
+    "meaning": "Sound made by ducks",
+    "hi": "बत्तख की आवाज",
+    "r": 0
+  },
+  {
+    "id": 1417,
+    "type": "OWS",
+    "word": "Quadrangle",
+    "meaning": "A court or open space usually rectangular and enclosed by a building",
+    "hi": "चतुर्भुजाकार",
+    "r": 0
+  },
+  {
+    "id": 1418,
+    "type": "OWS",
+    "word": "Quadruped",
+    "meaning": "Any creature with four feet",
+    "hi": "चौपाया",
+    "r": 3
+  },
+  {
+    "id": 1419,
+    "type": "OWS",
+    "word": "Quash",
+    "meaning": "Reject as invalid, especially by legal procedure",
+    "hi": "रद्द करना",
+    "r": 0
+  },
+  {
+    "id": 1420,
+    "type": "OWS",
+    "word": "Quaver",
+    "meaning": "A shake or tremble in a person's voice",
+    "hi": "थरथराना",
+    "r": 0
+  },
+  {
+    "id": 1421,
+    "type": "OWS",
+    "word": "Quest",
+    "meaning": "Search for something",
+    "hi": "खोज",
+    "r": 2
+  },
+  {
+    "id": 1422,
+    "type": "OWS",
+    "word": "Quill",
+    "meaning": "A feather used as a pen",
+    "hi": "पंख की कलम",
+    "r": 0
+  },
+  {
+    "id": 1423,
+    "type": "OWS",
+    "word": "Quinquennial",
+    "meaning": "An event which happens once in five years",
+    "hi": "पंचवर्षीय",
+    "r": 1
+  },
+  {
+    "id": 1424,
+    "type": "OWS",
+    "word": "Quite",
+    "meaning": "To the utmost or most absolute extent or degree",
+    "hi": "पूर्ण रूप से",
+    "r": 0
+  },
+  {
+    "id": 1425,
+    "type": "OWS",
+    "word": "Quixotic",
+    "meaning": "A person preoccupied with an unrealistically optimistic approach to life",
+    "hi": "ख्याली/अवास्तविक",
+    "r": 2
+  },
+  {
+    "id": 1426,
+    "type": "OWS",
+    "word": "Quorum",
+    "meaning": "Minimum people needed for a meeting",
+    "hi": "न्यूनतम उपस्थिति",
+    "r": 0
+  },
+  {
+    "id": 1427,
+    "type": "OWS",
+    "word": "Raconteur",
+    "meaning": "A person who is good at telling stories in an interesting and amusing way",
+    "hi": "मजेदार कहानियाँ सुनाने वाला",
+    "r": 2
+  },
+  {
+    "id": 1428,
+    "type": "OWS",
+    "word": "Radiation",
+    "meaning": "The act of spreading outward from a central source",
+    "hi": "विकिरण",
+    "r": 0
+  },
+  {
+    "id": 1429,
+    "type": "OWS",
+    "word": "Radical",
+    "meaning": "A person who advocates complete political or social change",
+    "hi": "उग्र सुधारवादी",
+    "r": 0
+  },
+  {
+    "id": 1430,
+    "type": "OWS",
+    "word": "Radiologist",
+    "meaning": "Medical doctors who specialise in diagnosing diseases using X-rays, CT scans and ultrasound",
+    "hi": "विकिरण चिकित्सक",
+    "r": 3
+  },
+  {
+    "id": 1432,
+    "type": "OWS",
+    "word": "Rambling",
+    "meaning": "Speaking at length about trivial things",
+    "hi": "बकवास करना",
+    "r": 0
+  },
+  {
+    "id": 1433,
+    "type": "OWS",
+    "word": "Ramification",
+    "meaning": "The possible results of an action",
+    "hi": "परिणाम",
+    "r": 0
+  },
+  {
+    "id": 1434,
+    "type": "OWS",
+    "word": "Rancid",
+    "meaning": "Having a stale smell or taste",
+    "hi": "बासी",
+    "r": 1
+  },
+  {
+    "id": 1435,
+    "type": "OWS",
+    "word": "Rancorous",
+    "meaning": "Characterized by bitterness or resentment",
+    "hi": "शत्रुतापूर्ण",
+    "r": 0
+  },
+  {
+    "id": 1436,
+    "type": "OWS",
+    "word": "Ransom",
+    "meaning": "To free prisoner on payment",
+    "hi": "फिरौती",
+    "r": 1
+  },
+  {
+    "id": 1437,
+    "type": "OWS",
+    "word": "Rapacious",
+    "meaning": "Greedy for money",
+    "hi": "अति लोभी",
+    "r": 2
+  },
+  {
+    "id": 1438,
+    "type": "OWS",
+    "word": "Rebate",
+    "meaning": "Reduction in tax or debt",
+    "hi": "छूट",
+    "r": 0
+  },
+  {
+    "id": 1439,
+    "type": "OWS",
+    "word": "Rebel",
+    "meaning": "Opposing or taking arms against a government or ruler",
+    "hi": "विद्रोही",
+    "r": 0
+  },
+  {
+    "id": 1440,
+    "type": "OWS",
+    "word": "Recant",
+    "meaning": "To take back, withdraw or renounce something",
+    "hi": "मुकर जाना",
+    "r": 0
+  },
+  {
+    "id": 1441,
+    "type": "OWS",
+    "word": "Receptacle",
+    "meaning": "A hollow object used to contain something",
+    "hi": "पात्र",
+    "r": 0
+  },
+  {
+    "id": 1442,
+    "type": "OWS",
+    "word": "Recipient",
+    "meaning": "One who receives something",
+    "hi": "प्राप्तकर्ता",
+    "r": 0
+  },
+  {
+    "id": 1443,
+    "type": "OWS",
+    "word": "Reciprocate",
+    "meaning": "Give and receive mutually",
+    "hi": "लेन देन करना/विनिमय",
+    "r": 0
+  },
+  {
+    "id": 1444,
+    "type": "OWS",
+    "word": "Recluse",
+    "meaning": "A person who withdraws from the world to live in seclusion and often in solitude",
+    "hi": "बैरागी",
+    "r": 5
+  },
+  {
+    "id": 1445,
+    "type": "OWS",
+    "word": "Rectify",
+    "meaning": "Adjust or make right; correct, amend",
+    "hi": "सुधारना",
+    "r": 0
+  },
+  {
+    "id": 1446,
+    "type": "OWS",
+    "word": "Rectilinear",
+    "meaning": "When something moves in a straight line",
+    "hi": "सीधा",
+    "r": 0
+  },
+  {
+    "id": 1447,
+    "type": "OWS",
+    "word": "Recurrent",
+    "meaning": "Happening repeatedly",
+    "hi": "बारबार होने वाला",
+    "r": 0
+  },
+  {
+    "id": 1448,
+    "type": "OWS",
+    "word": "Red-Tapism",
+    "meaning": "A process involving too much official formality",
+    "hi": "लाल फीताशाही",
+    "r": 3
+  },
+  {
+    "id": 1449,
+    "type": "OWS",
+    "word": "Redundant",
+    "meaning": "That which is no longer useful",
+    "hi": "अनावश्यक",
+    "r": 0
+  },
+  {
+    "id": 1450,
+    "type": "OWS",
+    "word": "Referendum",
+    "meaning": "An act when people vote in order to make a decision about a particular subject or policy rather than voting for a person",
+    "hi": "जनमत संग्रह",
+    "r": 0
+  },
+  {
+    "id": 1451,
+    "type": "OWS",
+    "word": "Reflex",
+    "meaning": "An involuntary action under a stimulus is described",
+    "hi": "अनैच्छिक क्रिया",
+    "r": 0
+  },
+  {
+    "id": 1452,
+    "type": "OWS",
+    "word": "Reformism",
+    "meaning": "The system which is observed to do progress",
+    "hi": "संशोधनवाद",
+    "r": 0
+  },
+  {
+    "id": 1453,
+    "type": "OWS",
+    "word": "Refugee",
+    "meaning": "A person who has been forced to leave his country/home, because there is a war or for political, religious or social reasons",
+    "hi": "शरणार्थी",
+    "r": 0
+  },
+  {
+    "id": 1454,
+    "type": "OWS",
+    "word": "Regalia",
+    "meaning": "Dress with medals, ribbons worn at official ceremony // symbols of royalty",
+    "hi": "राजचिह्न, पदवी चिह्न, पदक",
+    "r": 0
+  },
+  {
+    "id": 1455,
+    "type": "OWS",
+    "word": "Regicide",
+    "meaning": "The murder of a king",
+    "hi": "राज-हत्या",
+    "r": 0
+  },
+  {
+    "id": 1457,
+    "type": "OWS",
+    "word": "Rehabilitate",
+    "meaning": "Restore (someone) to health or normal life after imprisonment, addiction, or illness",
+    "hi": "पूर्व दशा में लाना",
+    "r": 0
+  },
+  {
+    "id": 1458,
+    "type": "OWS",
+    "word": "Rejuvenated",
+    "meaning": "Younger looking skin",
+    "hi": "फिर से जवान बना देना",
+    "r": 0
+  },
+  {
+    "id": 1459,
+    "type": "OWS",
+    "word": "Relapse",
+    "meaning": "Fall back or sink again (into a worse state after an improvement)",
+    "hi": "पूर्व दशा में आ जाना",
+    "r": 0
+  },
+  {
+    "id": 1460,
+    "type": "OWS",
+    "word": "Relic",
+    "meaning": "A deceased holy person's remains or belongings kept for reverence // Something belonging to or surviving from an earlier period",
+    "hi": "अवशेष",
+    "r": 2
+  },
+  {
+    "id": 1461,
+    "type": "OWS",
+    "word": "Reluctant",
+    "meaning": "He was not willing to attend the technical session of the conference",
+    "hi": "अनिच्छुक",
+    "r": 0
+  },
+  {
+    "id": 1462,
+    "type": "OWS",
+    "word": "Remand",
+    "meaning": "Send back a criminal into custody for further investigation",
+    "hi": "जेल वापसी",
+    "r": 0
+  },
+  {
+    "id": 1463,
+    "type": "OWS",
+    "word": "Reminded",
+    "meaning": "To brought back to mind",
+    "hi": "याद दिलाया",
+    "r": 0
+  },
+  {
+    "id": 1464,
+    "type": "OWS",
+    "word": "Reminiscence",
+    "meaning": "A characteristic of one thing that is suggestive of another",
+    "hi": "संस्मरण",
+    "r": 1
+  },
+  {
+    "id": 1465,
+    "type": "OWS",
+    "word": "Remorse",
+    "meaning": "Having a feeling of guilt",
+    "hi": "पश्चाताप",
+    "r": 0
+  },
+  {
+    "id": 1466,
+    "type": "OWS",
+    "word": "Remuneration",
+    "meaning": "Amount paid to a man for his labour",
+    "hi": "पारिश्रमिक",
+    "r": 0
+  },
+  {
+    "id": 1467,
+    "type": "OWS",
+    "word": "Rendition",
+    "meaning": "Artistic, musical or dramatic interpretation",
+    "hi": "प्रस्तुतिकरण",
+    "r": 0
+  },
+  {
+    "id": 1468,
+    "type": "OWS",
+    "word": "Renegade",
+    "meaning": "One who deserts his principles or party",
+    "hi": "पाखण्डी",
+    "r": 0
+  },
+  {
+    "id": 1469,
+    "type": "OWS",
+    "word": "Renovate",
+    "meaning": "Restore something to better condition",
+    "hi": "नवीनीकरण करना",
+    "r": 0
+  },
+  {
+    "id": 1470,
+    "type": "OWS",
+    "word": "Repatriation",
+    "meaning": "The return of someone to his own country",
+    "hi": "स्वदेश लौटना",
+    "r": 3
+  },
+  {
+    "id": 1471,
+    "type": "OWS",
+    "word": "Repentance",
+    "meaning": "Atonement for one's sins",
+    "hi": "पछतावा",
+    "r": 0
+  },
+  {
+    "id": 1472,
+    "type": "OWS",
+    "word": "Replenish",
+    "meaning": "Fill up again",
+    "hi": "फिर से भरना",
+    "r": 0
+  },
+  {
+    "id": 1473,
+    "type": "OWS",
+    "word": "Replica",
+    "meaning": "An exact or a very close copy (of something)",
+    "hi": "नकल",
+    "r": 0
+  },
+  {
+    "id": 1474,
+    "type": "OWS",
+    "word": "Reprieve",
+    "meaning": "Postponing or remitting punishment",
+    "hi": "दण्डविराम",
+    "r": 0
+  },
+  {
+    "id": 1475,
+    "type": "OWS",
+    "word": "Reptiles",
+    "meaning": "Vertebrate animals that crawl on the ground",
+    "hi": "सरीसृप (रेंगने वाले जन्तु)",
+    "r": 0
+  },
+  {
+    "id": 1476,
+    "type": "OWS",
+    "word": "Repulsive",
+    "meaning": "Causing a strong dislike",
+    "hi": "घिनौना",
+    "r": 0
+  },
+  {
+    "id": 1477,
+    "type": "OWS",
+    "word": "Reserved",
+    "meaning": "Someone who is silent or uncommunicative in speech",
+    "hi": "अमिलनसार/संकोची",
+    "r": 0
+  },
+  {
+    "id": 1478,
+    "type": "OWS",
+    "word": "Reservoir",
+    "meaning": "A large natural or artificial lake used as a source of water supply",
+    "hi": "जलाशय",
+    "r": 2
+  },
+  {
+    "id": 1479,
+    "type": "OWS",
+    "word": "Resilient",
+    "meaning": "To become a strong person in spite of many difficulties",
+    "hi": "लचीला",
+    "r": 2
+  },
+  {
+    "id": 1480,
+    "type": "OWS",
+    "word": "Respiration",
+    "meaning": "The process by means of which plants and animals breathe",
+    "hi": "श्वसन",
+    "r": 0
+  },
+  {
+    "id": 1481,
+    "type": "OWS",
+    "word": "Respite",
+    "meaning": "Postponement or delay permitted in the suffering of a penalty or the discharge of an obligation",
+    "hi": "मोहलत देना/दण्डस्थगन",
+    "r": 0
+  },
+  {
+    "id": 1482,
+    "type": "OWS",
+    "word": "Retaliate",
+    "meaning": "Return the same sort of attack/give tit for tat",
+    "hi": "बदला लेना",
+    "r": 2
+  },
+  {
+    "id": 1483,
+    "type": "OWS",
+    "word": "Reticent",
+    "meaning": "A person very reserved in speech",
+    "hi": "अल्पभाषी",
+    "r": 4
+  },
+  {
+    "id": 1484,
+    "type": "OWS",
+    "word": "Retrace",
+    "meaning": "Go back over the same route that one has just taken",
+    "hi": "पीछे हटना",
+    "r": 0
+  },
+  {
+    "id": 1485,
+    "type": "OWS",
+    "word": "Retreat",
+    "meaning": "Withdraw from a forward position in battle",
+    "hi": "पीछे हटना",
+    "r": 0
+  },
+  {
+    "id": 1486,
+    "type": "OWS",
+    "word": "Retrospection",
+    "meaning": "Action of reviewing past events in one's life",
+    "hi": "पश्चावलोकन",
+    "r": 0
+  },
+  {
+    "id": 1487,
+    "type": "OWS",
+    "word": "Revamp",
+    "meaning": "To renovate or improve",
+    "hi": "मरम्मत करना",
+    "r": 0
+  },
+  {
+    "id": 1488,
+    "type": "OWS",
+    "word": "Reveille",
+    "meaning": "A tune that is played to wake soldiers in the morning",
+    "hi": "जगाने का बिगुल",
+    "r": 0
+  },
+  {
+    "id": 1489,
+    "type": "OWS",
+    "word": "Revel",
+    "meaning": "Take great pleasure",
+    "hi": "आनंद लेना",
+    "r": 0
+  },
+  {
+    "id": 1490,
+    "type": "OWS",
+    "word": "Reverent",
+    "meaning": "Feeling or showing deep and solemn respect",
+    "hi": "श्रद्धापूर्ण",
+    "r": 0
+  },
+  {
+    "id": 1491,
+    "type": "OWS",
+    "word": "Reverie",
+    "meaning": "A state of absent-minded daydreaming",
+    "hi": "दिवास्वप्न, उधेड़बुन",
+    "r": 0
+  },
+  {
+    "id": 1492,
+    "type": "OWS",
+    "word": "Revile",
+    "meaning": "Criticize in an abusive or angrily insulting manner",
+    "hi": "गाली देना",
+    "r": 0
+  },
+  {
+    "id": 1493,
+    "type": "OWS",
+    "word": "Rhetoric",
+    "meaning": "Meaningless language with an exaggerated style intended to impress // The art of effective or persuasive speaking or writing",
+    "hi": "बड़ा-चढ़ावा, शब्दआडम्बर",
+    "r": 0
+  },
+  {
+    "id": 1494,
+    "type": "OWS",
+    "word": "Rhinologist",
+    "meaning": "A specialist in diseases of the nose",
+    "hi": "नाक के रोगों में विशेषज्ञ",
+    "r": 0
+  },
+  {
+    "id": 1495,
+    "type": "OWS",
+    "word": "Richter",
+    "meaning": "Scale used for measuring the strength of an earthquake",
+    "hi": "भूकंप की तीव्रता मापने का पैमाना",
+    "r": 0
+  },
+  {
+    "id": 1496,
+    "type": "OWS",
+    "word": "Ridicule",
+    "meaning": "Full of criticism and mockery",
+    "hi": "उपहास",
+    "r": 0
+  },
+  {
+    "id": 1497,
+    "type": "OWS",
+    "word": "Rigid",
+    "meaning": "One who has fixed opinions and beliefs // Hard and difficult to bend",
+    "hi": "दृढ़/कठोर",
+    "r": 0
+  },
+  {
+    "id": 1498,
+    "type": "OWS",
+    "word": "Rites",
+    "meaning": "Solemn religious acts",
+    "hi": "रीति-रिवाज/धार्मिक कार्य",
+    "r": 0
+  },
+  {
+    "id": 1499,
+    "type": "OWS",
+    "word": "Rotunda",
+    "meaning": "Circular building or hall with a dome",
+    "hi": "गोल-घर",
+    "r": 0
+  },
+  {
+    "id": 1500,
+    "type": "OWS",
+    "word": "Ruins",
+    "meaning": "The broken parts of objects found in an ancient site",
+    "hi": "अवशेष",
+    "r": 0
+  },
+  {
+    "id": 1501,
+    "type": "OWS",
+    "word": "Rush",
+    "meaning": "Move with urgent haste",
+    "hi": "जल्दबाजी करना",
+    "r": 0
+  },
+  {
+    "id": 1502,
+    "type": "OWS",
+    "word": "Sabotage",
+    "meaning": "Deliberately destroy something for military advantage",
+    "hi": "तोड़-फोड़ करना",
+    "r": 0
+  },
+  {
+    "id": 1503,
+    "type": "OWS",
+    "word": "Sacrilege",
+    "meaning": "Violation of something holy or sacred",
+    "hi": "अपवित्रीकरण",
+    "r": 0
+  },
+  {
+    "id": 1504,
+    "type": "OWS",
+    "word": "Sadistic",
+    "meaning": "Deriving pleasure from inflicting pain",
+    "hi": "परपीड़न-कामुक",
+    "r": 0
+  },
+  {
+    "id": 1505,
+    "type": "OWS",
+    "word": "Saga",
+    "meaning": "A detailed description of a series of real or fictional events taking place over a long period of time",
+    "hi": "कथा",
+    "r": 0
+  },
+  {
+    "id": 1506,
+    "type": "OWS",
+    "word": "Salience",
+    "meaning": "The quality of being particularly noticeable",
+    "hi": "प्रमुखता/विशेषता",
+    "r": 0
+  },
+  {
+    "id": 1507,
+    "type": "OWS",
+    "word": "Salvo",
+    "meaning": "The firing of many guns at the same time to mark an occasion",
+    "hi": "फौजी सलामी",
+    "r": 0
+  },
+  {
+    "id": 1508,
+    "type": "OWS",
+    "word": "Samaritan",
+    "meaning": "One who helps a person in need",
+    "hi": "नेक आदमी",
+    "r": 0
+  },
+  {
+    "id": 1509,
+    "type": "OWS",
+    "word": "Samizdat",
+    "meaning": "The clandestine copying and distribution of literature banned by the state",
+    "hi": "प्रतिबंधित साहित्य की नकल और वितरण",
+    "r": 0
+  },
+  {
+    "id": 1510,
+    "type": "OWS",
+    "word": "Sanatorium",
+    "meaning": "A place of good climate for invalids",
+    "hi": "आरोग्य निवास",
+    "r": 0
+  },
+  {
+    "id": 1511,
+    "type": "OWS",
+    "word": "Sanctity",
+    "meaning": "The state or quality of being holy",
+    "hi": "पवित्रता",
+    "r": 0
+  }, 
+  {
+    "id": 1512,
+    "type": "OWS",
+    "word": "Sanctuary",
+    "meaning": "A protected place for birds and animals // A nature reserve for birds or animals",
+    "hi": "अभयारण्य",
+    "r": 5
+  },
+  {
+    "id": 1513,
+    "type": "OWS",
+    "word": "Sanctum",
+    "meaning": "A sacred place",
+    "hi": "पवित्र स्थल",
+    "r": 1
+  },
+  {
+    "id": 1514,
+    "type": "OWS",
+    "word": "Sanguinary",
+    "meaning": "A battle or anything involving or causing much bloodshed",
+    "hi": "रक्तपातपूर्ण",
+    "r": 0
+  },
+  {
+    "id": 1515,
+    "type": "OWS",
+    "word": "Sanguine",
+    "meaning": "Optimistic in an apparently difficult situation",
+    "hi": "आशावादी",
+    "r": 1
+  },
+  {
+    "id": 1516,
+    "type": "OWS",
+    "word": "Sarcasm",
+    "meaning": "The use of irony to mock or convey contempt",
+    "hi": "ताना",
+    "r": 0
+  },
+  {
+    "id": 1517,
+    "type": "OWS",
+    "word": "Satire",
+    "meaning": "Full of criticism and mockery",
+    "hi": "हास्य व्यंग्य",
+    "r": 2
+  },
+  {
+    "id": 1518,
+    "type": "OWS",
+    "word": "Savouring",
+    "meaning": "Taste good food or drink and enjoy it to the full",
+    "hi": "स्वाद लेना",
+    "r": 0
+  },
+  {
+    "id": 1519,
+    "type": "OWS",
+    "word": "Scabbard",
+    "meaning": "A sheath for the blade of a sword",
+    "hi": "म्यान",
+    "r": 1
+  },
+  {
+    "id": 1520,
+    "type": "OWS",
+    "word": "Scandal",
+    "meaning": "Tale that brings bad reputation to somebody",
+    "hi": "कलंकपूर्ण कृत्य",
+    "r": 0
+  },
+  {
+    "id": 1521,
+    "type": "OWS",
+    "word": "Scant",
+    "meaning": "Barely sufficient or adequate",
+    "hi": "अपर्याप्त",
+    "r": 0
+  },
+  {
+    "id": 1522,
+    "type": "OWS",
+    "word": "Scapegoat",
+    "meaning": "A person who is blamed for the wrong doings of others",
+    "hi": "बलि का बकरा",
+    "r": 4
+  },
+  {
+    "id": 1523,
+    "type": "OWS",
+    "word": "Scarcity",
+    "meaning": "The state of being in short supply",
+    "hi": "अभाव",
+    "r": 0
+  },
+  {
+    "id": 1524,
+    "type": "OWS",
+    "word": "Scatterbrain",
+    "meaning": "A person who is forgetful and unable to concentrate or think clearly",
+    "hi": "अस्थिर व्यक्ति",
+    "r": 0
+  },
+  {
+    "id": 1525,
+    "type": "OWS",
+    "word": "Scavenge",
+    "meaning": "Search for and collect anything usable from discarded waste",
+    "hi": "कूड़े में उपयोगी चीज ढूंढना",
+    "r": 0
+  },
+  {
+    "id": 1526,
+    "type": "OWS",
+    "word": "Sceptic",
+    "meaning": "Someone who habitually doubts accepted beliefs",
+    "hi": "संदेहवादी",
+    "r": 2
+  },
+  {
+    "id": 1527,
+    "type": "OWS",
+    "word": "Sceptre",
+    "meaning": "An ornamented staff carried by rulers on ceremonial occasions as a symbol of sovereignty",
+    "hi": "राजअधिकार",
+    "r": 0
+  },
+  {
+    "id": 1528,
+    "type": "OWS",
+    "word": "Schedule",
+    "meaning": "A plan of what is to be done and when",
+    "hi": "समय सारणी",
+    "r": 1
+  },
+  {
+    "id": 1529,
+    "type": "OWS",
+    "word": "Scholarship",
+    "meaning": "A grant or payment to support a student's education",
+    "hi": "छात्रवृत्ति",
+    "r": 0
+  },
+  {
+    "id": 1530,
+    "type": "OWS",
+    "word": "School",
+    "meaning": "A group of fish",
+    "hi": "मछलियों का झुंड",
+    "r": 1
+  },
+  {
+    "id": 1531,
+    "type": "OWS",
+    "word": "Scintillating",
+    "meaning": "A vivacious and lively experience",
+    "hi": "बहुत शानदार",
+    "r": 0
+  },
+  {
+    "id": 1532,
+    "type": "OWS",
+    "word": "Score",
+    "meaning": "A set of twenty",
+    "hi": "बीस का एक सेट",
+    "r": 0
+  },
+  {
+    "id": 1533,
+    "type": "OWS",
+    "word": "Screech",
+    "meaning": "A loud, harsh, piercing cry",
+    "hi": "चीख",
+    "r": 0
+  },
+  {
+    "id": 1534,
+    "type": "OWS",
+    "word": "Scullery",
+    "meaning": "Small room where dishes are washed",
+    "hi": "बर्तन माँजने की जगह",
+    "r": 1
+  },
+  {
+    "id": 1535,
+    "type": "OWS",
+    "word": "Sculptor",
+    "meaning": "The artists who make sculptures",
+    "hi": "मूर्तिकार",
+    "r": 2
+  },
+  {
+    "id": 1536,
+    "type": "OWS",
+    "word": "Scurrilous",
+    "meaning": "Making or spreading scandalous claims about someone with the intention of damaging their reputation/Severely abusive writing in journals",
+    "hi": "अभद्र",
+    "r": 2
+  },
+  {
+    "id": 1537,
+    "type": "OWS",
+    "word": "Secular",
+    "meaning": "Government not connected with religious or spiritual matters",
+    "hi": "धर्म निरपेक्ष",
+    "r": 4
+  },
+  {
+    "id": 1538,
+    "type": "OWS",
+    "word": "Sedative",
+    "meaning": "A drug or other substance that induces sleep",
+    "hi": "शांतिकर औषधि",
+    "r": 2
+  },
+  {
+    "id": 1539,
+    "type": "OWS",
+    "word": "Sedulous",
+    "meaning": "Marked by care and persistent effort",
+    "hi": "परिश्रमी",
+    "r": 0
+  },
+  {
+    "id": 1540,
+    "type": "OWS",
+    "word": "Seismograph",
+    "meaning": "An instrument for detecting an earthquake",
+    "hi": "भूकंप-सूचक यंत्र",
+    "r": 1
+  },
+  {
+    "id": 1541,
+    "type": "OWS",
+    "word": "Seismology",
+    "meaning": "The scientific study of earthquakes",
+    "hi": "भूकंप विज्ञान",
+    "r": 2
+  },
+  {
+    "id": 1542,
+    "type": "OWS",
+    "word": "Seize",
+    "meaning": "Take hold of forcibly or suddenly",
+    "hi": "ज़ब्त करना",
+    "r": 0
+  },
+  {
+    "id": 1543,
+    "type": "OWS",
+    "word": "Seldom",
+    "meaning": "Rarely; not often",
+    "hi": "कभी कभार",
+    "r": 0
+  },
+  {
+    "id": 1544,
+    "type": "OWS",
+    "word": "Seminar",
+    "meaning": "That which is arranged by conferring or discussing",
+    "hi": "संगोष्ठी",
+    "r": 0
+  },
+  {
+    "id": 1545,
+    "type": "OWS",
+    "word": "Senile",
+    "meaning": "A person who is experiencing dementia brought about by old age",
+    "hi": "बुढ़ापे के कारण सठियाया हुआ",
+    "r": 0
+  },
+  {
+    "id": 1546,
+    "type": "OWS",
+    "word": "Sensitive",
+    "meaning": "Aware of and able to understand other people and their feelings",
+    "hi": "संवेदनशील",
+    "r": 0
+  },
+  {
+    "id": 1547,
+    "type": "OWS",
+    "word": "Septuagenarian",
+    "meaning": "A person between the ages of 70 and 79",
+    "hi": "सत्तर वर्ष की अवस्था का मनुष्य",
+    "r": 0
+  },
+  {
+    "id": 1548,
+    "type": "OWS",
+    "word": "Sepulchre",
+    "meaning": "A place of burial",
+    "hi": "क़ब्र",
+    "r": 0
+  },
+  {
+    "id": 1549,
+    "type": "OWS",
+    "word": "Serendipity",
+    "meaning": "The occurrence and development of events by chance in a happy or beneficial way",
+    "hi": "आकस्मिक लाभ",
+    "r": 0
+  },
+  {
+    "id": 1550,
+    "type": "OWS",
+    "word": "Serial",
+    "meaning": "Repeatedly committing the same offence and typically following a characteristic, predictable behaviour pattern",
+    "hi": "अनुक्रमिक",
+    "r": 0
+  },
+  {
+    "id": 1551,
+    "type": "OWS",
+    "word": "Sericulture",
+    "meaning": "Rearing of silk worm",
+    "hi": "रेशम कीट-पालन",
+    "r": 0
+  },
+  {
+    "id": 1552,
+    "type": "OWS",
+    "word": "Serpentarium",
+    "meaning": "A place where snakes are kept",
+    "hi": "साँपों का घर",
+    "r": 0
+  },
+  {
+    "id": 1553,
+    "type": "OWS",
+    "word": "Sever",
+    "meaning": "To cut something into two pieces",
+    "hi": "काटकर अलग करना",
+    "r": 0
+  },
+  {
+    "id": 1554,
+    "type": "OWS",
+    "word": "Sexagenarian",
+    "meaning": "A person between the ages of 60 and 69",
+    "hi": "साठ वर्ष का",
+    "r": 0
+  },
+  {
+    "id": 1555,
+    "type": "OWS",
+    "word": "Shaft",
+    "meaning": "A vertical passageway into a mine",
+    "hi": "खदान का लंबवत मार्ग",
+    "r": 0
+  },
+  {
+    "id": 1556,
+    "type": "OWS",
+    "word": "Sheath",
+    "meaning": "A close-fitting cover for a sword or knife // Cover for the blade of a weapon or a tool",
+    "hi": "म्यान",
+    "r": 0
+  },
+  {
+    "id": 1557,
+    "type": "OWS",
+    "word": "Shoal",
+    "meaning": "A large number of fish swimming together",
+    "hi": "मछलियों का समुदाय",
+    "r": 0
+  },
+  {
+    "id": 1558,
+    "type": "OWS",
+    "word": "Shrapnel",
+    "meaning": "Fragments from an exploded artillery shell, mine, or bomb",
+    "hi": "बम का टुकड़ा",
+    "r": 0
+  },
+  {
+    "id": 1559,
+    "type": "OWS",
+    "word": "Shrewd",
+    "meaning": "Showing astute powers of judgement; clever and judicious",
+    "hi": "चतुर",
+    "r": 0
+  },
+  {
+    "id": 1560,
+    "type": "OWS",
+    "word": "Shuttle",
+    "meaning": "To move or travel back and forth frequently",
+    "hi": "नियमित आवागमन",
+    "r": 0
+  },
+  {
+    "id": 1561,
+    "type": "OWS",
+    "word": "Siesta",
+    "meaning": "A short rest or sleep taken after lunch",
+    "hi": "दोपहर का आराम",
+    "r": 0
+  },
+  {
+    "id": 1562,
+    "type": "OWS",
+    "word": "Silhouette",
+    "meaning": "The dark shape and outline of something visible against a bright background",
+    "hi": "छाया-आकृति",
+    "r": 0
+  },
+  {
+    "id": 1563,
+    "type": "OWS",
+    "word": "Simile",
+    "meaning": "A figure of speech by which a thing is spoken of as being that which it only resembles",
+    "hi": "उपमा अलंकार",
+    "r": 0
+  },
+  {
+    "id": 1564,
+    "type": "OWS",
+    "word": "Simultaneous",
+    "meaning": "Happening or being done at exactly the same time",
+    "hi": "समक्षणिक",
+    "r": 0
+  },
+  {
+    "id": 1565,
+    "type": "OWS",
+    "word": "Sinecure",
+    "meaning": "An office with high salary but no work",
+    "hi": "आराम की नौकरी",
+    "r": 0
+  },
+  {
+    "id": 1566,
+    "type": "OWS",
+    "word": "Skeleton",
+    "meaning": "An internal or external framework of bones",
+    "hi": "कंकाल",
+    "r": 0
+  },
+  {
+    "id": 1567,
+    "type": "OWS",
+    "word": "Slacken",
+    "meaning": "Reduce or decrease in speed or intensity",
+    "hi": "धीमा पड़ जाना",
+    "r": 0
+  },
+  {
+    "id": 1568,
+    "type": "OWS",
+    "word": "Slobber",
+    "meaning": "Have saliva dripping copiously from the mouth",
+    "hi": "लार टपकाना",
+    "r": 0
+  },
+  {
+    "id": 1569,
+    "type": "OWS",
+    "word": "Slot",
+    "meaning": "A given space, time or position",
+    "hi": "निर्धारित समय",
+    "r": 0
+  },
+  {
+    "id": 1570,
+    "type": "OWS",
+    "word": "Smother",
+    "meaning": "Kill someone by covering their nose and mouth so that they suffocate",
+    "hi": "गला घोंटकर मारना",
+    "r": 0
+  },
+  {
+    "id": 1571,
+    "type": "OWS",
+    "word": "Snob",
+    "meaning": "A person regarded as arrogant and annoying",
+    "hi": "घमंडी",
+    "r": 0
+  },
+  {
+    "id": 1572,
+    "type": "OWS",
+    "word": "Snug",
+    "meaning": "Enjoying or affording warm secure shelter or cover and opportunity for ease and contentment",
+    "hi": "आरामदायक",
+    "r": 0
+  },
+  {
+    "id": 1573,
+    "type": "OWS",
+    "word": "Sociology",
+    "meaning": "The study and classification of human societies",
+    "hi": "नागरिक शास्त्र",
+    "r": 0
+  },
+  {
+    "id": 1574,
+    "type": "OWS",
+    "word": "Sojourn",
+    "meaning": "A brief or short stay at a place",
+    "hi": "थोड़े दिन का निवास",
+    "r": 2
+  },
+  {
+    "id": 1575,
+    "type": "OWS",
+    "word": "Solecism",
+    "meaning": "A very delicate flaw or mistake which is not expected from the person making it",
+    "hi": "अशिष्टता",
+    "r": 0
+  },
+  {
+    "id": 1576,
+    "type": "OWS",
+    "word": "Soliloquist",
+    "meaning": "One who talks to oneself",
+    "hi": "अपने आप से बातें करने वाला",
+    "r": 0
+  },
+  {
+    "id": 1577,
+    "type": "OWS",
+    "word": "Soliloquy",
+    "meaning": "A speech made to oneself",
+    "hi": "आत्मभाषण",
+    "r": 3
+  },
+  {
+    "id": 1578,
+    "type": "OWS",
+    "word": "Solitude",
+    "meaning": "The state of being alone, especially when you find this pleasant",
+    "hi": "एकांत",
+    "r": 0
+  },
+  {
+    "id": 1579,
+    "type": "OWS",
+    "word": "Solvent",
+    "meaning": "Being able to pay one's debt",
+    "hi": "अपने ऋण चुकाने में समर्थ",
+    "r": 0
+  },
+  {
+    "id": 1580,
+    "type": "OWS",
+    "word": "Somnambulism",
+    "meaning": "Walking in sleep",
+    "hi": "नींद में चलना",
+    "r": 2
+  },
+  {
+    "id": 1581,
+    "type": "OWS",
+    "word": "Somnambulist",
+    "meaning": "Someone who walks about in sleep",
+    "hi": "नींद में चलने वाला",
+    "r": 7
+  },
+  {
+    "id": 1582,
+    "type": "OWS",
+    "word": "Somniloquist",
+    "meaning": "One who talks in sleep",
+    "hi": "नींद में बोलने वाला",
+    "r": 3
+  },
+  {
+    "id": 1583,
+    "type": "OWS",
+    "word": "Somniloquy",
+    "meaning": "The act or habit of talking in one's sleep",
+    "hi": "नींद में बात करना",
+    "r": 1
+  },
+  {
+    "id": 1584,
+    "type": "OWS",
+    "word": "Sonnet",
+    "meaning": "A fourteen-line poem",
+    "hi": "चौदह लाइन की कविता",
+    "r": 2
+  },
+  {
+    "id": 1585,
+    "type": "OWS",
+    "word": "Soporific",
+    "meaning": "A drug or other substance that induces sleep",
+    "hi": "नींद लाने वाली",
+    "r": 3
+  },
+  {
+    "id": 1586,
+    "type": "OWS",
+    "word": "Sorcery",
+    "meaning": "A type of magic in which spirits, especially evil ones, are used to make things happen",
+    "hi": "जादू-टोना",
+    "r": 0
+  },
+  {
+    "id": 1587,
+    "type": "OWS",
+    "word": "Sororicade",
+    "meaning": "The murder of one's sister",
+    "hi": "बहन की हत्या",
+    "r": 2
+  },
+  {
+    "id": 1588,
+    "type": "OWS",
+    "word": "Souvenir",
+    "meaning": "Something kept as a reminder of an event",
+    "hi": "निशानी",
+    "r": 4
+  },
+  {
+    "id": 1589,
+    "type": "OWS",
+    "word": "Spasm",
+    "meaning": "Sudden involuntary muscular contraction",
+    "hi": "ऐंठन",
+    "r": 0
+  },
+  {
+    "id": 1590,
+    "type": "OWS",
+    "word": "Speak",
+    "meaning": "Say something in order to convey information",
+    "hi": "बोलना",
+    "r": 0
+  },
+  {
+    "id": 1591,
+    "type": "OWS",
+    "word": "Specimen",
+    "meaning": "A small amount of something that shows what the rest of it is like",
+    "hi": "नमूना",
+    "r": 0
+  },
+  {
+    "id": 1592,
+    "type": "OWS",
+    "word": "Speculation",
+    "meaning": "The forming of a theory or conjecture without firm evidence",
+    "hi": "परिकल्पना",
+    "r": 0
+  },
+  {
+    "id": 1593,
+    "type": "OWS",
+    "word": "Speleology",
+    "meaning": "Study of caves",
+    "hi": "गुफा विज्ञान",
+    "r": 0
+  },
+  {
+    "id": 1594,
+    "type": "OWS",
+    "word": "Spendthrift",
+    "meaning": "One who spends money recklessly",
+    "hi": "खर्चीला",
+    "r": 1
+  },
+  {
+    "id": 1595,
+    "type": "OWS",
+    "word": "Spinster",
+    "meaning": "An old unmarried woman",
+    "hi": "अधेड़ अविवाहिता",
+    "r": 0
+  },
+  {
+    "id": 1596,
+    "type": "OWS",
+    "word": "Spokesman",
+    "meaning": "One who speaks on behalf of others",
+    "hi": "प्रवक्ता",
+    "r": 2
+  },
+  {
+    "id": 1597,
+    "type": "OWS",
+    "word": "Spokesperson",
+    "meaning": "One who speaks for others",
+    "hi": "प्रवक्ता",
+    "r": 0
+  },
+  {
+    "id": 1598,
+    "type": "OWS",
+    "word": "Spontaneous",
+    "meaning": "Performed or occurring as a result of a sudden impulse",
+    "hi": "स्वतः",
+    "r": 0
+  },
+  {
+    "id": 1599,
+    "type": "OWS",
+    "word": "Sporadic",
+    "meaning": "Occurring at irregular intervals in time",
+    "hi": "छिटपुट",
+    "r": 0
+  },
+  {
+    "id": 1600,
+    "type": "OWS",
+    "word": "Spurious",
+    "meaning": "Not being what it purports to be",
+    "hi": "जाली",
+    "r": 0
+  },
+  {
+    "id": 1601,
+    "type": "OWS",
+    "word": "Squabble",
+    "meaning": "Argue loudly about unimportant things",
+    "hi": "झगड़ा",
+    "r": 0
+  },
+  {
+    "id": 1602,
+    "type": "OWS",
+    "word": "Stagger",
+    "meaning": "To walk unsteadily as if about to fall",
+    "hi": "लड़खड़ाना",
+    "r": 0
+  },
+  {
+    "id": 1603,
+    "type": "OWS",
+    "word": "Stampede",
+    "meaning": "A sudden rush of a large number of frightened people or animals",
+    "hi": "आकस्मिक भगदड़",
+    "r": 0
+  },
+  {
+    "id": 1604,
+    "type": "OWS",
+    "word": "Stanchion",
+    "meaning": "An upright bar, post, or frame forming a support or barrier",
+    "hi": "स्तंभ",
+    "r": 0
+  },
+  {
+    "id": 1605,
+    "type": "OWS",
+    "word": "Statement",
+    "meaning": "A computer printout sent out by a bank regarding debits and credits in your account",
+    "hi": "विवरण पत्र",
+    "r": 0
+  },
+  {
+    "id": 1606,
+    "type": "OWS",
+    "word": "Statuesque",
+    "meaning": "An attractively tall, graceful, and dignified woman",
+    "hi": "महान / सुडौल",
+    "r": 0
+  },
+  {
+    "id": 1607,
+    "type": "OWS",
+    "word": "Statute",
+    "meaning": "Written law of a legislative body",
+    "hi": "क़ानून",
+    "r": 0
+  },
+  {
+    "id": 1608,
+    "type": "OWS",
+    "word": "Sterile",
+    "meaning": "Not able to produce children",
+    "hi": "बांझ",
+    "r": 0
+  },
+  {
+    "id": 1609,
+    "type": "OWS",
+    "word": "Stevedore",
+    "meaning": "One who loads and unloads ships",
+    "hi": "जहाजी कुली",
+    "r": 0
+  },
+  {
+    "id": 1610,
+    "type": "OWS",
+    "word": "Stoic",
+    "meaning": "A person who can endure pain or hardship without showing his feelings/complaining",
+    "hi": "सहनशील, भावहीन",
+    "r": 0
+  },
+  {
+    "id": 1611,
+    "type": "OWS",
+    "word": "Stoicism",
+    "meaning": "Indifference to pleasure and pain",
+    "hi": "सहनशीलता",
+    "r": 0
+  },
+  {
+    "id": 1612,
+    "type": "OWS",
+    "word": "Stowaway",
+    "meaning": "One who hides away on a ship to obtain a free passage",
+    "hi": "छिपकर यात्रा करने वाला",
+    "r": 0
+  },
+  {
+    "id": 1613,
+    "type": "OWS",
+    "word": "Stratocracy",
+    "meaning": "A government by the military class",
+    "hi": "सैन्य वर्ग द्वारा सरकार",
+    "r": 0
+  },
+  {
+    "id": 1614,
+    "type": "OWS",
+    "word": "Stress",
+    "meaning": "A mental or emotional strain caused by demanding circumstances",
+    "hi": "तनाव",
+    "r": 0
+  },
+  {
+    "id": 1615,
+    "type": "OWS",
+    "word": "Stricken",
+    "meaning": "Affected by an undesirable condition or unpleasant feeling",
+    "hi": "पीड़ित",
+    "r": 0
+  },
+  {
+    "id": 1616,
+    "type": "OWS",
+    "word": "Strict",
+    "meaning": "Showing a dislike of anything improper",
+    "hi": "कड़क, सख्त",
+    "r": 0
+  },
+  {
+    "id": 1617,
+    "type": "OWS",
+    "word": "Strife",
+    "meaning": "Angry or bitter disagreement over fundamental issues",
+    "hi": "विवाद",
+    "r": 0
+  },
+  {
+    "id": 1618,
+    "type": "OWS",
+    "word": "Stuttering",
+    "meaning": "Speaking with a stammer or lisp",
+    "hi": "हकलाना",
+    "r": 0
+  },
+  {
+    "id": 1619,
+    "type": "OWS",
+    "word": "Subpoena",
+    "meaning": "A written order to attend a court of law to give evidence",
+    "hi": "न्यायालय में उपस्थिति का आदेश, सम्मन",
+    "r": 0
+  },
+  {
+    "id": 1620,
+    "type": "OWS",
+    "word": "Subscribe",
+    "meaning": "To pay money to use a product or service regularly",
+    "hi": "ग्राहक बनाना/सदस्यता लेना",
+    "r": 0
+  },
+  {
+    "id": 1621,
+    "type": "OWS",
+    "word": "Subservient",
+    "meaning": "Too willing to obey other people",
+    "hi": "अनुसेवी",
+    "r": 0
+  },
+  {
+    "id": 1622,
+    "type": "OWS",
+    "word": "Subsistence",
+    "meaning": "Bare minimum needed for survival",
+    "hi": "जीवन निर्वाह",
+    "r": 0
+  },
+  {
+    "id": 1623,
+    "type": "OWS",
+    "word": "Subtle",
+    "meaning": "So delicate or precise as to be difficult to analyse or describe",
+    "hi": "जटिल/सूक्ष्म",
+    "r": 0
+  },
+  {
+    "id": 1624,
+    "type": "OWS",
+    "word": "Succulent",
+    "meaning": "Having juicy or fleshy and thick tissues",
+    "hi": "रसीला",
+    "r": 0
+  },
+  {
+    "id": 1625,
+    "type": "OWS",
+    "word": "Suffrage",
+    "meaning": "The right to vote in political elections",
+    "hi": "मताधिकार",
+    "r": 0
+  },
+  {
+    "id": 1626,
+    "type": "OWS",
+    "word": "Suicide",
+    "meaning": "The action of killing oneself intentionally",
+    "hi": "आत्महत्या",
+    "r": 0
+  },
+  {
+    "id": 1627,
+    "type": "OWS",
+    "word": "Suite",
+    "meaning": "A set of rooms specially in a hotel for the use of one person or his family",
+    "hi": "होटल का कमरा",
+    "r": 0
+  },
+  {
+    "id": 1628,
+    "type": "OWS",
+    "word": "Summary",
+    "meaning": "A brief account of a subject",
+    "hi": "सारांश",
+    "r": 0
+  },
+  {
+    "id": 1629,
+    "type": "OWS",
+    "word": "Sumptuous",
+    "meaning": "Splendid and expensive-looking",
+    "hi": "आलीशान",
+    "r": 0
+  },
+  {
+    "id": 1630,
+    "type": "OWS",
+    "word": "Superficial",
+    "meaning": "Only on the surface of something",
+    "hi": "ऊपरी",
+    "r": 0
+  },
+  {
+    "id": 1631,
+    "type": "OWS",
+    "word": "Superlative",
+    "meaning": "Of the highest quality",
+    "hi": "श्रेष्ठतासूचक",
+    "r": 0
+  },
+  {
+    "id": 1632,
+    "type": "OWS",
+    "word": "Supersonic",
+    "meaning": "Speed greater than that of sound",
+    "hi": "पराध्वनिक",
+    "r": 0
+  },
+  {
+    "id": 1633,
+    "type": "OWS",
+    "word": "Superstition",
+    "meaning": "The belief that particular events happen in a way that cannot be explained by reason/science",
+    "hi": "अंधविश्वास",
+    "r": 0
+  },
+  {
+    "id": 1634,
+    "type": "OWS",
+    "word": "Supplicate",
+    "meaning": "Ask or beg for something earnestly or humbly",
+    "hi": "विनती करना",
+    "r": 0
+  },
+  {
+    "id": 1635,
+    "type": "OWS",
+    "word": "Supremacy",
+    "meaning": "The state of being the most powerful",
+    "hi": "सर्वोच्चता",
+    "r": 0
+  },
+  {
+    "id": 1636,
+    "type": "OWS",
+    "word": "Surge",
+    "meaning": "Move suddenly and powerfully forward or upward",
+    "hi": "लहर",
+    "r": 0
+  },
+  {
+    "id": 1637,
+    "type": "OWS",
+    "word": "Surplus",
+    "meaning": "Having something more than required",
+    "hi": "अधिकता",
+    "r": 0
+  },
+  {
+    "id": 1638,
+    "type": "OWS",
+    "word": "Surrender",
+    "meaning": "To give up completely or agree to forgo, especially in favour of another",
+    "hi": "आत्मसमर्पण",
+    "r": 0
+  },
+  {
+    "id": 1639,
+    "type": "OWS",
+    "word": "Surreptitious",
+    "meaning": "Kept secret, especially because it would not be approved of",
+    "hi": "छल से किया हुआ",
+    "r": 0
+  },
+  {
+    "id": 1640,
+    "type": "OWS",
+    "word": "Swan Song",
+    "meaning": "A person's last performance",
+    "hi": "अंतिम प्रदर्शन",
+    "r": 2
+  },
+  {
+    "id": 1641,
+    "type": "OWS",
+    "word": "Swarm",
+    "meaning": "A collection of bees",
+    "hi": "मधुमक्खियों का झुंड",
+    "r": 2
+  },
+  {
+    "id": 1642,
+    "type": "OWS",
+    "word": "Sword",
+    "meaning": "An edged, bladed weapon that is longer than a knife",
+    "hi": "तलवार",
+    "r": 0
+  },
+  {
+    "id": 1643,
+    "type": "OWS",
+    "word": "Sycophant",
+    "meaning": "One who is a boot licker and flatterer",
+    "hi": "चापलूस",
+    "r": 0
+  },
+  {
+    "id": 1644,
+    "type": "OWS",
+    "word": "Syllable",
+    "meaning": "A part of a word that can be pronounced separately",
+    "hi": "शब्दांश",
+    "r": 0
+  },
+  {
+    "id": 1645,
+    "type": "OWS",
+    "word": "Syllogism",
+    "meaning": "Reasoning method involving two statements from which a conclusion is reached",
+    "hi": "न्यायवाक्य",
+    "r": 0
+  },
+  {
+    "id": 1646,
+    "type": "OWS",
+    "word": "Symphony",
+    "meaning": "Traditionally in sonata form",
+    "hi": "स्वर की समता",
+    "r": 0
+  },
+  {
+    "id": 1647,
+    "type": "OWS",
+    "word": "Synagogue",
+    "meaning": "A building where the jews meet for religious worship and teaching",
+    "hi": "यहूदियों का आराधनालय",
+    "r": 2
+  },
+  {
+    "id": 1648,
+    "type": "OWS",
+    "word": "Synonyms",
+    "meaning": "Words of the same meanings",
+    "hi": "समानार्थक शब्द",
+    "r": 2
+  },
+  {
+    "id": 1649,
+    "type": "OWS",
+    "word": "Synthetic",
+    "meaning": "Made of artificial substance or material",
+    "hi": "कृत्रिम",
+    "r": 0
+  },
+  {
+    "id": 1650,
+    "type": "OWS",
+    "word": "Tacky",
+    "meaning": "Showing poor taste and quality",
+    "hi": "खराब स्वाद और गुणवत्ता",
+    "r": 0
+  },
+  {
+    "id": 1651,
+    "type": "OWS",
+    "word": "Tactile",
+    "meaning": "Of or connected with the sense of touch",
+    "hi": "स्पर्श योग्य",
+    "r": 2
+  },
+  {
+    "id": 1652,
+    "type": "OWS",
+    "word": "Tadpole",
+    "meaning": "The young of a frog",
+    "hi": "मेंढक का बच्चा",
+    "r": 0
+  },
+  {
+    "id": 1653,
+    "type": "OWS",
+    "word": "Tartar",
+    "meaning": "A rough, violent, troublesome person",
+    "hi": "चिड़चिड़ा मनुष्य",
+    "r": 0
+  },
+  {
+    "id": 1654,
+    "type": "OWS",
+    "word": "Tattoo",
+    "meaning": "Indelible mark on the skin made by inserting pigment into the skin",
+    "hi": "गोदना",
+    "r": 0
+  },
+  {
+    "id": 1655,
+    "type": "OWS",
+    "word": "Tautology",
+    "meaning": "A statement in which you say the same thing twice in different words",
+    "hi": "अलग-अलग शब्दों में दो बार एक ही बात कहना",
+    "r": 0
+  },
+  {
+    "id": 1656,
+    "type": "OWS",
+    "word": "Taxidermist",
+    "meaning": "A person who preserves skin of animals",
+    "hi": "मृत प्राणियों को प्रदर्शित करने की कला",
+    "r": 2
+  },
+  {
+    "id": 1657,
+    "type": "OWS",
+    "word": "Taxidermy",
+    "meaning": "The art of cleaning and preserving animal skins",
+    "hi": "चर्म प्रसाधन",
+    "r": 0
+  },
+  {
+    "id": 1658,
+    "type": "OWS",
+    "word": "Taxonomy",
+    "meaning": "Science regarding principles of classification",
+    "hi": "वर्गीकरण",
+    "r": 0
+  },
+  {
+    "id": 1659,
+    "type": "OWS",
+    "word": "Technology",
+    "meaning": "The application of scientific knowledge for practical purposes",
+    "hi": "तकनीकी",
+    "r": 0
+  },
+  {
+    "id": 1660,
+    "type": "OWS",
+    "word": "Teetotaller",
+    "meaning": "A person who never takes alcoholic drinks",
+    "hi": "पूर्णतया मद्यत्यागी",
+    "r": 0
+  },
+  {
+    "id": 1661,
+    "type": "OWS",
+    "word": "Telepathy",
+    "meaning": "Power of reading thoughts of others",
+    "hi": "दूर संवेदन",
+    "r": 0
+  },
+  {
+    "id": 1662,
+    "type": "OWS",
+    "word": "Tempest",
+    "meaning": "A violent windstorm",
+    "hi": "तूफ़ान",
+    "r": 0
+  },
+  {
+    "id": 1663,
+    "type": "OWS",
+    "word": "Temporary",
+    "meaning": "Lasting only for a very short while",
+    "hi": "अस्थायी",
+    "r": 0
+  },
+  {
+    "id": 1664,
+    "type": "OWS",
+    "word": "Tenacious",
+    "meaning": "Holding on to something or keeping an opinion with determination",
+    "hi": "दृढ़/अटल",
+    "r": 0
+  },
+  {
+    "id": 1665,
+    "type": "OWS",
+    "word": "Termagant",
+    "meaning": "A violent, overbearing, turbulent, brawling, quarrelsome woman",
+    "hi": "झगड़ालू स्त्री",
+    "r": 0
+  },
+  {
+    "id": 1666,
+    "type": "OWS",
+    "word": "Terminus",
+    "meaning": "Station at the end of a route",
+    "hi": "अंतिम स्टेशन",
+    "r": 0
+  },
+  {
+    "id": 1667,
+    "type": "OWS",
+    "word": "Testimonial",
+    "meaning": "A written statement about someone's character, usually provided by an employer",
+    "hi": "प्रशंसा पत्र",
+    "r": 0
+  },
+  {
+    "id": 1668,
+    "type": "OWS",
+    "word": "Theist",
+    "meaning": "One who believes in the existence of a god or gods",
+    "hi": "आस्तिक",
+    "r": 0
+  },
+  {
+    "id": 1669,
+    "type": "OWS",
+    "word": "Theocracy",
+    "meaning": "Government of a country by religious leaders",
+    "hi": "धर्मतन्त्र",
+    "r": 0
+  },
+  {
+    "id": 1670,
+    "type": "OWS",
+    "word": "Theologian",
+    "meaning": "One who studies God and religion",
+    "hi": "धर्मशास्त्री",
+    "r": 0
+  },
+  {
+    "id": 1671,
+    "type": "OWS",
+    "word": "Theological",
+    "meaning": "Relating to the study of the nature of god and religious belief",
+    "hi": "आध्यात्मविद्या सम्बन्धी",
+    "r": 0
+  },
+  {
+    "id": 1672,
+    "type": "OWS",
+    "word": "Theology",
+    "meaning": "The study of the nature of god and religious beliefs // The study of religion",
+    "hi": "ब्रह्मविद्या (धार्मिक विश्वास का अध्ययन)",
+    "r": 0
+  },
+  {
+    "id": 1673,
+    "type": "OWS",
+    "word": "Theomania",
+    "meaning": "Religious madness (wherein the patient thinks he is the deity)",
+    "hi": "धर्मोन्माद - धर्म के नाम पर अशांति फैलाने वाला",
+    "r": 0
+  },
+  {
+    "id": 1674,
+    "type": "OWS",
+    "word": "Therapeutic",
+    "meaning": "Relating to the healing of diseases",
+    "hi": "चिकित्सा सम्बन्धी",
+    "r": 0
+  },
+  {
+    "id": 1675,
+    "type": "OWS",
+    "word": "Thermometer",
+    "meaning": "An instrument for measuring body temperature",
+    "hi": "तापमापी",
+    "r": 0
+  },
+  {
+    "id": 1676,
+    "type": "OWS",
+    "word": "Thorough",
+    "meaning": "Complete with regard to every detail",
+    "hi": "संपूर्ण",
+    "r": 0
+  },
+  {
+    "id": 1677,
+    "type": "OWS",
+    "word": "Thoroughfare",
+    "meaning": "A busy, main road for public use",
+    "hi": "सार्वजनिक मार्ग",
+    "r": 0
+  },
+  {
+    "id": 1678,
+    "type": "OWS",
+    "word": "Timid",
+    "meaning": "Showing a lack of courage or confidence",
+    "hi": "कायर",
+    "r": 0
+  },
+  {
+    "id": 1679,
+    "type": "OWS",
+    "word": "Tiny",
+    "meaning": "Something that is very small/little",
+    "hi": "बहुत छोटा",
+    "r": 0
+  },
+  {
+    "id": 1680,
+    "type": "OWS",
+    "word": "Tirade",
+    "meaning": "A long, angry speech of criticism or accusation",
+    "hi": "कड़ी निंदा",
+    "r": 0
+  },
+  {
+    "id": 1681,
+    "type": "OWS",
+    "word": "Titular",
+    "meaning": "Existing only in name",
+    "hi": "नाममात्र का",
+    "r": 0
+  },
+  {
+    "id": 1682,
+    "type": "OWS",
+    "word": "Toddler",
+    "meaning": "A young child just beginning to walk",
+    "hi": "नन्हा बच्चा",
+    "r": 0
+  },
+  {
+    "id": 1683,
+    "type": "OWS",
+    "word": "Torrent",
+    "meaning": "A strong and fast moving stream of water",
+    "hi": "प्रचंड धारा",
+    "r": 0
+  },
+  {
+    "id": 1684,
+    "type": "OWS",
+    "word": "Tortuous",
+    "meaning": "Full of twists and turns",
+    "hi": "घुमावदार",
+    "r": 0
+  },
+  {
+    "id": 1685,
+    "type": "OWS",
+    "word": "Totalitarianism",
+    "meaning": "A system of government in which only one political party is allowed to function",
+    "hi": "सर्वसत्तावाद",
+    "r": 0
+  },
+  {
+    "id": 1686,
+    "type": "OWS",
+    "word": "Toxic",
+    "meaning": "Something that is poisonous or unhealthy",
+    "hi": "विषैला",
+    "r": 0
+  },
+  {
+    "id": 1687,
+    "type": "OWS",
+    "word": "Traitor",
+    "meaning": "A person who works against his country",
+    "hi": "गद्दार",
+    "r": 2
+  },
+  {
+    "id": 1688,
+    "type": "OWS",
+    "word": "Tranquil",
+    "meaning": "Free from disturbance // Quiet and peaceful",
+    "hi": "शांतचित",
+    "r": 2
+  },
+  {
+    "id": 1689,
+    "type": "OWS",
+    "word": "Transcendent",
+    "meaning": "Beyond or above the range of normal or physical human experience",
+    "hi": "सर्वोत्कृष्ट / असाधारण",
+    "r": 0
+  },
+  {
+    "id": 1690,
+    "type": "OWS",
+    "word": "Transcribe",
+    "meaning": "To put thoughts into written or printed form",
+    "hi": "लिखित रूप देना",
+    "r": 0
+  },
+  {
+    "id": 1691,
+    "type": "OWS",
+    "word": "Transformer",
+    "meaning": "An apparatus for reducing or increasing the voltage of an alternating current",
+    "hi": "परिवर्तक",
+    "r": 0
+  },
+  {
+    "id": 1692,
+    "type": "OWS",
+    "word": "Transgressor",
+    "meaning": "Someone who violates a law or command",
+    "hi": "उल्लंघन करने वाला",
+    "r": 0
+  },
+  {
+    "id": 1693,
+    "type": "OWS",
+    "word": "Transient",
+    "meaning": "Lasting for only a short time",
+    "hi": "क्षणिक",
+    "r": 1
+  },
+  {
+    "id": 1694,
+    "type": "OWS",
+    "word": "Transistor",
+    "meaning": "A portable radio set",
+    "hi": "ले जाने योग्य रेडियो",
+    "r": 0
+  },
+  {
+    "id": 1695,
+    "type": "OWS",
+    "word": "Transitory",
+    "meaning": "That which lasts for a short time",
+    "hi": "अस्थायी/क्षणस्थायी",
+    "r": 2
+  },
+  {
+    "id": 1696,
+    "type": "OWS",
+    "word": "Transmute",
+    "meaning": "Change in form, nature, or substance",
+    "hi": "बदल देना",
+    "r": 0
+  },
+  {
+    "id": 1697,
+    "type": "OWS",
+    "word": "Transonic",
+    "meaning": "Relating to speeds close to that of sound",
+    "hi": "लगभग हवा में ध्वनि के बराबर गति",
+    "r": 0
+  },
+  {
+    "id": 1698,
+    "type": "OWS",
+    "word": "Transparent",
+    "meaning": "Allowing you to see through it (glass etc.)",
+    "hi": "पारदर्शक",
+    "r": 2
+  },
+  {
+    "id": 1699,
+    "type": "OWS",
+    "word": "Traverse",
+    "meaning": "To move back and forth or sideways // to go or travel across or over",
+    "hi": "पार जाना",
+    "r": 0
+  },
+  {
+    "id": 1700,
+    "type": "OWS",
+    "word": "Travesty",
+    "meaning": "Distorted representation of something",
+    "hi": "उपहासात्मक रचना",
+    "r": 1
+  },
+  {
+    "id": 1701,
+    "type": "OWS",
+    "word": "Treason",
+    "meaning": "The crime of betraying one's country",
+    "hi": "देशद्रोह",
+    "r": 1
+  },
+  {
+    "id": 1702,
+    "type": "OWS",
+    "word": "Tremor",
+    "meaning": "Shaking movement of the ground",
+    "hi": "भूकंप के झटके",
+    "r": 0
+  },
+  {
+    "id": 1703,
+    "type": "OWS",
+    "word": "Trespass",
+    "meaning": "To enter unlawfully upon the land of another",
+    "hi": "अनाधिकार प्रवेश",
+    "r": 0
+  },
+  {
+    "id": 1704,
+    "type": "OWS",
+    "word": "Trespassers",
+    "meaning": "Those who pass through this gate without permission will be prosecuted",
+    "hi": "अनाधिकार प्रवेश करने वाला",
+    "r": 2
+  },
+  {
+    "id": 1705,
+    "type": "OWS",
+    "word": "Tributary",
+    "meaning": "Stream flowing into another big river",
+    "hi": "सहायक नदी",
+    "r": 0
+  },
+  {
+    "id": 1706,
+    "type": "OWS",
+    "word": "Tricky",
+    "meaning": "Requiring exceptional skill or caution in performance or handling",
+    "hi": "पेचीदा, मुश्किल",
+    "r": 0
+  },
+  {
+    "id": 1707,
+    "type": "OWS",
+    "word": "Triennial",
+    "meaning": "Happening every three years",
+    "hi": "त्रैवार्षिक",
+    "r": 3
+  },
+  {
+    "id": 1708,
+    "type": "OWS",
+    "word": "Trilogy",
+    "meaning": "A set of three related works by the same author",
+    "hi": "तीन रचनाओं का सेट",
+    "r": 2
+  },
+  {
+    "id": 1709,
+    "type": "OWS",
+    "word": "Tripod",
+    "meaning": "A stand having three legs",
+    "hi": "तिपाई",
+    "r": 0
+  },
+  {
+    "id": 1710,
+    "type": "OWS",
+    "word": "Triumvirate",
+    "meaning": "A group of three powerful people",
+    "hi": "तिकड़ी",
+    "r": 0
+  },
+  {
+    "id": 1711,
+    "type": "OWS",
+    "word": "Trivial",
+    "meaning": "Not important or serious // not worth considering // obvious and dull",
+    "hi": "तुच्छ, साधारण, मामूली",
+    "r": 2
+  },
+  {
+    "id": 1712,
+    "type": "OWS",
+    "word": "Trophy",
+    "meaning": "An award for success in war, hunting // something given as a token of victory",
+    "hi": "विजय के प्रतीक के रूप में",
+    "r": 0
+  },
+  {
+    "id": 1713,
+    "type": "OWS",
+    "word": "Troupe",
+    "meaning": "A group of artists, dancers or acrobats",
+    "hi": "मंडली",
+    "r": 0
+  },
+  {
+    "id": 1714,
+    "type": "OWS",
+    "word": "Trousseau",
+    "meaning": "The clothes, linen, and other belongings collected by a bride for her marriage",
+    "hi": "दुल्हन का जोड़ा",
+    "r": 0
+  },
+  {
+    "id": 1715,
+    "type": "OWS",
+    "word": "Truant",
+    "meaning": "A student who idly or without excuse absents himself/herself from school",
+    "hi": "गैर हाजिर रहने वाला",
+    "r": 3
+  },
+  {
+    "id": 1716,
+    "type": "OWS",
+    "word": "Truce",
+    "meaning": "An agreement between enemies or opponents to stop fighting, arguing, etc., for a certain period of time",
+    "hi": "युद्धविराम संधि",
+    "r": 0
+  },
+  {
+    "id": 1717,
+    "type": "OWS",
+    "word": "Truculent",
+    "meaning": "Defiantly aggressive",
+    "hi": "लड़ाकू",
+    "r": 0
+  },
+  {
+    "id": 1718,
+    "type": "OWS",
+    "word": "Truism",
+    "meaning": "An obviously true or hackneyed statement",
+    "hi": "सामान्य सत्य",
+    "r": 0
+  },
+  {
+    "id": 1719,
+    "type": "OWS",
+    "word": "Trumpet",
+    "meaning": "The sound made by an elephant",
+    "hi": "हाथी का चिंघाड़ना",
+    "r": 0
+  },
+  {
+    "id": 1720,
+    "type": "OWS",
+    "word": "Tsunami",
+    "meaning": "An extremely large wave in the sea caused by an earthquake",
+    "hi": "भूकंप तरंग",
+    "r": 0
+  },
+  {
+    "id": 1721,
+    "type": "OWS",
+    "word": "Turncoat",
+    "meaning": "One who switches to an opposing party",
+    "hi": "दलबदलू",
+    "r": 0
+  },
+  {
+    "id": 1722,
+    "type": "OWS",
+    "word": "Tutelage",
+    "meaning": "Protection of or authority over someone",
+    "hi": "संरक्षण",
+    "r": 0
+  },
+  {
+    "id": 1723,
+    "type": "OWS",
+    "word": "Twins",
+    "meaning": "Two children born together",
+    "hi": "जुड़वां",
+    "r": 0
+  },
+  {
+    "id": 1724,
+    "type": "OWS",
+    "word": "Tyrant",
+    "meaning": "A cruel and oppressive ruler",
+    "hi": "तानाशाह",
+    "r": 0
+  },
+  {
+    "id": 1725,
+    "type": "OWS",
+    "word": "Tyro",
+    "meaning": "One who is new to a profession",
+    "hi": "नौसिखिया",
+    "r": 0
+  },
+  {
+    "id": 1726,
+    "type": "OWS",
+    "word": "Unanimously",
+    "meaning": "By everyone in a particular group",
+    "hi": "सर्वसम्मति से",
+    "r": 0
+  },
+  {
+    "id": 1727,
+    "type": "OWS",
+    "word": "Understand",
+    "meaning": "To put two and two together (Idiom)",
+    "hi": "अर्थ समझना",
+    "r": 0
+  },
+  {
+    "id": 1728,
+    "type": "OWS",
+    "word": "Ungrippable",
+    "meaning": "That can't be captured",
+    "hi": "जिसे पकड़ा (कब्जा) ना जा सके",
+    "r": 0
+  },
+  {
+    "id": 1729,
+    "type": "OWS",
+    "word": "Uninitiated",
+    "meaning": "Not having knowledge or experience of a particular subject or activity",
+    "hi": "अदीक्षित",
+    "r": 0
+  },
+  {
+    "id": 1730,
+    "type": "OWS",
+    "word": "Universal",
+    "meaning": "Found all over the world",
+    "hi": "सार्वभौमिक",
+    "r": 0
+  },
+  {
+    "id": 1731,
+    "type": "OWS",
+    "word": "Unknowable",
+    "meaning": "Not knowable",
+    "hi": "अज्ञात",
+    "r": 0
+  },
+  {
+    "id": 1732,
+    "type": "OWS",
+    "word": "Unprecedented",
+    "meaning": "Something never done or known before",
+    "hi": "अभूतपूर्व",
+    "r": 0
+  },
+  {
+    "id": 1733,
+    "type": "OWS",
+    "word": "Unscrupulous",
+    "meaning": "Having no moral principles",
+    "hi": "अनैतिक",
+    "r": 0
+  },
+  {
+    "id": 1734,
+    "type": "OWS",
+    "word": "Unwieldy",
+    "meaning": "Something that cannot be handled easily",
+    "hi": "दुष्कर",
+    "r": 0
+  },
+  {
+    "id": 1735,
+    "type": "OWS",
+    "word": "Upsurge",
+    "meaning": "Rapid or sudden rise",
+    "hi": "चढ़ाव",
+    "r": 0
+  },
+  {
+    "id": 1736,
+    "type": "OWS",
+    "word": "Upthrust",
+    "meaning": "The upward force that a fluid exerts on a body floating in it",
+    "hi": "तरल में तैरते हुए शरीर पर ऊपर की ओर का बल",
+    "r": 0
+  },
+  {
+    "id": 1737,
+    "type": "OWS",
+    "word": "Urn",
+    "meaning": "A large vase that usually has a pedestal or feet",
+    "hi": "कलश",
+    "r": 0
+  },
+  {
+    "id": 1738,
+    "type": "OWS",
+    "word": "Usher",
+    "meaning": "A person who shows people their seats",
+    "hi": "प्रवेश कराने वाला",
+    "r": 0
+  },
+  {
+    "id": 1739,
+    "type": "OWS",
+    "word": "Usurer",
+    "meaning": "One who lends money on high rates of interest",
+    "hi": "सूदखोर",
+    "r": 0
+  },
+  {
+    "id": 1740,
+    "type": "OWS",
+    "word": "Usury",
+    "meaning": "The practice of taking exorbitant or excessive interest on the money lent",
+    "hi": "सूदखोरी",
+    "r": 0
+  },
+  {
+    "id": 1741,
+    "type": "OWS",
+    "word": "Utility",
+    "meaning": "The capacity for being useful for some purpose",
+    "hi": "उपयोगिता",
+    "r": 0
+  },
+  {
+    "id": 1742,
+    "type": "OWS",
+    "word": "Utopia",
+    "meaning": "An imagined society where everything is perfect and everyone is happy // A place of ideal perfection especially in laws, government, and social conditions",
+    "hi": "आदर्शवादी काल्पनिक समाज/राज्य",
+    "r": 0
+  },
+  {
+    "id": 1743,
+    "type": "OWS",
+    "word": "Uxorious",
+    "meaning": "One extremely fond of one's wife",
+    "hi": "जोरू का गुलाम",
+    "r": 0
+  },
+  {
+    "id": 1744,
+    "type": "OWS",
+    "word": "Vacillate",
+    "meaning": "Waver between different opinions or actions",
+    "hi": "निश्चय न कर पाना",
+    "r": 0
+  },
+  {
+    "id": 1745,
+    "type": "OWS",
+    "word": "Vagabond",
+    "meaning": "A person who wanders from place to place without a home or job",
+    "hi": "खानाबदोश",
+    "r": 0
+  },
+  {
+    "id": 1746,
+    "type": "OWS",
+    "word": "Vagrant",
+    "meaning": "A person without a settled home or regular work who wanders from place to place and lives by begging",
+    "hi": "खानाबदोश",
+    "r": 0
+  },
+  {
+    "id": 1747,
+    "type": "OWS",
+    "word": "Vain",
+    "meaning": "Having or showing an excessively/high opinion of one's appearance, abilities, or worth",
+    "hi": "अहंकारी",
+    "r": 0
+  },
+  {
+    "id": 1748,
+    "type": "OWS",
+    "word": "Valetudinarian",
+    "meaning": "A person who is unduly anxious about his/her health",
+    "hi": "बीमारी की अत्यधिक चिंता करने वाला",
+    "r": 1
+  },
+  {
+    "id": 1749,
+    "type": "OWS",
+    "word": "Valley",
+    "meaning": "A low area of land between hills",
+    "hi": "घाटी",
+    "r": 0
+  },
+  {
+    "id": 1750,
+    "type": "OWS",
+    "word": "Vandal",
+    "meaning": "One who damages public property",
+    "hi": "उपद्रवी",
+    "r": 2
+  },
+  {
+    "id": 1751,
+    "type": "OWS",
+    "word": "Vaticide",
+    "meaning": "Killer of prophet",
+    "hi": "पैगंबर का हत्यारा",
+    "r": 2
+  },
+  {
+    "id": 1752,
+    "type": "OWS",
+    "word": "Vegan",
+    "meaning": "A person who does not eat any animal product",
+    "hi": "शाकाहारी",
+    "r": 0
+  },
+  {
+    "id": 1753,
+    "type": "OWS",
+    "word": "Vegetarian",
+    "meaning": "One who eats no animal flesh",
+    "hi": "शाकाहारी",
+    "r": 2
+  },
+  {
+    "id": 1754,
+    "type": "OWS",
+    "word": "Vehement",
+    "meaning": "Showing strong feeling",
+    "hi": "उग्र",
+    "r": 0
+  },
+  {
+    "id": 1755,
+    "type": "OWS",
+    "word": "Velocity",
+    "meaning": "The speed of something in a particular direction",
+    "hi": "वेग",
+    "r": 2
+  },
+  {
+    "id": 1756,
+    "type": "OWS",
+    "word": "Vendetta",
+    "meaning": "Committing murder in revenge",
+    "hi": "प्रतिशोध",
+    "r": 0
+  },
+  {
+    "id": 1757,
+    "type": "OWS",
+    "word": "Venerable",
+    "meaning": "A person who is greatly respected because of wisdom",
+    "hi": "सम्मानित",
+    "r": 0
+  },
+  {
+    "id": 1758,
+    "type": "OWS",
+    "word": "Venerate",
+    "meaning": "Regard with great respect",
+    "hi": "सम्मानित करना",
+    "r": 0
+  },
+  {
+    "id": 1759,
+    "type": "OWS",
+    "word": "Vengeful",
+    "meaning": "Seeking to harm someone in return for a perceived injury",
+    "hi": "प्रतिहिंसक",
+    "r": 0
+  },
+  {
+    "id": 1760,
+    "type": "OWS",
+    "word": "Venial",
+    "meaning": "A slight fault that can be forgiven",
+    "hi": "मामूली गलती",
+    "r": 2
+  },
+  {
+    "id": 1761,
+    "type": "OWS",
+    "word": "Ventriloquist",
+    "meaning": "One who has the art of speaking in such a way that the sound seems to come from another person/place",
+    "hi": "कठपुतली को आवाज देने वाला",
+    "r": 2
+  },
+  {
+    "id": 1762,
+    "type": "OWS",
+    "word": "Venture",
+    "meaning": "A new project or business activity involving some risk",
+    "hi": "उपक्रम",
+    "r": 0
+  },
+  {
+    "id": 1763,
+    "type": "OWS",
+    "word": "Veracity",
+    "meaning": "Conformity to facts",
+    "hi": "सच्चाई",
+    "r": 0
+  },
+  {
+    "id": 1764,
+    "type": "OWS",
+    "word": "Verbatim",
+    "meaning": "In exactly the same words as were used originally",
+    "hi": "शब्द प्रति शब्द",
+    "r": 6
+  },
+  {
+    "id": 1765,
+    "type": "OWS",
+    "word": "Verbiage",
+    "meaning": "The use of too many words or of more difficult words than are needed to express an idea",
+    "hi": "शब्दाडंबर",
+    "r": 0
+  },
+  {
+    "id": 1766,
+    "type": "OWS",
+    "word": "Verbose",
+    "meaning": "Containing more words than necessary",
+    "hi": "आवश्यकता से अधिक शब्दों का प्रयोग",
+    "r": 0
+  },
+  {
+    "id": 1767,
+    "type": "OWS",
+    "word": "Verbosity",
+    "meaning": "Using or containing more words than are needed",
+    "hi": "शब्दाडंबर",
+    "r": 0
+  },
+  {
+    "id": 1768,
+    "type": "OWS",
+    "word": "Verdict",
+    "meaning": "A decision that is made by a jury in a court",
+    "hi": "फ़ैसला",
+    "r": 0
+  },
+  {
+    "id": 1769,
+    "type": "OWS",
+    "word": "Versatile",
+    "meaning": "Someone having many skills",
+    "hi": "सर्वगुण सम्पन्न",
+    "r": 9
+  },
+  {
+    "id": 1770,
+    "type": "OWS",
+    "word": "Vertebrate",
+    "meaning": "An animal with a spinal cord",
+    "hi": "कशेरुकी जंतु",
+    "r": 0
+  },
+  {
+    "id": 1771,
+    "type": "OWS",
+    "word": "Vespers",
+    "meaning": "Evening prayer in church",
+    "hi": "गिरजाघर में सायंकाल की प्रार्थना",
+    "r": 2
+  },
+  {
+    "id": 1772,
+    "type": "OWS",
+    "word": "Veteran",
+    "meaning": "A person who is long experienced or practiced in an activity",
+    "hi": "अनुभवी",
+    "r": 6
+  },
+  {
+    "id": 1773,
+    "type": "OWS",
+    "word": "Vicinity",
+    "meaning": "The area near or surrounding a particular place",
+    "hi": "आस-पास",
+    "r": 0
+  },
+  {
+    "id": 1774,
+    "type": "OWS",
+    "word": "Villain",
+    "meaning": "Person who portrays bad character roles in cinema",
+    "hi": "खलनायक",
+    "r": 0
+  },
+  {
+    "id": 1775,
+    "type": "OWS",
+    "word": "Vindicate",
+    "meaning": "To show or state that someone or something is not guilty of something // Proved to be right in court",
+    "hi": "निर्दोष ठहराना",
+    "r": 0
+  },
+  {
+    "id": 1776,
+    "type": "OWS",
+    "word": "Vindictive",
+    "meaning": "One who is determined to take full revenge for wrongs done to him",
+    "hi": "प्रतिशोधी",
+    "r": 0
+  },
+  {
+    "id": 1777,
+    "type": "OWS",
+    "word": "Virtue",
+    "meaning": "Ethically good behaviour one has",
+    "hi": "सद्गुण",
+    "r": 0
+  },
+  {
+    "id": 1778,
+    "type": "OWS",
+    "word": "Virtuoso",
+    "meaning": "A person who possesses outstanding technical ability in a particular art or field",
+    "hi": "कला प्रवीण व्यक्ति",
+    "r": 0
+  },
+  {
+    "id": 1779,
+    "type": "OWS",
+    "word": "Virulent",
+    "meaning": "Of a disease or poison extremely severe or harmful in its effects",
+    "hi": "विषैला",
+    "r": 0
+  },
+  {
+    "id": 1780,
+    "type": "OWS",
+    "word": "Visionary",
+    "meaning": "One who can think about the future with imagination and wisdom",
+    "hi": "काल्पनिक",
+    "r": 0
+  },
+  {
+    "id": 1781,
+    "type": "OWS",
+    "word": "Viticulture",
+    "meaning": "The cultivation of grapevines",
+    "hi": "अंगूर की खेती",
+    "r": 0
+  },
+  {
+    "id": 1782,
+    "type": "OWS",
+    "word": "Vivacious",
+    "meaning": "Having a lively, attractive personality",
+    "hi": "फुर्तीला, जोश पूर्ण",
+    "r": 0
+  },
+  {
+    "id": 1783,
+    "type": "OWS",
+    "word": "Volatile",
+    "meaning": "A substance easily evaporated at normal temperatures",
+    "hi": "परिवर्तनशील",
+    "r": 0
+  },
+  {
+    "id": 1784,
+    "type": "OWS",
+    "word": "Volition",
+    "meaning": "The faculty or power of using one's will",
+    "hi": "इच्छा शक्ति",
+    "r": 0
+  },
+  {
+    "id": 1785,
+    "type": "OWS",
+    "word": "Volley",
+    "meaning": "A group of arrows",
+    "hi": "तीर की बौछार",
+    "r": 0
+  },
+  {
+    "id": 1786,
+    "type": "OWS",
+    "word": "Voluntary",
+    "meaning": "Of one's own free will",
+    "hi": "स्वयंसेवी",
+    "r": 0
+  },
+  {
+    "id": 1787,
+    "type": "OWS",
+    "word": "Volunteer",
+    "meaning": "One who offers one's services without being forced",
+    "hi": "स्वयं सेवक",
+    "r": 0
+  },
+  {
+    "id": 1788,
+    "type": "OWS",
+    "word": "Voracious",
+    "meaning": "One who is greedy",
+    "hi": "लालची",
+    "r": 0
+  },
+  {
+    "id": 1789,
+    "type": "OWS",
+    "word": "Voyage",
+    "meaning": "A long sea journey",
+    "hi": "समुद्री यात्रा",
+    "r": 0
+  },
+  {
+    "id": 1790,
+    "type": "OWS",
+    "word": "Vulnerable",
+    "meaning": "Exposed to the possibility of being attacked or harmed, either physically or emotionally",
+    "hi": "असुरक्षित",
+    "r": 0
+  },
+  {
+    "id": 1791,
+    "type": "OWS",
+    "word": "Wag",
+    "meaning": "A jocular person who is full of amusing anecdotes",
+    "hi": "मसखरा",
+    "r": 0
+  },
+  {
+    "id": 1792,
+    "type": "OWS",
+    "word": "Waif",
+    "meaning": "Forsaken or neglected child who has no home and spends most of his/her time on the streets",
+    "hi": "लावारिस",
+    "r": 0
+  },
+  {
+    "id": 1793,
+    "type": "OWS",
+    "word": "Walkway",
+    "meaning": "A raised passageway in a building",
+    "hi": "पैदल रास्ता",
+    "r": 0
+  },
+  {
+    "id": 1794,
+    "type": "OWS",
+    "word": "Wander",
+    "meaning": "Walk or move in a leisurely or aimless way",
+    "hi": "भटकना",
+    "r": 0
+  },
+  {
+    "id": 1795,
+    "type": "OWS",
+    "word": "Wardrobe",
+    "meaning": "A place where clothes are kept",
+    "hi": "अलमारी",
+    "r": 0
+  },
+  {
+    "id": 1796,
+    "type": "OWS",
+    "word": "Warrant",
+    "meaning": "A legal document authorizing the police or another body to make an arrest or search premises",
+    "hi": "अधिपत्र (कानूनी आदेश)",
+    "r": 0
+  },
+  {
+    "id": 1797,
+    "type": "OWS",
+    "word": "Waterfall",
+    "meaning": "A steep descent of water of a stream or river",
+    "hi": "झरना",
+    "r": 0
+  },
+  {
+    "id": 1798,
+    "type": "OWS",
+    "word": "Waybill",
+    "meaning": "A list of passengers and luggage",
+    "hi": "यात्री की सूची",
+    "r": 0
+  },
+  {
+    "id": 1799,
+    "type": "OWS",
+    "word": "Weary",
+    "meaning": "Feeling or showing extreme tiredness",
+    "hi": "थका माँदा",
+    "r": 0
+  },
+  {
+    "id": 1800,
+    "type": "OWS",
+    "word": "Whisk",
+    "meaning": "To take someone somewhere suddenly and quickly",
+    "hi": "फुरती से ले जाना",
+    "r": 0
+  },
+  {
+    "id": 1801,
+    "type": "OWS",
+    "word": "Whisper",
+    "meaning": "Speak in a very low tone",
+    "hi": "फुसफुसा कर बोलना",
+    "r": 0
+  },
+  {
+    "id": 1802,
+    "type": "OWS",
+    "word": "Whittle",
+    "meaning": "Reduce something in size, amount, or extent by a gradual series of steps",
+    "hi": "छीलना/तराशना",
+    "r": 0
+  },
+  {
+    "id": 1803,
+    "type": "OWS",
+    "word": "Wholesaler",
+    "meaning": "Someone who buys and sells goods in large amounts to shops and businesses",
+    "hi": "थोक व्यापारी",
+    "r": 0
+  },
+  {
+    "id": 1804,
+    "type": "OWS",
+    "word": "Widow",
+    "meaning": "A woman whose husband is dead especially one who has not remarried",
+    "hi": "विधवा",
+    "r": 0
+  },
+  {
+    "id": 1805,
+    "type": "OWS",
+    "word": "Widower",
+    "meaning": "A man whose wife is dead",
+    "hi": "विधुर",
+    "r": 2
+  },
+  {
+    "id": 1806,
+    "type": "OWS",
+    "word": "Wilfully",
+    "meaning": "Done deliberately, although the person doing it knows that it is wrong",
+    "hi": "जान-बूझकर",
+    "r": 0
+  },
+  {
+    "id": 1807,
+    "type": "OWS",
+    "word": "Wilt",
+    "meaning": "A plant, leaf, or flower becoming limp",
+    "hi": "मुरझाना",
+    "r": 0
+  },
+  {
+    "id": 1808,
+    "type": "OWS",
+    "word": "Windfall",
+    "meaning": "An unexpected piece of good fortune",
+    "hi": "अप्रत्याशित लाभ",
+    "r": 1
+  },
+  {
+    "id": 1809,
+    "type": "OWS",
+    "word": "Winnow",
+    "meaning": "To separate husk from the grain",
+    "hi": "फटकना",
+    "r": 0
+  },
+  {
+    "id": 1810,
+    "type": "OWS",
+    "word": "Witchery",
+    "meaning": "The practice of magic",
+    "hi": "जादू-टोना",
+    "r": 0
+  },
+  {
+    "id": 1811,
+    "type": "OWS",
+    "word": "Woe",
+    "meaning": "Great sorrow or distress",
+    "hi": "शोक",
+    "r": 0
+  },
+  {
+    "id": 1812,
+    "type": "OWS",
+    "word": "Wrangle",
+    "meaning": "To dispute angrily",
+    "hi": "क्रोध से झगड़ना",
+    "r": 0
+  },
+  {
+    "id": 1813,
+    "type": "OWS",
+    "word": "Wreath",
+    "meaning": "A decorative ring of flowers and leaves",
+    "hi": "फूलों की माला",
+    "r": 5
+  },
+  {
+    "id": 1814,
+    "type": "OWS",
+    "word": "Wreckage",
+    "meaning": "The remains of something that has been badly damaged",
+    "hi": "मलबा",
+    "r": 0
+  },
+  {
+    "id": 1815,
+    "type": "OWS",
+    "word": "Wriggle",
+    "meaning": "To move along with quick, short twistings",
+    "hi": "छटपटाना",
+    "r": 0
+  },
+  {
+    "id": 1816,
+    "type": "OWS",
+    "word": "Xenophobia",
+    "meaning": "Fear of foreigners",
+    "hi": "विदेशी लोगों का डर",
+    "r": 1
+  },
+  {
+    "id": 1817,
+    "type": "OWS",
+    "word": "Yearning",
+    "meaning": "A feeling of intense longing for something",
+    "hi": "ललक",
+    "r": 0
+  },
+  {
+    "id": 1818,
+    "type": "OWS",
+    "word": "Yoke",
+    "meaning": "A wooden object used for connecting animals that are pulling a vehicle",
+    "hi": "घोड़ागाड़ी में घोड़ों को जोड़ने वाली लकड़ी",
+    "r": 0
+  },
+  {
+    "id": 1819,
+    "type": "OWS",
+    "word": "Youth",
+    "meaning": "The state or quality of being young",
+    "hi": "युवा",
+    "r": 0
+  },
+  {
+    "id": 1820,
+    "type": "OWS",
+    "word": "Zealot",
+    "meaning": "A person who is fanatical and uncompromising in pursuit of their religious, political, or other ideals",
+    "hi": "कट्टरपंथी",
+    "r": 3
+  },
+  {
+    "id": 1821,
+    "type": "OWS",
+    "word": "Zenith",
+    "meaning": "The highest point",
+    "hi": "शीर्ष बिंदु",
+    "r": 0
+  },
+  {
+    "id": 1822,
+    "type": "OWS",
+    "word": "Zodiac",
+    "meaning": "A diagram showing the path of planets",
+    "hi": "राशिचक्र",
+    "r": 0
+  },
+  {
+    "id": 1823,
+    "type": "OWS",
+    "word": "Zoology",
+    "meaning": "The scientific study of the behaviour, structure, physiology, classification and distribution of animals",
+    "hi": "जीव विज्ञान",
+    "r": 0
   }
+
     
 
 
@@ -1704,6 +5473,7 @@
     
   ]
 }
+
 
 
 
