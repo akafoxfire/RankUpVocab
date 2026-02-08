@@ -1493,7 +1493,210 @@
   { "id": 1318, "type": "OWS", "word": "Pile (N.)", "meaning": "A large number of things placed one on top of another", "hi": "ढेर", "r": 0 },
   { "id": 1319, "type": "OWS", "word": "Pilferage (N.)", "meaning": "The act of stealing something in small quantities", "hi": "छोटी चोरी", "r": "1 (1)" },
   { "id": 1320, "type": "OWS", "word": "Pillion (N.)", "meaning": "A seat for a passenger on a bicycle or motorbike", "hi": "पीछे की सीट", "r": 0 },
-  { "id": 1321, "type": "OWS", "word": "Pioneer (N.)", "meaning": "One who does something for the first time", "hi": "प्रथम अन्वेषक", "r": 2 }
+  { "id": 1321, "type": "OWS", "word": "Pioneer (N.)", "meaning": "One who does something for the first time", "hi": "प्रथम अन्वेषक", "r": 2 },
+  {
+    "id": 1322,
+    "type": "OWS",
+    "word": "Pirate",
+    "meaning": "A person who attacks and robs ships at sea",
+    "hi": "समुद्री डाकू"
+  },
+  {
+    "id": 1323,
+    "type": "OWS",
+    "word": "Pirated",
+    "meaning": "Selling, purchasing, and using an illegally copied product is a criminal offence",
+    "hi": "चोरी किया हुआ"
+  },
+  {
+    "id": 1324,
+    "type": "OWS",
+    "word": "Piscivorous",
+    "meaning": "One who lives on fish",
+    "hi": "मत्स्यभक्षी"
+  },
+  {
+    "id": 1325,
+    "type": "OWS",
+    "word": "Placate",
+    "meaning": "Make someone less angry or hostile",
+    "hi": "शांत करना"
+  },
+  {
+    "id": 1326,
+    "type": "OWS",
+    "word": "Placid",
+    "meaning": "Not easily excited or upset",
+    "hi": "शांत"
+  },
+  {
+    "id": 1327,
+    "type": "OWS",
+    "word": "Plagiarise",
+    "meaning": "Take and use the thoughts, inventions, etc. of another person as one's own",
+    "hi": "साहित्यिक चोरी"
+  },
+  {
+    "id": 1328,
+    "type": "OWS",
+    "word": "Plagiarism",
+    "meaning": "Stealing of ideas or writings of someone else",
+    "hi": "साहित्यिक चोरी"
+  },
+  {
+    "id": 1329,
+    "type": "OWS",
+    "word": "Plagiarist",
+    "meaning": "One who copies from other writers",
+    "hi": "साहित्यिक चोर"
+  },
+  {
+    "id": 1330,
+    "type": "OWS",
+    "word": "Plaintiff",
+    "meaning": "Person who files a suit",
+    "hi": "फरियादी/मुकदमा करने वाला"
+  },
+  {
+    "id": 1331,
+    "type": "OWS",
+    "word": "Plaque",
+    "meaning": "Flat metal or Porcelain plate fixed on a wall as an ornament or memorial",
+    "hi": "स्मृति पट्टिका"
+  },
+  {
+    "id": 1332,
+    "type": "OWS",
+    "word": "Plausible",
+    "meaning": "Seeming reasonable",
+    "hi": "विश्वसनीय/स्वीकार्य"
+  },
+  {
+    "id": 1333,
+    "type": "OWS",
+    "word": "Plebiscite",
+    "meaning": "A decision made by public voting",
+    "hi": "जनमत-संग्रह"
+  },
+  {
+    "id": 1334,
+    "type": "OWS",
+    "word": "Pledge",
+    "meaning": "A solemn promise or undertaking",
+    "hi": "प्रतिज्ञा करना"
+  },
+  {
+    "id": 1335,
+    "type": "OWS",
+    "word": "Plenitude",
+    "meaning": "The state of being full or complete",
+    "hi": "प्रचुरता"
+  },
+  {
+    "id": 1336,
+    "type": "OWS",
+    "word": "Pliable",
+    "meaning": "Capable of bending easily without breaking",
+    "hi": "लचीला"
+  },
+  {
+    "id": 1337,
+    "type": "OWS",
+    "word": "Plumber",
+    "meaning": "One who repairs leaking water pipes",
+    "hi": "नलसाज"
+  },
+  {
+    "id": 1338,
+    "type": "OWS",
+    "word": "Plutocracy",
+    "meaning": "Government by the richest people of a country",
+    "hi": "धनिक तन्त्र"
+  },
+  {
+    "id": 1339,
+    "type": "OWS",
+    "word": "Podium",
+    "meaning": "A speaker's platform",
+    "hi": "मंच"
+  },
+  {
+    "id": 1340,
+    "type": "OWS",
+    "word": "Poignant",
+    "meaning": "Evoking a keen sense of sadness or regret",
+    "hi": "मार्मिक"
+  },
+  {
+    "id": 1341,
+    "type": "OWS",
+    "word": "Polemical",
+    "meaning": "Something that is pertaining to controversy",
+    "hi": "विवादात्मक"
+  },
+  {
+    "id": 1342,
+    "type": "OWS",
+    "word": "Politics",
+    "meaning": "The science or art of political government",
+    "hi": "राजनीति शास्त्र"
+  },
+  {
+    "id": 1343,
+    "type": "OWS",
+    "word": "Polyandry",
+    "meaning": "The custom of having more than one husband at the same time",
+    "hi": "बहुपति प्रथा"
+  },
+  {
+    "id": 1344,
+    "type": "OWS",
+    "word": "Polygamist",
+    "meaning": "A person having more than one wife at the same time",
+    "hi": "बहुपत्नीवादी"
+  },
+  {
+    "id": 1345,
+    "type": "OWS",
+    "word": "Polygamy",
+    "meaning": "The custom of having more than one husband or wife at the same time",
+    "hi": "बहुविवाह"
+  },
+  {
+    "id": 1346,
+    "type": "OWS",
+    "word": "Polyglot",
+    "meaning": "A person who knows and is able to use several languages",
+    "hi": "बहुभाषी"
+  },
+  {
+    "id": 1347,
+    "type": "OWS",
+    "word": "Polygon",
+    "meaning": "A flat shape with at least three straight sides and three angles",
+    "hi": "बहुभुज"
+  },
+  {
+    "id": 1348,
+    "type": "OWS",
+    "word": "Polytheist",
+    "meaning": "One who believes in a plurality of gods",
+    "hi": "बहुदेववादी"
+  },
+  {
+    "id": 1349,
+    "type": "OWS",
+    "word": "Populous",
+    "meaning": "Full of people",
+    "hi": "घनी आबादी वाला"
+  },
+  {
+    "id": 1350,
+    "type": "OWS",
+    "word": "Port",
+    "meaning": "A place where ships load and unload goods",
+    "hi": "बंदरगाह"
+  }
     
 
 
@@ -1501,6 +1704,7 @@
     
   ]
 }
+
 
 
 
