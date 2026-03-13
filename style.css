@@ -735,9 +735,9 @@ body.dark .fav-pill:hover {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    max-width: 1300px !important;
+    max-width: 1000px !important;
     margin: 0 auto !important;
-    padding: 0px 20px !important;
+    padding: 10px 20px !important;
 }
 
 @media screen and (max-width: 600px) {
@@ -957,6 +957,7 @@ body.dark .fav-pill:hover {
     .logo span { display: none; }
     .nav-center { flex: 2; }
 }
+
 
 
 
