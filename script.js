@@ -1,6 +1,5 @@
 const state = {
     all: [],
-    // Shuruat mein khali rakhein, login ke baad cloud se aayega
     favs: new Set(),
     userTricks: {}, 
     quiz: { pool: [], idx: 0, ans: [], cat: 'ALL' },
@@ -15,7 +14,7 @@ window.updateLocalTricks = (data) => {
 
 window.updateLocalFavs = (data) => {
     state.favs = new Set(data);
-    syncStats(); // Stats update karein bina localStorage use kiye
+    syncStats();
     app.render();
 };
 
@@ -25,19 +24,21 @@ async function init() {
             fetch('ows.json').then(r => r.json()),
             fetch('idioms.json').then(r => r.json())
         ]);
-        state.all = [...o.vocabulary.map(v => ({ ...v, type: 'OWS' })), ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))];
+        state.all = [
+            ...o.vocabulary.map(v => ({ ...v, type: 'OWS' })),
+            ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))
+        ];
         syncStats(); 
         app.render();
     } catch (e) { console.error("Data Load Error"); }
 }
 
-// Sirf screen par numbers update karne ke liye
 function syncStats() {
-    if(document.getElementById('stat-ows'))
+    if (document.getElementById('stat-ows'))
         document.getElementById('stat-ows').innerText = state.all.filter(v => v.type === 'OWS').length;
-    if(document.getElementById('stat-idioms'))
+    if (document.getElementById('stat-idioms'))
         document.getElementById('stat-idioms').innerText = state.all.filter(v => v.type === 'Idiom').length;
-    if(document.getElementById('stat-hard'))
+    if (document.getElementById('stat-hard'))
         document.getElementById('stat-hard').innerText = state.favs.size;
 }
 
@@ -46,21 +47,17 @@ window.speak = function(t) {
         window.speechSynthesis.cancel();
         if (!t) return;
 
-        // Clean text: Apostrophe hatao aur brackets ke andar ka kachra saaf karo
         let textToSay = String(t)
-            .replace(/['’]/g, "") 
+            .replace(/['']/g, "") 
             .split('/')[0]
             .split('(')[0]
             .trim();
         
         const s = new SpeechSynthesisUtterance(textToSay);
+        s.lang = 'en-US';
+        s.rate = 0.8;
+        s.pitch = 1.1;
         
-        // --- PRONUNCIATION FIX ---
-        s.lang = 'en-US';  // US English zyada clear hoti hai accent ke liye
-        s.rate = 0.8;      // Speed thodi kam ki hai taaki har word saaf sunai de
-        s.pitch = 1.1;     // Pitch thodi high ki hai taaki clarity badhe
-        
-        // Browser ke best available voice select karna
         const voices = window.speechSynthesis.getVoices();
         const googleVoice = voices.find(v => v.name.includes('Google US English'));
         if (googleVoice) s.voice = googleVoice;
@@ -70,8 +67,6 @@ window.speak = function(t) {
         console.error("Speaker Error:", err);
     }
 };
-
-
 
 function jumpToCard() {
     const id = document.getElementById('jump-id').value;
@@ -108,7 +103,10 @@ const app = {
         const g = document.getElementById('study-grid');
         const s = document.getElementById('searchBar').value.toLowerCase();
         const t = document.getElementById('typeFilter').value;
-        let filtered = state.all.filter(v => (t === 'ALL' || v.type === t) && (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s)));
+        let filtered = state.all.filter(v =>
+            (t === 'ALL' || v.type === t) &&
+            (v.word.toLowerCase().includes(s) || v.meaning.toLowerCase().includes(s))
+        );
         if (state.filterFav) filtered = filtered.filter(v => state.favs.has(`${v.type}-${v.id}`));
 
         g.innerHTML = filtered.map(v => {
@@ -140,8 +138,7 @@ const app = {
             placeholder="Apni trick yahan likhein...">${savedTrick}</textarea>
         
         <button class="trick-save-btn" 
-            style="width:100%; padding:12px; background:var(--p); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;" 
-            onclick="handleSaveTrick('${k}')">Save to Cloud</button>
+            onclick="handleSaveTrick('${k}')">Save to Cloud ☁️</button>
     </div>
 
     <div class="v-btns">
@@ -151,7 +148,7 @@ const app = {
 </div>`;
         }).join('');
     },
-    // Toggle Favorite ab Cloud ke saath sync hoga
+
     toggleF(k) { 
         const isAdding = !state.favs.has(k);
         if (isAdding) {
@@ -159,15 +156,13 @@ const app = {
         } else {
             state.favs.delete(k);
         }
-        
-        // Cloud Sync call
         if (window.saveFavToCloud) {
             window.saveFavToCloud(k, isAdding);
         }
-        
         syncStats(); 
         this.render(); 
     },
+
     toggleHardFilter() {
         state.filterFav = !state.filterFav;
         const btn = document.getElementById('hf-btn');
@@ -189,16 +184,22 @@ const quiz = {
         document.querySelectorAll('.c-chip').forEach(b => b.classList.remove('active'));
         el.classList.add('active');
     },
+
     init() {
         const lim = parseInt(document.getElementById('qLimit').value);
-        const fr = parseInt(document.getElementById('qFrom').value);
-        const to = parseInt(document.getElementById('qTo').value);
-        state.quiz.pool = state.all.filter(v => (state.quiz.cat === 'ALL' || v.type === state.quiz.cat) && v.id >= fr && v.id <= to)
-            .sort(() => 0.5 - Math.random()).slice(0, lim);
+        const fr  = parseInt(document.getElementById('qFrom').value);
+        const to  = parseInt(document.getElementById('qTo').value);
+        state.quiz.pool = state.all
+            .filter(v => (state.quiz.cat === 'ALL' || v.type === state.quiz.cat) && v.id >= fr && v.id <= to)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, lim);
         if (!state.quiz.pool.length) return alert("No words in this range!");
-        state.quiz.idx = 0; state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
-        router('play'); this.render();
+        state.quiz.idx = 0;
+        state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
+        router('play');
+        this.render();
     },
+
     render() {
         const q = state.quiz.pool[state.quiz.idx];
         if (!q.opts) {
@@ -208,18 +209,48 @@ const quiz = {
         document.getElementById('q-label').innerText = `Question ${state.quiz.idx + 1}/${state.quiz.pool.length}`;
         document.getElementById('q-bar').style.width = `${((state.quiz.idx + 1) / state.quiz.pool.length) * 100}%`;
         document.getElementById('q-text').innerText = q.meaning;
-        document.getElementById('q-opts').innerHTML = q.opts.map(o => `<button class="opt-btn" onclick="quiz.select('${o.word}')">${o.word}</button>`).join('');
+        document.getElementById('q-opts').innerHTML = q.opts.map(o =>
+            `<button class="opt-btn" onclick="quiz.select(this, '${o.word.replace(/'/g, "\\'")}')">${o.word}</button>`
+        ).join('');
     },
-    select(w) {
+
+    // IMPROVED: Answer highlight before moving to next question
+    select(btn, w) {
+        // Disable all buttons immediately
+        const allBtns = document.querySelectorAll('.opt-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        const correctWord = state.quiz.pool[state.quiz.idx].word;
         state.quiz.ans[state.quiz.idx] = w;
-        if (state.quiz.idx < state.quiz.pool.length - 1) { state.quiz.idx++; this.render(); }
-        else { this.finish(); }
+
+        if (w === correctWord) {
+            // Correct answer
+            btn.classList.add('correct');
+        } else {
+            // Wrong answer - highlight selected as wrong, show correct
+            btn.classList.add('wrong');
+            allBtns.forEach(b => {
+                if (b.innerText === correctWord) b.classList.add('reveal');
+            });
+        }
+
+        // Move to next after 800ms
+        setTimeout(() => {
+            if (state.quiz.idx < state.quiz.pool.length - 1) {
+                state.quiz.idx++;
+                this.render();
+            } else {
+                this.finish();
+            }
+        }, 800);
     },
+
     finish() {
         router('results');
         let correct = 0;
         document.getElementById('analysis-list').innerHTML = state.quiz.pool.map((q, i) => {
-            const isOk = state.quiz.ans[i] === q.word; if (isOk) correct++;
+            const isOk = state.quiz.ans[i] === q.word;
+            if (isOk) correct++;
             return `<div class="vocab-card" style="border-left:5px solid ${isOk ? '#10b981' : '#ef4444'}; margin-bottom:10px;">
                 <p style="font-size:0.9rem; margin-bottom:8px">${q.meaning}</p>
                 <div style="display:flex; justify-content:space-between; align-items:center">
@@ -230,11 +261,16 @@ const quiz = {
         }).join('');
         document.getElementById('result-score').innerText = `${correct}/${state.quiz.pool.length}`;
     },
+
     retryMistakes() {
         state.quiz.pool = state.quiz.pool.filter((q, i) => state.quiz.ans[i] !== q.word);
-        state.quiz.idx = 0; state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
+        // Re-generate options for retry
+        state.quiz.pool.forEach(q => { q.opts = null; });
+        state.quiz.idx = 0;
+        state.quiz.ans = new Array(state.quiz.pool.length).fill(null);
         if (!state.quiz.pool.length) return router('study');
-        router('play'); this.render();
+        router('play');
+        this.render();
     }
 };
 
@@ -260,7 +296,6 @@ window.toggleTrick = function(k) {
     }
 };
 
-// --- FINAL MODAL LOGIC (Replace everything below toggleTrick) ---
 window.closeAboutModal = () => {
     const m = document.getElementById('aboutModal');
     if (m) { m.classList.add('hidden'); document.body.style.overflow = 'auto'; }
@@ -279,16 +314,3 @@ window.toggleSidebar = function() {
 };
 
 init();
-
-
-
-
-
-
-
-
-
-
-
-
-
