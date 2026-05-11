@@ -896,14 +896,17 @@ body.dark .fav-pill:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     background: var(--card);
-    border: none;
+    border: 1px solid var(--brd);
     border-radius: 12px;
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    padding: 12px 16px;
     cursor: pointer;
-    padding: 0;
-    overflow: hidden;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--txt);
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
