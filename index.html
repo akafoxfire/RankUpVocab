@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="light">
 
@@ -44,37 +43,40 @@
             </div>
             <button onclick="toggleSidebar()" class="close-sidebar">&times;</button>
         </div>
-        
+
         <div class="sidebar-menu">
             <div class="menu-sep">Appearance</div>
             <div class="side-item">
-                <button id="theme-btn" class="circ-btn">🌙</button>
+                <button id="theme-btn" class="circ-btn" title="Toggle theme">🌙</button>
             </div>
 
             <div class="menu-sep">Account</div>
             <div id="side-login-box">
-                <p></p>
                 <button id="login-btn" class="side-login-btn" onclick="login()">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="18" alt="Google">
                     Sign in with Google
                 </button>
             </div>
             <button id="logout-btn" class="side-logout-link" onclick="logout()" style="display:none;">Logout</button>
+
+            <div class="menu-sep">Info</div>
+            <button class="side-about-btn" onclick="openAboutModal()">ℹ️ About RankUp Vocab</button>
         </div>
     </aside>
 
     <header class="navbar">
         <div class="container nav-content">
             <div class="nav-left">
-                <div class="logo" id="main-logo" style="cursor: pointer;">
+                <button class="logo" id="main-logo" onclick="router('home')">
                     <img src="logo.png" alt="RankUp" class="nav-logo-img" width="32" height="32">
                     RankUp<span>Vocab</span>
-                </div>
+                </button>
             </div>
 
             <div class="nav-center">
                 <div class="tabs">
-                    <button onclick="router('study')" id="tab-study" class="t-btn active">Study</button>
+                    <button onclick="router('home')" id="tab-home" class="t-btn active">Home</button>
+                    <button onclick="router('study')" id="tab-study" class="t-btn">Study</button>
                     <button onclick="router('setup')" id="tab-quiz" class="t-btn">Quiz</button>
                 </div>
             </div>
@@ -89,21 +91,80 @@
 
     <main class="container">
         <div class="dash-grid">
-            <div class="d-card p-clr"><h5>SSC OWS COUNT</h5><p id="stat-ows">0</p></div>
-            <div class="d-card b-clr"><h5>SSC IDIOMS COUNT</h5><p id="stat-idioms">0</p></div>
-            <div class="d-card r-clr"><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div>
+            <div class="d-card p-clr"><div class="bubble">OWS</div><div><h5>SSC OWS COUNT</h5><p id="stat-ows">0</p></div></div>
+            <div class="d-card b-clr"><div class="bubble">IDM</div><div><h5>SSC IDIOMS COUNT</h5><p id="stat-idioms">0</p></div></div>
+            <div class="d-card r-clr"><div class="bubble">♥</div><div><h5>SAVED (HARD)</h5><p id="stat-hard">0</p></div></div>
         </div>
 
+        <!-- HOME VIEW -->
+        <section id="view-home" class="view">
+            <div class="home-wrap">
+                <div class="home-hero">
+                    <div class="hero-stub">
+                        <span class="stub-eyebrow">Admit Card</span>
+                        <span class="stub-roll" id="hero-roll">ROLL NO. —</span>
+                        <div class="streak-badge">
+                            <span class="flame">🔥</span>
+                            <b id="streak-count">0</b>
+                            <small>Day Streak</small>
+                        </div>
+                    </div>
+                    <div class="hero-main">
+                        <span class="hero-eyebrow">SSC CGL · CHSL · CPO · MTS Prep</span>
+                        <h1 class="hero-title">Stop cramming.<br>Start <mark>remembering</mark> <em>for good.</em></h1>
+                        <p class="hero-sub">2000+ One Word Substitutions & Idioms, taught with your own memory tricks, range-wise quizzes, and a Mistake Bucket that keeps you honest.</p>
+                        <div class="hero-actions">
+                            <button class="btn-solid" onclick="router('study')">Start Studying →</button>
+                            <button class="btn-ghost" onclick="router('setup')">Take a Quiz</button>
+                        </div>
+                        <span class="hero-sign">— Rakesh Kumar Dudhawal, Developer</span>
+                    </div>
+                </div>
+
+                <div class="section-label">Why RankUp Vocab</div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="f-icon">💡</span>
+                        <h4>Mnemonics, Cloud Synced</h4>
+                        <p>Likhiye apni khud ki trick har word ke liye, aur Google account se hamesha ke liye save karein.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="f-icon">🎯</span>
+                        <h4>Range-wise Quiz</h4>
+                        <p>Word number ke hisaab se target practice — sirf wahi range jisme aap kamzor hain.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="f-icon">🔁</span>
+                        <h4>Mistake Bucket</h4>
+                        <p>Quiz ke baad sirf galat hue sawalon ko dobara solve karein, jab tak perfect na ho jaaye.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="f-icon">❤️</span>
+                        <h4>Personal Hard List</h4>
+                        <p>Tough words ko favorite mark karke ek alag revision list bana lein.</p>
+                    </div>
+                </div>
+
+                <div class="home-cta-strip">
+                    <div>
+                        <h3>Aaj ka target: thoda revision ho jaaye?</h3>
+                        <p>Ek quick range-quiz se apni tayyari check karein.</p>
+                    </div>
+                    <button class="btn-solid" onclick="router('setup')">Launch Quiz ⚡</button>
+                </div>
+            </div>
+        </section>
+
         <!-- STUDY VIEW -->
-        <section id="view-study" class="view">
+        <section id="view-study" class="view hidden">
             <div class="tool-flex">
                 <div class="search-box">
                     <span>🔍</span>
                     <input type="text" id="searchBar" placeholder="Search meanings..." oninput="app.render()">
                 </div>
                 <div class="jump-box" style="display: flex; gap: 5px;">
-                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:10px; border-radius:12px; border:1px solid var(--brd); background:var(--card); color:var(--txt); font-weight:700;">
-                    <button onclick="jumpToCard()" style="padding:10px 15px; background:var(--p); color:white; border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
+                    <input type="number" id="jump-id" placeholder="ID" style="width:70px; padding:11px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--txt); font-weight:700; font-family:var(--f-mono);">
+                    <button onclick="jumpToCard()" style="padding:11px 15px; background:var(--ink); color:var(--paper); border:none; border-radius:12px; cursor:pointer; font-weight:800;">Go</button>
                 </div>
                 <select id="typeFilter" onchange="app.render()">
                     <option value="ALL">All Categories</option>
@@ -158,7 +219,7 @@
                 </div>
                 <div class="res-actions">
                     <button onclick="quiz.retryMistakes()" class="btn-retry">Retry Mistakes</button>
-                    <button onclick="router('study')" class="btn-home">Home</button>
+                    <button onclick="router('home')" class="btn-home">Home</button>
                 </div>
             </div>
             <div id="analysis-list" class="analysis-stack"></div>
@@ -172,9 +233,7 @@
                 <span>RankUp Vocab</span>
             </div>
             <p>Engineered for Excellence.</p>
-            <div class="footer-links">
-                <span>Hard Work Beats Talent</span>
-            </div>
+            <div class="footer-links">Hard Work Beats Talent</div>
         </div>
     </footer>
 
@@ -182,19 +241,19 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { 
-            getAuth, 
-            signInWithPopup, 
-            GoogleAuthProvider, 
-            onAuthStateChanged, 
-            signOut 
+        import {
+            getAuth,
+            signInWithPopup,
+            GoogleAuthProvider,
+            onAuthStateChanged,
+            signOut
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { 
-            getFirestore, 
-            doc, 
-            setDoc, 
-            getDocs, 
-            collection 
+        import {
+            getFirestore,
+            doc,
+            setDoc,
+            getDocs,
+            collection
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -276,11 +335,13 @@
             const loginBtn    = document.getElementById('login-btn');
             const logoutBtn   = document.getElementById('logout-btn');
             const userNameSide = document.getElementById('user-name-side');
+            const userStatus  = document.getElementById('user-status');
 
             if (user) {
                 if (loginBtn)     loginBtn.style.display    = 'none';
                 if (logoutBtn)    logoutBtn.style.display   = 'block';
                 if (userNameSide) userNameSide.textContent  = "Hi, " + user.displayName.split(' ')[0];
+                if (userStatus)   userStatus.textContent    = "Synced ✓ Cloud Active";
 
                 // Load Tricks
                 const trickSnap = await getDocs(collection(db, "users", user.uid, "tricks"));
@@ -320,7 +381,7 @@
                     <li><strong>Personalized Hard List:</strong> कठिन शब्दों को Favorite मार्क करें।</li>
                 </ul>
                 <div class="about-footer">
-                    <p><strong>Developer:</strong> akafoxfire 😎</p>
+                    <p><strong>Developer:</strong> Rakesh Kumar Dudhawal 😎</p>
                     <p>All credit goes to Blackbook!</p>
                 </div>
             </div>
