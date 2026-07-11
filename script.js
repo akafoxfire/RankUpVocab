@@ -1,7 +1,7 @@
 const state = {
     all: [],
     favs: new Set(),
-    userTricks: {}, 
+    userTricks: {},
     quiz: { pool: [], idx: 0, ans: [], cat: 'ALL' },
     filterFav: false
 };
@@ -9,7 +9,7 @@ const state = {
 // --- CLOUD SYNC FUNCTIONS (Called from index.html) ---
 window.updateLocalTricks = (data) => {
     state.userTricks = data;
-    app.render(); 
+    app.render();
 };
 
 window.updateLocalFavs = (data) => {
@@ -28,18 +28,50 @@ async function init() {
             ...o.vocabulary.map(v => ({ ...v, type: 'OWS' })),
             ...i.vocabulary.map(v => ({ ...v, type: 'Idiom' }))
         ];
-        syncStats(); 
+        syncStats();
         app.render();
     } catch (e) { console.error("Data Load Error"); }
 }
 
 function syncStats() {
-    if (document.getElementById('stat-ows'))
-        document.getElementById('stat-ows').innerText = state.all.filter(v => v.type === 'OWS').length;
-    if (document.getElementById('stat-idioms'))
-        document.getElementById('stat-idioms').innerText = state.all.filter(v => v.type === 'Idiom').length;
-    if (document.getElementById('stat-hard'))
-        document.getElementById('stat-hard').innerText = state.favs.size;
+    const owsCount = state.all.filter(v => v.type === 'OWS').length;
+    const idiomCount = state.all.filter(v => v.type === 'Idiom').length;
+    if (document.getElementById('stat-ows')) document.getElementById('stat-ows').innerText = owsCount;
+    if (document.getElementById('stat-idioms')) document.getElementById('stat-idioms').innerText = idiomCount;
+    if (document.getElementById('stat-hard')) document.getElementById('stat-hard').innerText = state.favs.size;
+}
+
+// --- ADMIT-CARD ROLL NUMBER (deterministic per day, just for flavor) ---
+function setHeroRoll() {
+    const el = document.getElementById('hero-roll');
+    if (!el) return;
+    const d = new Date();
+    const y = d.getFullYear();
+    const doy = Math.floor((d - new Date(y, 0, 0)) / 86400000);
+    el.innerText = `ROLL NO. RU-${y}${String(doy).padStart(3, '0')}`;
+}
+
+// --- STUDY STREAK (localStorage, counts consecutive daily visits) ---
+function updateStreak() {
+    const el = document.getElementById('streak-count');
+    if (!el) return;
+    try {
+        const today = new Date().toISOString().slice(0, 10);
+        const last = localStorage.getItem('ruv_last_visit');
+        let streak = parseInt(localStorage.getItem('ruv_streak') || '0', 10);
+
+        if (last === today) {
+            // already counted today
+        } else {
+            const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+            streak = (last === yesterday) ? streak + 1 : 1;
+            localStorage.setItem('ruv_streak', streak);
+            localStorage.setItem('ruv_last_visit', today);
+        }
+        el.innerText = streak || 1;
+    } catch (e) {
+        el.innerText = '1';
+    }
 }
 
 window.speak = function(t) {
@@ -48,16 +80,16 @@ window.speak = function(t) {
         if (!t) return;
 
         let textToSay = String(t)
-            .replace(/['']/g, "") 
+            .replace(/['']/g, "")
             .split('/')[0]
             .split('(')[0]
             .trim();
-        
+
         const s = new SpeechSynthesisUtterance(textToSay);
         s.lang = 'en-US';
         s.rate = 0.8;
         s.pitch = 1.1;
-        
+
         const voices = window.speechSynthesis.getVoices();
         const googleVoice = voices.find(v => v.name.includes('Google US English'));
         if (googleVoice) s.voice = googleVoice;
@@ -76,7 +108,7 @@ function jumpToCard() {
     const targetCard = document.getElementById(targetId);
     if (targetCard) {
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        targetCard.style.outline = "3px solid var(--p)";
+        targetCard.style.outline = "3px solid var(--flame)";
         targetCard.style.outlineOffset = "5px";
         setTimeout(() => targetCard.style.outline = "none", 2500);
     } else {
@@ -87,12 +119,12 @@ function jumpToCard() {
 window.handleSaveTrick = function(k) {
     const trickInput = document.getElementById(`trick-input-${k}`);
     const trickText = trickInput.value.trim();
-    
+
     if (!trickText) return alert("Pehle kuch likhiye!");
 
     if (window.saveTrickToCloud) {
         window.saveTrickToCloud(k, trickText);
-        state.userTricks[k] = trickText; 
+        state.userTricks[k] = trickText;
     } else {
         alert("Pehle Google se Login karein!");
     }
@@ -101,6 +133,7 @@ window.handleSaveTrick = function(k) {
 const app = {
     render() {
         const g = document.getElementById('study-grid');
+        if (!g) return;
         const s = document.getElementById('searchBar').value.toLowerCase();
         const t = document.getElementById('typeFilter').value;
         let filtered = state.all.filter(v =>
@@ -112,32 +145,32 @@ const app = {
         g.innerHTML = filtered.map(v => {
             const k = `${v.type}-${v.id}`;
             const repeatTag = v.r ? ` 🔥${v.r}` : ' 🔥0';
-            const savedTrick = state.userTricks[k] || ""; 
+            const savedTrick = state.userTricks[k] || "";
             const safeWord = v.word.replace(/'/g, "\\'");
             return `
-<div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;"> 
-    <div style="display:flex; justify-content:space-between; font-size:0.7rem; font-weight:800; color:var(--p)">
-        <span>${v.type} #${v.id}${repeatTag}</span> 
-        <div style="display:flex; align-items:center; gap:10px;">
-            <button onclick="toggleTrick('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem" title="Add Trick">💡</button>
-            <button onclick="app.toggleF('${k}')" style="background:none; border:none; cursor:pointer; font-size:1.1rem">${state.favs.has(k) ? '❤️' : '🤍'}</button>
+<div class="vocab-card" id="card-${v.type}-${v.id}" style="position: relative; overflow: hidden;">
+    <div class="vc-top">
+        <span class="vc-id">${v.type} · #${String(v.id).padStart(4,'0')}${repeatTag}</span>
+        <div class="vc-actions">
+            <button onclick="toggleTrick('${k}')" title="Add Trick">💡</button>
+            <button onclick="app.toggleF('${k}')">${state.favs.has(k) ? '❤️' : '🤍'}</button>
         </div>
     </div>
-    
-    <h3 style="margin:10px 0">${v.word}</h3>
-    <p style="margin-bottom:15px">${v.meaning}</p>
-    
-    <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:100; flex-direction:column; padding:15px; box-sizing:border-box; border-radius:20px;">
+
+    <h3>${v.word}</h3>
+    <p>${v.meaning}</p>
+
+    <div id="overlay-${k}" class="trick-overlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:var(--card); z-index:100; flex-direction:column; padding:15px; box-sizing:border-box; border-radius:16px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <h4 style="margin:0; font-size:0.9rem; color:var(--p);">💡 Edit Mnemonic</h4>
-            <span class="close-overlay" onclick="toggleTrick('${k}')" style="cursor:pointer; font-size:1.2rem; color:#ef4444; font-weight:bold;">✖</span>
+            <h4 style="margin:0; font-size:0.9rem; color:var(--flame);">💡 Edit Mnemonic</h4>
+            <span class="close-overlay" onclick="toggleTrick('${k}')" style="cursor:pointer; font-size:1.2rem; color:var(--stamp); font-weight:bold;">✖</span>
         </div>
 
-        <textarea class="trick-textarea" id="trick-input-${k}" 
-            style="flex: 1; width: 100%; background: rgba(129, 140, 248, 0.08); border: 1px dashed var(--p); padding: 12px; border-radius: 12px; resize: none; font-family: inherit; font-size: 1rem; line-height: 1.4; color: var(--txt); outline: none; margin-bottom: 10px;"
+        <textarea class="trick-textarea" id="trick-input-${k}"
+            style="flex: 1; width: 100%; background: var(--card); border: 1.5px dashed var(--line-2); padding: 12px; border-radius: 12px; resize: none; font-family: inherit; font-size: 1rem; line-height: 1.4; color: var(--txt); outline: none; margin-bottom: 10px;"
             placeholder="Apni trick yahan likhein...">${savedTrick}</textarea>
-        
-        <button class="trick-save-btn" 
+
+        <button class="trick-save-btn"
             onclick="handleSaveTrick('${k}')">Save to Cloud ☁️</button>
     </div>
 
@@ -149,7 +182,7 @@ const app = {
         }).join('');
     },
 
-    toggleF(k) { 
+    toggleF(k) {
         const isAdding = !state.favs.has(k);
         if (isAdding) {
             state.favs.add(k);
@@ -159,8 +192,8 @@ const app = {
         if (window.saveFavToCloud) {
             window.saveFavToCloud(k, isAdding);
         }
-        syncStats(); 
-        this.render(); 
+        syncStats();
+        this.render();
     },
 
     toggleHardFilter() {
@@ -177,6 +210,7 @@ const app = {
     }
 };
 
+const OPT_LETTERS = ['A', 'B', 'C', 'D'];
 
 const quiz = {
     setCat(c, el) {
@@ -209,8 +243,8 @@ const quiz = {
         document.getElementById('q-label').innerText = `Question ${state.quiz.idx + 1}/${state.quiz.pool.length}`;
         document.getElementById('q-bar').style.width = `${((state.quiz.idx + 1) / state.quiz.pool.length) * 100}%`;
         document.getElementById('q-text').innerText = q.meaning;
-        document.getElementById('q-opts').innerHTML = q.opts.map(o =>
-            `<button class="opt-btn" onclick="quiz.select(this, '${o.word.replace(/'/g, "\\'")}')">${o.word}</button>`
+        document.getElementById('q-opts').innerHTML = q.opts.map((o, i) =>
+            `<button class="opt-btn" data-letter="${OPT_LETTERS[i]}" onclick="quiz.select(this, '${o.word.replace(/'/g, "\\'")}')">${o.word}</button>`
         ).join('');
     },
 
@@ -251,10 +285,10 @@ const quiz = {
         document.getElementById('analysis-list').innerHTML = state.quiz.pool.map((q, i) => {
             const isOk = state.quiz.ans[i] === q.word;
             if (isOk) correct++;
-            return `<div class="vocab-card" style="border-left:5px solid ${isOk ? '#10b981' : '#ef4444'}; margin-bottom:10px;">
+            return `<div class="vocab-card" style="border-left:4px solid ${isOk ? 'var(--pass)' : 'var(--stamp)'}; margin-bottom:10px;">
                 <p style="font-size:0.9rem; margin-bottom:8px">${q.meaning}</p>
                 <div style="display:flex; justify-content:space-between; align-items:center">
-                    <span style="font-size:0.8rem; color:#64748b">Your: <b>${state.quiz.ans[i] || '-'}</b></span>
+                    <span style="font-size:0.8rem; color:var(--txt2)">Your: <b>${state.quiz.ans[i] || '-'}</b></span>
                     <span style="font-weight:800">${q.word} ${isOk ? '✅' : '❌'}</span>
                 </div>
             </div>`;
@@ -274,18 +308,32 @@ const quiz = {
     }
 };
 
+const NAV_VIEWS = ['home', 'study', 'setup', 'play', 'results'];
+
 function router(v) {
     document.querySelectorAll('.view').forEach(e => e.classList.add('hidden'));
     document.getElementById('view-' + v).classList.remove('hidden');
+
+    document.getElementById('tab-home').classList.toggle('active', v === 'home');
     document.getElementById('tab-study').classList.toggle('active', v === 'study');
-    document.getElementById('tab-quiz').classList.toggle('active', v !== 'study');
+    document.getElementById('tab-quiz').classList.toggle('active', v === 'setup' || v === 'play' || v === 'results');
+
     window.scrollTo(0, 0);
 }
 
 document.getElementById('theme-btn').onclick = () => {
     const isDark = document.body.classList.toggle('dark');
     document.getElementById('theme-btn').innerText = isDark ? '☀️' : '🌙';
+    try { localStorage.setItem('ruv_theme', isDark ? 'dark' : 'light'); } catch (e) {}
 };
+
+// restore saved theme
+try {
+    if (localStorage.getItem('ruv_theme') === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-btn').innerText = '☀️';
+    }
+} catch (e) {}
 
 window.toggleTrick = function(k) {
     const overlay = document.getElementById(`overlay-${k}`);
@@ -301,16 +349,12 @@ window.closeAboutModal = () => {
     if (m) { m.classList.add('hidden'); document.body.style.overflow = 'auto'; }
 };
 
-document.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.logo')) {
-        const m = document.getElementById('aboutModal');
-        if (m) { m.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
-    }
-});
-
 window.toggleSidebar = function() {
     document.getElementById('sidebar').classList.toggle('active');
     document.getElementById('sidebar-overlay').classList.toggle('active');
 };
 
+router('home');
+setHeroRoll();
+updateStreak();
 init();
